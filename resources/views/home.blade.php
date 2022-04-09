@@ -3,8 +3,8 @@
 @section('content')
 
 <html>
-    <body>
-        <h1>Hello</h1>
+    <body style="background-color: teal">
+        <h1 style="">Hello</h1>
     </body>
 </html>
 

@@ -11,29 +11,65 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
+    <link rel="stylesheet"  type="text/js"  href="/script.js">
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
     <!-- Styles -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link rel="stylesheet"  type="text/css"  href="/style.css">
+	<link href="https://cdn.lineicons.com/2.0/LineIcons.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"/>
+
 </head>
 <body>
+    <div id="app">
+        
+        <div id="navbar mt-5">
+            <nav id="main-menu">
+                <ul>
+                  <li><a href="#">Home</a></li>
+                  <li><a href="#">Store</a></li>
+                  <li><a href="#">Blog</a></li>
+                  <li><a href="#">About</a></li>
+                  <li><a href="#">Contact</a></li>
+                </ul>
+              </nav>
+        </div>
 
-    <html>
-        <body>
-            <h1>Test</h1>
-        </body>
-    </html>
-
-<main class="py-4">
+        <div class="">
+            <input type="checkbox" id="hamburger-input" class="burger-shower" />
+            <label id="hamburger-menu" for="hamburger-input">
+              <nav id="sidebar-menu">
+                <h3>E-Library</h3>
+                <ul>
+                  <li><img src="" alt=""> <a href="#">Home</a></li>
+                  <li><img src="images/user.svg" alt="" style="height: 60px; width: 60px"> <a href="#">Profile</a></li>
+                  <li><img src="images/book-open.svg" alt="" style="height: 60px; width: 60px"> <a href="#">Buku Pinjaman</a></li>
+                  <li><img src="images/school.svg" alt="" style="height: 60px; width: 60px"> <a href="#">Profile Perpustakaan</a></li>
+                  <li><img src="images/list-check.svg" alt="" style="height: 60px; width: 60px"> <a href="#">Buku Terpinjam</a></li>
+                  <li><img src="images/add.svg" alt="" style="height: 60px; width: 60px"> <a href="#">Buku Perpustakaan</a></li>
+                </ul>
+              </nav>
+            </label>
+        </div>  
+            
+            <div class="overlay"></div>
+       
+    
+        
+       
+       
+            
             @yield('content')
-        </main>
+       
     </div>
 
 
-
-
+    <script type="text/javascript" src="mobile.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </body>
 </html>
