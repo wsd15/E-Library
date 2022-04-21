@@ -24,9 +24,9 @@ body {
 
 #main-menu {
   display: block;
-  height: 100px;
+  height: 70px;
   width: 100%;
-  background: #460F0F;
+  background: #3CACAE;
   margin: 0px;  
   z-index: initial;
   
@@ -51,7 +51,7 @@ body {
 
 #main-menu a {
   color: white;
-  font-size: 1.5rem;
+  font-size: 23px;
   text-decoration: none;
 }
 
@@ -67,8 +67,8 @@ body {
     position: absolute;
     top: 20px;
     left: 20px;
-    width: 50px;
-    height: 50px;
+    width: 45px;
+    height: 35px;
     display: inline;
     border: none;
     padding: 0px;
@@ -78,9 +78,9 @@ body {
     background: linear-gradient(
       to bottom, 
       white, white 20%, 
-      #460F0F 20%, #460F0F 40%, 
+      #3CACAE 20%, #3CACAE 40%, 
       white 40%, white 60%, 
-      #460F0F 60%, #460F0F 80%, 
+      #3CACAE 60%, #3CACAE 80%, 
       white 80%, white 100%
     );
 }
@@ -92,7 +92,7 @@ body {
     left: -285px;
     width: 285px;
     height: 100%;
-    background-color: white;
+    background-color: #C8F4F9;
     transition: 0.3s;
     padding: 0px 10px;
     box-sizing: border-box;
@@ -100,7 +100,7 @@ body {
 
 #hamburger-menu h3 {
   color: black;
-  font-size: 2.2rem;
+  font-size: 23px;
 }
 
 #hamburger-menu ul {
