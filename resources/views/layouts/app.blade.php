@@ -40,18 +40,17 @@
               </nav>
         </div>
 
-        <div class="">
+        <div class="sidebar">
             <input type="checkbox" id="hamburger-input" class="burger-shower" />
             <label id="hamburger-menu" for="hamburger-input">
               <nav id="sidebar-menu">
-                <h3>E-Library</h3>
+                <h3><a href="{{ url('home2') }}">E-Library</a></h3>
                 <ul>
-                  <li><img src="" alt=""> <a href="#">Home</a></li>
-                  <li><img src="images/user.svg" alt="" style="height: 60px; width: 60px"> <a href="#">Profile</a></li>
-                  <li><img src="images/book-open.svg" alt="" style="height: 60px; width: 60px"> <a href="#">Buku Pinjaman</a></li>
-                  <li><img src="images/school.svg" alt="" style="height: 60px; width: 60px"> <a href="#">Profile Perpustakaan</a></li>
-                  <li><img src="images/list-check.svg" alt="" style="height: 60px; width: 60px"> <a href="#">Buku Terpinjam</a></li>
-                  <li><img src="images/add.svg" alt="" style="height: 60px; width: 60px"> <a href="#">Buku Perpustakaan</a></li>
+                  <li class="border-bottom border-dark"><a href="{{ url('home2') }}"><img src="images/user.svg" alt="" style="height: 60px; width: 60px; margin-right: 5%; margin-bottom: 5%">Profile </a></li>
+                  <li class="border-bottom border-dark"><a href="#"><img src="images/book-open.svg" alt="" style="height: 60px; width: 60px; margin-right: 5%; margin-bottom: 5%; margin-top: 5%">Buku Pinjaman</a></li>
+                  <li class="border-bottom border-dark"><a href="#"><img src="images/school.svg" alt="" style="height: 60px; width: 60px; margin-right: 5%; margin-bottom: 5%; margin-top: 5%">Profile Perpustakaan</a></li>
+                  <li class="border-bottom border-dark"><a href="#"><img src="images/list-check.svg" alt="" style="height: 60px; width: 60px; margin-right: 5%; margin-bottom: 5%; margin-top: 5%">Buku Terpinjam</a></li>
+                  <li><a href="#"><img src="images/add.svg" alt="" style="height: 60px; width: 60px; margin-right: 5%; margin-bottom: 5%; margin-top: 5%">Buku Perpustakaan</a></li>
                 </ul>
               </nav>
             </label>
