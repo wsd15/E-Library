@@ -30,3 +30,7 @@ Route::get('/home2', function () {
 Route::get('/profile', function () {
     return view('profile');
 })->middleware(['auth']);
+
+Route::get('/welcome', function () {
+    return view('welcome');
+});
