@@ -62,7 +62,7 @@
             <label id="hamburger-menu" for="hamburger-input">
               <nav id="sidebar-menu">
                 {{-- <h3><a href="{{ url('') }}">E-Library</a></h3> --}}
-                <a href="{{ url('') }}"> <img src="images/logo.jpg" alt="" style="margin-right: 5%; margin-top: 10%"> </a>
+                <a href="{{ url('') }}"> <img src="images/logo.png" alt="" style="margin-right: 5%; margin-top: 10%"> </a>
                 <ul>
                   <li class="border-bottom border-dark"><a href="{{ url('home2') }}"><img class="display_image" src="images/user.svg" alt="" style="height: 40px; width: 40px; margin-right: 5%; margin-bottom: 10%; margin-top: 10%">Profile </a></li>
                   <li class="border-bottom border-dark"><a href="#"><img class="display_image" src="images/book-open.svg" alt="" style="height: 40px; width: 40px; margin-right: 5%; margin-bottom: 10%; margin-top: 10%">Buku Pinjaman</a></li>
