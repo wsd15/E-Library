@@ -889,6 +889,22 @@ select {
   --tw-bg-opacity: 1;
   background-color: rgb(238 242 255 / var(--tw-bg-opacity));
 }
+
+.bg-zinc-400	{
+  --tw-bg-opacity: 1;
+  background-color: rgb(161 161 170);
+}
+
+.bg-zinc-500	{
+  --tw-bg-opacity: 1;
+  background-color: rgb(113 113 122);
+}
+
+.bg-zinc-600	{
+  --tw-bg-opacity: 1;
+  background-color: rgb(82 82 91);
+}
+
 .fill-current {
   fill: currentColor;
 }
