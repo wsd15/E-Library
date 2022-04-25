@@ -18,22 +18,21 @@
 
         <form method="POST" action="{{ route('login') }}">
             @csrf
-            <h1 class="text-center"> Login </h1>
+            <p class="text-center font-semibold" style="font-size: xx-large"> Login </p>
             <!-- Email Address -->
-            <div>
-                <x-label for="email" :value="__('Email')" />
+            <div class="mt-4">
+                {{-- <x-label for="email" :value="__('Email')" /> --}}
+                
                 <span class="iconify" data-icon="dashicons:email"></span>
-                <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus />
+                
+                <x-input id="email" class="block mt-1 w-full border-dark" placeholder="Your Email" type="email" name="email" :value="old('email')" required autofocus />
             </div>
 
             <!-- Password -->
-            <div class="mt-4">
-                <x-label for="password" :value="__('Password')" />
+            <div class="mt-3">
+                {{-- <x-label for="password" :value="__('Password')" /> --}}
 
-                <x-input id="password" class="block mt-1 w-full"
-                                type="password"
-                                name="password"
-                                required autocomplete="current-password" />
+                <x-input id="password" class="block mt-1 w-full border-dark" placeholder="Password" type="password" name="password" required autocomplete="current-password" />
             </div>
 
             <div class="flex items-center justify-center mt-4">
