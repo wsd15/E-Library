@@ -28,8 +28,7 @@
 </head>
 <body>
     <div id="app">
-        
-        <div id="navbar mt-5">
+        <div id="navbar" class="">
             <nav id="main-menu">
                 <ul>
                   <li><a href="#">Home</a></li>
@@ -40,27 +39,35 @@
                 </ul>
               </nav>
         </div>
-        <script>
-        
-            window.onscroll = function() {myFunction()};
 
-            var navbar = document.getElementById("main-menu");
-            var sticky = navbar.offsetTop;
+            <div class="content">
+              @yield('content')
+            </div>
 
-            function myFunction() {
-              if (window.pageYOffset >= sticky) {
-                navbar.classList.add("sticky")
-              } else {
-                navbar.classList.remove("sticky");
-              }
-            }
+            <script>
+              // When the user scrolls the page, execute myFunction
+               window.onscroll = function() {myFunction()};
+   
+               // Get the navbar
+               var navbar = document.getElementById("navbar");
+   
+               // Get the offset position of the navbar
+               var sticky = navbar.offsetTop;
+   
+               // Add the sticky class to the navbar when you reach its scroll position. Remove "sticky" when you leave the scroll position
+               function myFunction() {
+                 if (window.pageYOffset >= sticky) {
+                   navbar.classList.add("sticky")
+                 } else {
+                   navbar.classList.remove("sticky");
+                 }
+               }
+           </script>
 
-        </script>
-
-        <div class="sidebar">
+          <div class="sidebar">
             <input type="checkbox" id="hamburger-input" class="burger-shower" />
             <label id="hamburger-menu" for="hamburger-input">
-              <nav id="sidebar-menu">
+              <nav id="sidebar-menu"> 
                 {{-- <h3><a href="{{ url('') }}">E-Library</a></h3> --}}
                 <a href="{{ url('') }}"> <img src="images/logo.png" alt="" style="margin-right: 5%; margin-top: 10%"> </a>
                 <ul>
@@ -72,19 +79,11 @@
                 </ul>
               </nav>
             </label>
-        </div>  
-            
-            <div class="overlay"></div>
-       
-    
-        
-       
-       
-            
-            @yield('content')
-       
-    </div>
+          </div>  
 
+
+    </div>
+ 
 
     <script type="text/javascript" src="mobile.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
