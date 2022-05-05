@@ -59,10 +59,10 @@
                                 <input type="text" class="form-control" placeholder="enter phone number" value="">
                             </div> 
                             
-                            <form>
+                            <form class="mt-4">
                                 <label for="birthday">Birthday:</label>
                                 <input type="date" id="birthday" name="birthday">
-                              </form>
+                            </form>
 
 
                               <div>
