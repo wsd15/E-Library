@@ -47,12 +47,12 @@
                                 <input type="text" class="form-control" value="" placeholder="last name">
                             </div> 
                             </div> 
-                            <div class="row mt-3"> 
+                            <div class="row mt-4"> 
                                 <div class="col-md-12">
                                 <label class="labels">Email</label>
                                 <input type="text" class="form-control" placeholder="enter email id" value="">
                             </div>
-                            <div class="col-md-12"><label class="labels">Phone Number</label>
+                            <div class="col-md-12 mt-4"><label class="labels">Phone Number</label>
                                 <input type="text" class="form-control" placeholder="enter phone number" value="">
                             </div> 
                             
