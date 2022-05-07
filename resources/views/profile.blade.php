@@ -5,15 +5,12 @@
 <html>
     <body style="">
 
-
-        <h1 class="my-5" style="">Halaman profile</h1>
-
         <div class="container rounded bg-white mt-5 mb-5"> 
 
             <div class=" border-right"> 
                 <div class="p-3 py-5"> 
                     <div class="d-flex justify-content-between align-items-center mb-3"> 
-                        <h4 class="text-right">Profile Settings</h4> 
+                        <h1 class="text-right mb-3">My Profile</h1> 
                     </div> 
 
                             {{-- https://codepen.io/chiraggoyal777/pen/xxEowxq --}}
@@ -65,7 +62,7 @@
                             </form>
 
 
-                              <div>
+                              <div class="mt-4">
                                 <label for="pass">Password (8 characters minimum):</label>
                                 <input type="password" id="pass" name="password"
                                        minlength="8" required>
@@ -73,7 +70,7 @@
                         </div> 
                         <div class="mt-5 text-center">
                             <x-button class="">
-                                test
+                                Save
                             </x-button>
                             </div> 
                         </div> 
