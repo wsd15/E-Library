@@ -10,10 +10,9 @@
             <div class=" border-right"> 
                 <div class="p-3 py-5"> 
                     <div class="d-flex justify-content-between align-items-center mb-3"> 
-                        <h1 class="text-right mb-3">My Profile</h1> 
+                        <h1 class="text-right mb-3" style="font-size:3vw">My Profile</h1> 
                     </div> 
 
-                            {{-- https://codepen.io/chiraggoyal777/pen/xxEowxq --}}
                             <div class="profile-pic-wrapper">
                                 <div class="pic-holder">
                                 <!-- uploaded pic shown here -->
