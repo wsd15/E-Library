@@ -322,3 +322,14 @@ opacity: 0.4;
     text-overflow: ellipsis;
   }
 }
+
+/* LikeToggleButton */
+.fa-heart-o {
+  color: red;
+  cursor: pointer;
+}
+
+.fa-heart {
+  color: red;
+  cursor: pointer;
+}
