@@ -11,7 +11,7 @@
         {{-- Content box --}}
         <div class="container justify-content-center mt-30 mb-30">
             
-            <p class="p-2 fs-4 text-sm-start pl-50">Perpustakaan A</p>
+            <p class="fs-3 text-sm-start pl-50">Perpustakaan A</p>
 
             <div class="row">
             <div class="col-md-10">
