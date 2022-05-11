@@ -15,3 +15,9 @@ function myFunction() {
     navbar.classList.remove("sticky");
   }
 }
+
+<script>
+function FunctionLike(x) {
+  x.classList.toggle("fa-thumbs-down")
+}
+</script>

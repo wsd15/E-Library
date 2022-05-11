@@ -38,3 +38,19 @@ Route::get('/welcome', function () {
 Route::get('/detail-buku', function () {
     return view('detail-buku');
 });
+
+Route::get('/wishlist', function () {
+    return view('wishlist');
+});
+
+Route::get('/cart', function () {
+    return view('cart');
+});
+
+Route::get('/buku-pinjaman', function () {
+    return view('buku-pinjaman');
+});
+
+Route::get('/pembayaran', function () {
+    return view('pembayaran');
+});
