@@ -18,6 +18,6 @@ function myFunction() {
 
 <script>
 function FunctionLike(x) {
-  x.classList.toggle("fa-thumbs-down");
+  x.classList.toggle("fa-thumbs-down")
 }
 </script>

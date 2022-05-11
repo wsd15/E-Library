@@ -307,7 +307,7 @@ opacity: 0.4;
 
 .limit_text{
   display: block;
-  width: 500px;
+  width: 640px;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
