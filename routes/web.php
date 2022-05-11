@@ -54,3 +54,7 @@ Route::get('/buku-pinjaman', function () {
 Route::get('/pembayaran', function () {
     return view('pembayaran');
 });
+
+Route::get('/halaman-donasi', function () {
+    return view('halaman-donasi');
+});

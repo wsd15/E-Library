@@ -1,15 +1,15 @@
 /* @import url('https://fonts.googleapis.com/css2?family=Cabin&display=swap'); */
 
 body {
-  padding: 0px;
-  margin: 0px;
-  font-size: 20px;
-  min-height: 200vh;
-  /* font-family: 'Cabin', Sans-serif; */
-  font-family: 'Ovo', serif !important;
+    padding: 0px;
+    margin: 0px;
+    font-size: 20px;
+    min-height: 200vh;
+    /* font-family: 'Cabin', Sans-serif; */
+    font-family: "Ovo", serif !important;
 }
 
-.overlay{
+.overlay {
     position: fixed;
     top: 0;
     left: 0;
@@ -17,49 +17,49 @@ body {
     height: 100%;
     opacity: 0;
     visibility: hidden;
-    transition: opacity .35s, visibility .35s, height .35s;
+    transition: opacity 0.35s, visibility 0.35s, height 0.35s;
     overflow: hidden;
     background: black;
     z-index: -1;
 }
 
 #main-menu {
-  display: block;
-  height: 70px;
-  width: 100%;
-  background: #3CACAE;
-  margin: 0px;   
+    display: block;
+    height: 70px;
+    width: 100%;
+    background: #3cacae;
+    margin: 0px;
 }
 
 #main-menu ul {
-  max-width: 800px;
-  width: 100%;
-  height: 100%;
-  margin: 0px auto;
-  padding: 0px;
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-  float: right;
+    max-width: 800px;
+    width: 100%;
+    height: 100%;
+    margin: 0px auto;
+    padding: 0px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    float: right;
 }
 
 #main-menu li {
-  list-style-type: none;
-  font-size: 2rem;
+    list-style-type: none;
+    font-size: 2rem;
 }
 
 #main-menu a {
-  color: white;
-  font-size: 23px;
-  text-decoration: none;
+    color: white;
+    font-size: 23px;
+    text-decoration: none;
 }
 
 #main-menu a:hover {
-  text-decoration: underline;
+    text-decoration: underline;
 }
 
-#hamburger-input{
-  display: none;
+#hamburger-input {
+    display: none;
 }
 
 #hamburger-menu {
@@ -72,268 +72,294 @@ body {
     border: none;
     padding: 0px;
     margin: 0px;
-    font-family: 'Cabin', Sans-serif;
+    font-family: "Cabin", Sans-serif;
     z-index: 3;
     background: linear-gradient(
-      to bottom, 
-      white, white 20%, 
-      #3CACAE 20%, #3CACAE 40%, 
-      white 40%, white 60%, 
-      #3CACAE 60%, #3CACAE 80%, 
-      white 80%, white 100%
+        to bottom,
+        white,
+        white 20%,
+        #3cacae 20%,
+        #3cacae 40%,
+        white 40%,
+        white 60%,
+        #3cacae 60%,
+        #3cacae 80%,
+        white 80%,
+        white 100%
     );
 }
 
 #hamburger-menu #sidebar-menu {
-  visibility: hidden;
+    visibility: hidden;
     position: fixed;
     top: 0;
     left: -285px;
     width: 285px;
     height: 100%;
-    background-color: #C8F4F9;
+    background-color: #c8f4f9;
     transition: 0.3s;
     padding: 0px 10px;
     box-sizing: border-box;
 }
 
 #hamburger-menu h3 {
-  color: black;
-  font-size: 23px;
+    color: black;
+    font-size: 23px;
 }
 
 #hamburger-menu ul {
-  padding-left: 0px;
+    padding-left: 0px;
 }
 
 #hamburger-menu li {
-  list-style-type: none;
-  line-height: 4rem;
+    list-style-type: none;
+    line-height: 4rem;
 }
 
 #hamburger-menu a {
-  color: black;
-  font-size: 1.3rem;
-  text-decoration: none;
+    color: black;
+    font-size: 1.3rem;
+    text-decoration: none;
 }
 
 #hamburger-menu li:hover {
-  text-decoration: underline;
+    text-decoration: underline;
 }
 
 #hamburger-input:checked + #hamburger-menu #sidebar-menu {
-  visibility: visible;
-  left: 0;
+    visibility: visible;
+    left: 0;
 }
-#hamburger-input:checked ~ .overlay{
- visibility: visible;
-opacity: 0.4;
+#hamburger-input:checked ~ .overlay {
+    visibility: visible;
+    opacity: 0.4;
 }
-
 
 @media screen and (max-width: 750px) {
+    #main-menu a {
+        display: none;
+    }
 
-#main-menu a{
-  display: none;
-}
-
-#hamburger-menu {
-  display: inline;
-}
+    #hamburger-menu {
+        display: inline;
+    }
 }
 
 /* The sticky class is added to the navbar with JS when it reaches its scroll position */
 
 .sticky {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  z-index: 2;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 2;
 }
 
 /* Add some top padding to the page content to prevent sudden quick movement (as the navigation bar gets a new position at the top of the page (position:fixed and top:0) */
 .sticky + .content {
-  padding-top: 70px;
+    padding-top: 70px;
 }
 
 .sidebar ul li {
-  cursor: pointer;
+    cursor: pointer;
 }
 #sidebar-menu h3 {
-  cursor: pointer;
+    cursor: pointer;
 }
 
 #sidebar-menu a {
-  display: block;
+    display: block;
 }
 
 .display_image {
-  display: inline !important; 
+    display: inline !important;
 }
 
 /* NAVBAR DONE */
 
 .profile-pic-wrapper {
-
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 .pic-holder {
-  text-align: center;
-  position: relative;
-  border-radius: 50%;
-  width: 150px;
-  height: 150px;
-  overflow: hidden;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 20px;
+    text-align: center;
+    position: relative;
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
 }
 
 .pic-holder .pic {
-  height: 100%;
-  width: 100%;
-  -o-object-fit: cover;
-  object-fit: cover;
-  -o-object-position: center;
-  object-position: center;
+    height: 100%;
+    width: 100%;
+    -o-object-fit: cover;
+    object-fit: cover;
+    -o-object-position: center;
+    object-position: center;
 }
 
 .pic-holder .upload-file-block,
 .pic-holder .upload-loader {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-  color: #f8f9fc;
-  font-size: 12px;
-  font-weight: 600;
-  opacity: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.2s;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    color: #f8f9fc;
+    font-size: 12px;
+    font-weight: 600;
+    opacity: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
 }
 
 .pic-holder .upload-file-block {
-  cursor: pointer;
+    cursor: pointer;
 }
 
 .pic-holder:hover .upload-file-block,
 .uploadProfileInput:focus ~ .upload-file-block {
-  opacity: 1;
+    opacity: 1;
 }
 
 .pic-holder.uploadInProgress .upload-file-block {
-  display: none;
+    display: none;
 }
 
 .pic-holder.uploadInProgress .upload-loader {
-  opacity: 1;
+    opacity: 1;
 }
 
 /* Snackbar css */
 .snackbar {
-  visibility: hidden;
-  min-width: 250px;
-  background-color: #333;
-  color: #fff;
-  text-align: center;
-  border-radius: 2px;
-  padding: 16px;
-  position: fixed;
-  z-index: -1;
-  left: 50%;
-  bottom: 30px;
-  font-size: 14px;
-  transform: translateX(-50%);
+    visibility: hidden;
+    min-width: 250px;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    border-radius: 2px;
+    padding: 16px;
+    position: fixed;
+    z-index: -1;
+    left: 50%;
+    bottom: 30px;
+    font-size: 14px;
+    transform: translateX(-50%);
 }
 
 .snackbar.show {
-  visibility: visible;
-  -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
-  animation: fadein 0.5s, fadeout 0.5s 2.5s;
+    visibility: visible;
+    -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+    animation: fadein 0.5s, fadeout 0.5s 2.5s;
 }
 
 @-webkit-keyframes fadein {
-  from {
-    bottom: 0;
-    opacity: 0;
-  }
-  to {
-    bottom: 30px;
-    opacity: 1;
-  }
+    from {
+        bottom: 0;
+        opacity: 0;
+    }
+    to {
+        bottom: 30px;
+        opacity: 1;
+    }
 }
 
 @keyframes fadein {
-  from {
-    bottom: 0;
-    opacity: 0;
-  }
-  to {
-    bottom: 30px;
-    opacity: 1;
-  }
+    from {
+        bottom: 0;
+        opacity: 0;
+    }
+    to {
+        bottom: 30px;
+        opacity: 1;
+    }
 }
 
 @-webkit-keyframes fadeout {
-  from {
-    bottom: 30px;
-    opacity: 1;
-  }
-  to {
-    bottom: 0;
-    opacity: 0;
-  }
+    from {
+        bottom: 30px;
+        opacity: 1;
+    }
+    to {
+        bottom: 0;
+        opacity: 0;
+    }
 }
 
 @keyframes fadeout {
-  from {
-    bottom: 30px;
-    opacity: 1;
-  }
-  to {
-    bottom: 0;
-    opacity: 0;
-  }
+    from {
+        bottom: 30px;
+        opacity: 1;
+    }
+    to {
+        bottom: 0;
+        opacity: 0;
+    }
 }
 /* For limit text */
 
-.limit_text{
-  display: block;
-  width: 640px;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-}
-
-@media only screen and (max-width: 768px) { 
-  .limit_text{
+.limit_text {
     display: block;
-    width: 100px;
+    width: 640px;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
-  }
+}
+
+@media only screen and (max-width: 768px) {
+    .limit_text {
+        display: block;
+        width: 100px;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
 }
 
 /* LikeToggleButton */
 .fa-heart-o {
-  color: red;
-  cursor: pointer;
-  margin-left: 100px;
-  margin-top: 10px;
+    color: red;
+    cursor: pointer;
+    margin-left: 100px;
+    margin-top: 10px;
 }
 
 .fa-heart {
-  color: red;
-  cursor: pointer;
-  margin-left: 100px;
-  margin-top: 10px;
+    color: red;
+    cursor: pointer;
+    margin-left: 100px;
+    margin-top: 10px;
+}
+
+#bg {
+    position: fixed;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 170%;
+    z-index: -1;
+}
+#bg img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    min-width: 50%;
+    min-height: 50%;
+    z-index: -1;
+}
+
+#border {
+    border-radius: 30px;
 }
