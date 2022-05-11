@@ -1,11 +1,11 @@
 @extends('layout.app')
 
 @section('content')
+    <html>
 
-<html>
     <body style="">
         <h1 class="" style="">Hello</h1>
     </body>
-</html>
 
+    </html>
 @endsection
