@@ -34,3 +34,7 @@ Route::get('/profile', function () {
 Route::get('/welcome', function () {
     return view('welcome');
 });
+
+Route::get('/detail-buku', function () {
+    return view('detail-buku');
+});
