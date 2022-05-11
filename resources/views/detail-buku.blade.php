@@ -17,7 +17,32 @@
                             <p>Tahun Terbit : 2020</p>
                         </div>
                         <div class="col-4">
-                            Love
+
+
+                            <link rel="stylesheet"
+                                href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+                            <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+
+                            <!-- Use an element to toggle between a like/dislike icon -->
+                            <span id=heart><i class="fa fa-heart-o fa-2x"  aria-hidden="true"></i> </span>
+
+
+
+                            <script>
+                                $(document).ready(function() {
+                                    $("#heart").click(function() {
+                                        if ($("#heart").hasClass("liked")) {
+                                            $("#heart").html('<i class="fa fa-heart-o fa-2x" aria-hidden="true"></i>');
+                                            $("#heart").removeClass("liked");
+                                        } else {
+                                            $("#heart").html('<i class="fa fa-heart fa-2x" aria-hidden="true"></i>');
+                                            $("#heart").addClass("liked");
+                                        }
+                                    });
+                                });
+                            </script>
+
+
                         </div>
                     </div>
                     <div class="row">
