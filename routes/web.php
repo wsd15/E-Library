@@ -58,3 +58,6 @@ Route::get('/pembayaran', function () {
 Route::get('/halaman-donasi', function () {
     return view('halaman-donasi');
 });
+Route::get('/hasil-cari', function () {
+    return view('hasil-cari');
+});
