@@ -327,9 +327,13 @@ opacity: 0.4;
 .fa-heart-o {
   color: red;
   cursor: pointer;
+  margin-left: 100px;
+  margin-top: 10px;
 }
 
 .fa-heart {
   color: red;
   cursor: pointer;
+  margin-left: 100px;
+  margin-top: 10px;
 }

@@ -35,6 +35,10 @@ Route::get('/welcome', function () {
     return view('welcome');
 });
 
+Route::get('/detail-buku', function () {
+    return view('detail-buku');
+});
+
 Route::get('/wishlist', function () {
     return view('wishlist');
 });
