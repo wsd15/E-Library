@@ -303,3 +303,33 @@ opacity: 0.4;
     opacity: 0;
   }
 }
+/* For limit text */
+
+.limit_text{
+  display: block;
+  width: 500px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+@media only screen and (max-width: 768px) { 
+  .limit_text{
+    display: block;
+    width: 100px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+}
+
+/* LikeToggleButton */
+.fa-heart-o {
+  color: red;
+  cursor: pointer;
+}
+
+.fa-heart {
+  color: red;
+  cursor: pointer;
+}

@@ -34,3 +34,7 @@ Route::get('/profile', function () {
 Route::get('/welcome', function () {
     return view('welcome');
 });
+
+Route::get('/wishlist', function () {
+    return view('wishlist');
+});
