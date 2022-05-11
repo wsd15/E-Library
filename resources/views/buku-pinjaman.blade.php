@@ -5,20 +5,16 @@
 <html>
     <p class="fs-1 text-center">Buku Pinjaman</p>
 
-    <div class="container d-flex justify-content-center mt-50 mb-50 border">
+    <div class="container mt-50 mb-50 border">
 
         <div class="d-flex flex-column bd-highlight mb-3">
-            <div class="p-2 bd-highlight">
-                {{-- Text judul --}}
-                <p class="fs-4 text-sm-start">Perpustakaan A</p>
-            </div>
 
             <div class="p-2 bd-highlight">
                 {{-- Content box --}}
                 <div class="container justify-content-center mt-30 mb-30">
-                    
+                    <p class="fs-3 text-sm-start">Perpustakaan A</p>
                     <div class="row">
-                    <div class="col-md-10">
+                    <div class="col-md-12">
                         
                             <div class="card card-body mt-2">
                                         <div class="media align-items-center align-items-lg-start text-center text-lg-left flex-column flex-lg-row">
@@ -50,9 +46,6 @@
                                                                 </p>
                         
                                                             </div>
-                                                        <div class="col">
-
-                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -67,10 +60,10 @@
             </div>
 
             <div class="p-2 bd-highlight">
-                <p class="fs-4 text-sm-start">Total Deposito: Rp. 100.000</p>
+                <p class="fs-4 text-sm-center">Total Deposito: Rp. 100.000</p>
 
                 {{-- Checkout button --}}
-                <div class="mt-5 text-end">
+                <div class="mt-5 text-center">
                     <x-button class="">
                         Detail Pembayaran
                     </x-button>

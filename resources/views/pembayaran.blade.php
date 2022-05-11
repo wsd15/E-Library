@@ -5,15 +5,14 @@
 <html>
     <p class="fs-1 text-center">Pembayaran</p>
 
-    <div class="p-2 bd-highlight">
-        {{-- Text judul --}}
-        <p class="fs-4 text-sm-start pl-50">Perpustakaan A</p>
-    </div>
+    
 
     <div class="p-2 bd-highlight">
         {{-- Content box --}}
         <div class="container justify-content-center mt-30 mb-30">
             
+            <p class="p-2 fs-4 text-sm-start pl-50">Perpustakaan A</p>
+
             <div class="row">
             <div class="col-md-10">
                 
@@ -52,24 +51,27 @@
                         
                 </div>                     
             </div>
+
+            <p class="text-start mt-2 fs-3 fw-bold">
+                Total Deposito
+            </p>
+        
+            <p class="text-start mt-2 fs-5">
+                Rp 300.005
+            </p>
+        
+            <p class="text-start mt-2 fs-3 fw-bold">
+                BCA Virtual account
+            </p>
+        
+            <p class="text-start mt-2 fs-5">
+                52798920857
+            </p>
+
         </div>
     </div>
 
-    <p class="text-start mt-2 fs-3 fw-bold">
-        <a>Total Deposito</a>
-    </p>
-
-    <p class="text-start mt-2 fs-5">
-        <a>Rp 300.005</a>
-    </p>
-
-    <p class="text-start mt-2 fs-3 fw-bold">
-        <a>BCA Virtual account</a>
-    </p>
-
-    <p class="text-start mt-2 fs-5">
-        <a>52798920857</a>
-    </p>
+    
 
     <div class="mt-5 text-center">
         <x-button class="">
