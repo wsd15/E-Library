@@ -31,17 +31,51 @@
 
 <body>
     <div id="app">
-        <div id="navbar" class="">
-            <nav id="main-menu">
-                <ul>
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">Store</a></li>
-                    <li><a href="#">Blog</a></li>
-                    <li><a href="#">About</a></li>
-                    <li><a href="#">Contact</a></li>
-                </ul>
-            </nav>
-        </div>
+
+        @if (Auth::guest())
+            <div id="navbar" class="">
+                <nav id="main-menu">
+                    <ul>
+                        <li><a href="#"></a></li>
+                        <li><a href="#"></a></li>
+                        <li><a href="#"></a></li>
+                        <li><a href="/login">Login</a></li>
+                        <li><a href="/register">Register</a></li>
+                    </ul>
+                </nav>
+            </div>
+        @else
+            @if (Auth::user()->hasRole('user'))
+                <div id="navbar" class="">
+                    <nav id="main-menu">
+                        <ul>
+                            <li><a href="#"></a></li>
+                            <li><a href="#"></a></li>
+                            <li><a href="#"></a></li>
+                            <li><a href="/profile">{{ Auth::user()->name }}</a></li>
+                            <li><a href="/logout">Logout</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            @elseif (Auth::user()->hasRole('pustakawan'))
+                <div id="navbar" class="">
+                    <nav id="main-menu">
+                        <ul>
+                            <li><a href="#"></a></li>
+                            <li><a href="#"></a></li>
+                            <li><a href="#"></a></li>
+                            <li><a href="/profile">{{ Auth::user()->name }}</a></li>
+                            <li><a href="/logout">Logout</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            @endif
+
+        @endif
+
+
+
+
 
         <div class="content">
             @yield('content')
@@ -76,8 +110,8 @@
                     {{-- <h3><a href="{{ url('') }}">E-Library</a></h3> --}}
                     <a href="{{ url('') }}"> <img src="images/logo.png" alt=""
                             style="margin-right: 5%; margin-top: 10%"> </a>
-                    <ul>
-                        <li class="border-bottom border-dark"><a href="{{ url('home2') }}"><img class="display_image"
+                    {{-- <ul>
+                        <li class="border-bottom border-dark"><a href="{{ url('profile') }}"><img class="display_image"
                                     src="images/user.svg" alt=""
                                     style="height: 40px; width: 40px; margin-right: 5%; margin-bottom: 10%; margin-top: 10%">Profile
                             </a></li>
@@ -96,7 +130,81 @@
                         <li><a href="#"><img class="display_image" src="images/add.svg" alt=""
                                     style="height: 40px; width: 40px; margin-right: 5%; margin-bottom: 10%; margin-top: 10%">Buku
                                 Perpustakaan</a></li>
+                    </ul> --}}
+
+                    @if (Auth::guest())
+                    <ul>
+                        <li class="border-bottom border-dark"><a href="{{ url('profile') }}"><img class="display_image"
+                                    src="images/user.svg" alt=""
+                                    style="height: 40px; width: 40px; margin-right: 5%; margin-bottom: 10%; margin-top: 10%">Profile
+                            </a></li>
+                        <li class="border-bottom border-dark"><a href="#"><img class="display_image"
+                                    src="images/book-open.svg" alt=""
+                                    style="height: 40px; width: 40px; margin-right: 5%; margin-bottom: 10%; margin-top: 10%">Buku
+                                Pinjaman</a></li>
+                        <li class="border-bottom border-dark"><a href="#"><img class="display_image"
+                                    src="images/school.svg" alt=""
+                                    style="height: 40px; width: 40px; margin-right: 5%; margin-bottom: 10%; margin-top: 10%">Profile
+                                Perpustakaan</a></li>
+                        <li class="border-bottom border-dark"><a href="#"><img class="display_image"
+                                    src="images/list-check.svg" alt=""
+                                    style="height: 40px; width: 40px; margin-right: 5%; margin-bottom: 10%; margin-top: 10%">Buku
+                                Terpinjam</a></li>
+                        <li><a href="#"><img class="display_image" src="images/add.svg" alt=""
+                                    style="height: 40px; width: 40px; margin-right: 5%; margin-bottom: 10%; margin-top: 10%">Buku
+                                Perpustakaan Guest</a></li>
                     </ul>
+                    @else
+                        @if (Auth::user()->hasRole('user'))
+                        <ul>
+                            <li class="border-bottom border-dark"><a href="{{ url('profile') }}"><img class="display_image"
+                                        src="images/user.svg" alt=""
+                                        style="height: 40px; width: 40px; margin-right: 5%; margin-bottom: 10%; margin-top: 10%">Profile
+                                </a></li>
+                            <li class="border-bottom border-dark"><a href="#"><img class="display_image"
+                                        src="images/book-open.svg" alt=""
+                                        style="height: 40px; width: 40px; margin-right: 5%; margin-bottom: 10%; margin-top: 10%">Buku
+                                    Pinjaman</a></li>
+                            <li class="border-bottom border-dark"><a href="#"><img class="display_image"
+                                        src="images/school.svg" alt=""
+                                        style="height: 40px; width: 40px; margin-right: 5%; margin-bottom: 10%; margin-top: 10%">Profile
+                                    Perpustakaan</a></li>
+                            <li class="border-bottom border-dark"><a href="#"><img class="display_image"
+                                        src="images/list-check.svg" alt=""
+                                        style="height: 40px; width: 40px; margin-right: 5%; margin-bottom: 10%; margin-top: 10%">Buku
+                                    Terpinjam</a></li>
+                            <li><a href="#"><img class="display_image" src="images/add.svg" alt=""
+                                        style="height: 40px; width: 40px; margin-right: 5%; margin-bottom: 10%; margin-top: 10%">Buku
+                                    Perpustakaan User</a></li>
+                        </ul>
+
+                        @elseif (Auth::user()->hasRole('pustakawan'))
+                        <ul>
+                            <li class="border-bottom border-dark"><a href="{{ url('profile') }}"><img class="display_image"
+                                        src="images/user.svg" alt=""
+                                        style="height: 40px; width: 40px; margin-right: 5%; margin-bottom: 10%; margin-top: 10%">Profile
+                                </a></li>
+                            <li class="border-bottom border-dark"><a href="#"><img class="display_image"
+                                        src="images/book-open.svg" alt=""
+                                        style="height: 40px; width: 40px; margin-right: 5%; margin-bottom: 10%; margin-top: 10%">Buku
+                                    Pinjaman</a></li>
+                            <li class="border-bottom border-dark"><a href="#"><img class="display_image"
+                                        src="images/school.svg" alt=""
+                                        style="height: 40px; width: 40px; margin-right: 5%; margin-bottom: 10%; margin-top: 10%">Profile
+                                    Perpustakaan</a></li>
+                            <li class="border-bottom border-dark"><a href="#"><img class="display_image"
+                                        src="images/list-check.svg" alt=""
+                                        style="height: 40px; width: 40px; margin-right: 5%; margin-bottom: 10%; margin-top: 10%">Buku
+                                    Terpinjam</a></li>
+                            <li><a href="#"><img class="display_image" src="images/add.svg" alt=""
+                                        style="height: 40px; width: 40px; margin-right: 5%; margin-bottom: 10%; margin-top: 10%">Buku
+                                    Perpustakaan Pustakawan</a></li>
+                        </ul>
+
+                        @endif
+                    @endif
+
+
                 </nav>
             </label>
         </div>
