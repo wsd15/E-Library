@@ -61,3 +61,9 @@ Route::get('/halaman-donasi', function () {
 Route::get('/hasil-cari', function () {
     return view('hasil-cari');
 });
+Route::get('/daftar-buku-perpustakaan', function () {
+    return view('daftar-buku-perpustakaan');
+});
+Route::get('/edit-buku', function () {
+    return view('edit-buku');
+});
