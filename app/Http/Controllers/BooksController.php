@@ -12,4 +12,10 @@ class BooksController extends Controller
         // dd($data);
         return view('hasil-cari',compact('data'));
     }
+
+    public function detail($id) {
+        $bookdet = Books::find($id);
+        return view('detail-buku', compact('bookdet'));
+    }
+    
 }

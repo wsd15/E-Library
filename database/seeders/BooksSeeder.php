@@ -58,6 +58,16 @@ class BooksSeeder extends Seeder
                 'stok' => '1',
                 'deskripsi' => 'contoh deskripsi panjang , lorem ipsum 03',
                 'file_path'=>'images/book-open.svg',
+            ],
+            [
+                'nama_buku' => 'Harry Potter And The Prisoner Of Azkaban',
+                'penerbit' => 'Gramedia Pustaka Utama',
+                'penulis' => 'J. K. Rowling',
+                'isbn' => '0-7475-4215-5',
+                'tahun_terbit' =>'Maret 2001',
+                'stok' => '1',
+                'deskripsi' => 'Harry Potter dan Tawanan Azkaban adalah novel fantasi karangan penulis Inggris J. K. Rowling yang merupakan novel ketiga dalam seri Harry Potter. Novel ini mengisahkan mengenai Harry Potter, seorang bocah penyihir pada tahun ketiganya di Sekolah Sihir Hogwarts.',
+                'file_path'=>'images/harry-potter.jpg',
             ]
         ];
 

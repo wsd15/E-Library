@@ -20,9 +20,11 @@
                             <p class="card-text text-center">{{ $buku->penulis }}</p>
                             <p class="card-text text-center mb-4">Jakarta Utara</p>
                             <div class="d-flex justify-content-center" style="margin-top: auto">
-                                <x-button class=" align-self-end" style="align-self: center;">
-                                    {{ __('Detail Buku') }}
-                                </x-button>
+                                <a href="{{url('/detail-buku/'.$buku->id)}}">
+                                    <x-button class=" align-self-end" style="align-self: center;">
+                                        {{ __('Detail Buku') }}
+                                    </x-button>
+                                </a>
                             </div>
                         </div>
                     </div>

@@ -63,6 +63,7 @@ Route::get('/halaman-donasi', function () {
 //     return view('hasil-cari');
 // });
 Route::get('/hasil-cari',[BooksController::class,'index'])->name('books');
+Route::get('/detail-buku/{id}', [BooksController::class,'detail']);
 
 Route::get('/daftar-buku-perpustakaan', function () {
     return view('daftar-buku-perpustakaan');
