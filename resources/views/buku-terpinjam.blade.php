@@ -2,7 +2,7 @@
 
 @section('content')
     <html>
-    <p class="fs-1 text-center mt-5 mb-5">Buku Pinjaman</p>
+    <p class="fs-1 text-center mt-5 mb-5">Buku Terpinjam</p>
 
     <div class="container mt-50 mb-50 border">
 
@@ -18,7 +18,6 @@
                             <div class="card card-body mt-2">
                                 <div
                                     class="media align-items-center align-items-lg-start text-center text-lg-left flex-column flex-lg-row">
-
                                     <div class="container">
                                         <div class="row">
                                             <div class="col col-2">
@@ -46,7 +45,6 @@
                                                         <p class="text-start mt-2 fs-5">
                                                             <a>Deadline Pengembalian : 1 Agustus 2022</a>
                                                         </p>
-
                                                     </div>
                                                 </div>
                                             </div>
@@ -60,12 +58,10 @@
             </div>
 
             <div class="p-2 bd-highlight">
-                <p class="fs-4 text-sm-center">Total Deposito: Rp. 100.000</p>
-
-                {{-- Checkout button --}}
-                <div class="mt-5 text-center">
+                {{-- Pengembalian button --}}
+                <div class="mt-3 text-center">
                     <x-button class="">
-                        Detail Pembayaran
+                        Pengembalian
                     </x-button>
                 </div>
             </div>
