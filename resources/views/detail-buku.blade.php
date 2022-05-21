@@ -97,12 +97,12 @@
 
         <div class="container rounded bg-white mt-5 mb-5">
             <div class="row">
-                <div class="col-4">
-                    <img id="bookPic" class="pic" src="{{asset($bookdet->file_path)}}">
+                <div class="col-md-3">
+                    <img id="bookPic" class="img-fluid" style="width:20vw " src="{{ asset($bookdet->file_path) }}">
                 </div>
-                <div class="col-8">
+                <!-- {{-- <div class="col-md-4">
                     <div class="row" style="margin-top: 20px">
-                        <div class="col-8">
+                        <div class="col-8 ">
                             <p class="fw-bold" style="font-size: 30px">{{$bookdet->nama_buku}}</p>
                             <p>{{$bookdet->penerbit}}</p>
                             <p>Tahun Terbit : {{$bookdet->tahun_terbit}}</p>
@@ -114,7 +114,7 @@
                                 href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
                             <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
 
-                            <!-- Use an element to toggle between a like/dislike icon -->
+                             Use an element to toggle between a like/dislike icon 
                             <span id=heart><i class="fa fa-heart-o fa-2x"  aria-hidden="true"></i> </span>
 
 
@@ -148,14 +148,61 @@
                             </x-button>
                         </div>
                     </div>
+                </div> --}} -->
+                <div class="col-md-7">
+                    <p class="fw-bold" style="font-size: 30px">{{ $bookdet->nama_buku }}</p>
+                    <p>{{ $bookdet->penerbit }}</p>
+                    <p>Tahun Terbit : {{ $bookdet->tahun_terbit }}</p>
+                    <div style="padding-top:5vw">
+                        <p class="fw-bold" style="font-size: 30px">Perpustakaan ABC</p>
+                        <p>Jakarta Pusat</p>
+                        <p>Jalan Jendral Sudirman</p>
+                    </div>
                 </div>
+                <div class="col-md-2 ">
+                    <link rel="stylesheet"
+                        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+                    <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+
+
+                    <span id=heart><i class="fa fa-heart-o fa-2x" aria-hidden="true"></i> </span>
+
+                    <div class="" style="margin-top:9vw">
+                        <x-button class="mt-5" style="width: 170px; font-size: 15px">
+                            {{ __('Add To Cart') }}
+                        </x-button>
+                    </div>
+
+
+
+
+                    <script>
+                        $(document).ready(function() {
+                            $("#heart").click(function() {
+                                if ($("#heart").hasClass("liked")) {
+                                    $("#heart").html('<i class="fa fa-heart-o fa-2x" aria-hidden="true"></i>');
+                                    $("#heart").removeClass("liked");
+                                } else {
+                                    $("#heart").html('<i class="fa fa-heart fa-2x" aria-hidden="true"></i>');
+                                    $("#heart").addClass("liked");
+                                }
+                            });
+                        });
+                    </script>
+                </div>
+
+
+
+
             </div>
         </div>
+        
+        
 
         <div class="container rounded bg-white mt-7 mb-5">
             <p class="fw-bold mb-3" style="font-size: 30px">Deskripsi</p>
             <p style="text-align: justify">
-                {{$bookdet->deskripsi}}</p>
+                {{ $bookdet->deskripsi }}</p>
         </div>
     </body>
 
