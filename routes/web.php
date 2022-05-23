@@ -58,6 +58,27 @@ Route::get('/pembayaran', function () {
 Route::get('/halaman-donasi', function () {
     return view('halaman-donasi');
 });
+
 Route::get('/hasil-cari', function () {
     return view('hasil-cari');
+});
+
+Route::get('/daftar-buku-perpustakaan', function () {
+    return view('daftar-buku-perpustakaan');
+});
+
+Route::get('/edit-buku', function () {
+    return view('edit-buku');
+});
+
+Route::get('/user-profile', function () {
+    return view('user-profile');
+});
+
+Route::get('/buku-terpinjam', function () {
+    return view('buku-terpinjam');
+});
+
+Route::get('/pengembalian-buku', function () {
+    return view('pengembalian-buku');
 });
