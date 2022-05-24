@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -82,3 +83,5 @@ Route::get('/buku-terpinjam', function () {
 Route::get('/pengembalian-buku', function () {
     return view('pengembalian-buku');
 });
+
+Route::get('/profile', [UserController::class, 'index'])->name('user');
