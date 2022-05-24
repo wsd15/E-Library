@@ -2,7 +2,7 @@
 
 @section('content')
     <html>
-
+        <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <body style="">
         {{-- <div class="container rounded bg-white mt-5 mb-5">
             <div class="row">
@@ -173,9 +173,6 @@
                         </x-button>
                     </div>
 
-
-
-
                     <script>
                         $(document).ready(function() {
                             $("#heart").click(function() {
@@ -196,14 +193,14 @@
 
             </div>
         </div>
-        
-        
-
         <div class="container rounded bg-white mt-7 mb-5">
             <p class="fw-bold mb-3" style="font-size: 30px">Deskripsi</p>
             <p style="text-align: justify">
                 {{ $bookdet->deskripsi }}</p>
         </div>
+
+
+
     </body>
 
     </html>

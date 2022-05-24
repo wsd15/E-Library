@@ -2,7 +2,7 @@
 
 @section('content')
     <html>
-
+        <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <body style="">
         
             

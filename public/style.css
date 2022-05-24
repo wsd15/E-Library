@@ -20,7 +20,7 @@ body {
     transition: opacity 0.35s, visibility 0.35s, height 0.35s;
     overflow: hidden;
     background: black;
-    z-index: -1;
+    z-index: 3;
 }
 
 #main-menu {
@@ -73,7 +73,7 @@ body {
     padding: 0px;
     margin: 0px;
     font-family: "Cabin", Sans-serif;
-    z-index: 3;
+    z-index: 9;
     background: linear-gradient(
         to bottom,
         white,
@@ -130,10 +130,18 @@ body {
     visibility: visible;
     left: 0;
 }
+#hamburger-input:checked +  #close:focus {
+    visibility: hidden;
+    left: 0;
+}
 #hamburger-input:checked ~ .overlay {
     visibility: visible;
     opacity: 0.4;
 }
+
+/* #close span:checked{
+    display: none !important;
+} */
 
 @media screen and (max-width: 750px) {
     #main-menu a {

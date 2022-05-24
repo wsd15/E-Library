@@ -103,13 +103,47 @@
             }
         </script>
 
-        <div class="sidebar">
+        
             <input type="checkbox" id="hamburger-input" class="burger-shower" />
             <label id="hamburger-menu" for="hamburger-input">
                 <nav id="sidebar-menu">
                     {{-- <h3><a href="{{ url('') }}">E-Library</a></h3> --}}
-                    <a href="{{ url('') }}"> <img src="images/logo.png" alt=""
-                            style="margin-right: 5%; margin-top: 10%"> </a>
+                    <div class="row">
+                        <div class="col-md-8 col-sm-7 col-7">
+                            <a href="{{ url('') }}"> <img src="{{ asset('images/logo.png') }}" alt=""
+                                style="margin-right: 5%; margin-top: 10%"> 
+                        </a>
+                        </div>
+                        <div class="col-md-4 col-sm-5 col-5">
+                            <div class="callout float-end" id="close" data-closable>
+                                <button class="close-button" aria-label="Close alert" type="button" data-close onclick="document.getElementById('hamburger-input').checked = false;">
+                                    <style scoped>
+                                        /* 0 to 299 */
+                                        .close {
+                                            font-size: 10vw; 
+                                        }
+                                        /* 300 to X */
+                                        @media (min-width: 576px) { /* or 301 if you want really the same as previously.  */
+                                            .close {   
+                                                font-size: 8vw;
+                                            }
+                                        }
+                                        @media (min-width: 720px) { /* or 301 if you want really the same as previously.  */
+                                            .close {   
+                                                font-size: 4vw;
+                                            }
+                                        }
+                                        </style>
+                                    <span class="close" aria-hidden="true" >&times;</span>
+                                </button>
+                            </div> 
+                        </div>
+                    </div>
+                    
+                    
+                    
+
+
                     {{-- <ul>
                         <li class="border-bottom border-dark"><a href="{{ url('profile') }}"><img class="display_image"
                                     src="images/user.svg" alt=""
@@ -135,22 +169,22 @@
                     @if (Auth::guest())
                     <ul>
                         <li class="border-bottom border-dark"><a href="{{ url('profile') }}"><img class="display_image"
-                                    src="images/user.svg" alt=""
+                                    src="{{ asset('images/user.svg') }}" alt=""
                                     style="height: 40px; width: 40px; margin-right: 5%; margin-bottom: 10%; margin-top: 10%">Profile
                             </a></li>
                         <li class="border-bottom border-dark"><a href="#"><img class="display_image"
-                                    src="images/book-open.svg" alt=""
+                                    src="{{ asset('images/book-open.svg') }}" alt=""
                                     style="height: 40px; width: 40px; margin-right: 5%; margin-bottom: 10%; margin-top: 10%">Buku
                                 Pinjaman</a></li>
                         <li class="border-bottom border-dark"><a href="#"><img class="display_image"
-                                    src="images/school.svg" alt=""
+                                    src="{{ asset('images/school.svg') }}" alt=""
                                     style="height: 40px; width: 40px; margin-right: 5%; margin-bottom: 10%; margin-top: 10%">Profile
                                 Perpustakaan</a></li>
                         <li class="border-bottom border-dark"><a href="#"><img class="display_image"
-                                    src="images/list-check.svg" alt=""
+                                    src="{{ asset('images/list-check.svg') }}" alt=""
                                     style="height: 40px; width: 40px; margin-right: 5%; margin-bottom: 10%; margin-top: 10%">Buku
                                 Terpinjam</a></li>
-                        <li><a href="#"><img class="display_image" src="images/add.svg" alt=""
+                        <li><a href="#"><img class="display_image" src="{{ asset('images/add.svg') }}" alt=""
                                     style="height: 40px; width: 40px; margin-right: 5%; margin-bottom: 10%; margin-top: 10%">Buku
                                 Perpustakaan Guest</a></li>
                     </ul>
@@ -158,22 +192,22 @@
                         @if (Auth::user()->hasRole('user'))
                         <ul>
                             <li class="border-bottom border-dark"><a href="{{ url('profile') }}"><img class="display_image"
-                                        src="images/user.svg" alt=""
+                                        src="{{ asset('images/user.svg') }}" alt=""
                                         style="height: 40px; width: 40px; margin-right: 5%; margin-bottom: 10%; margin-top: 10%">Profile
                                 </a></li>
                             <li class="border-bottom border-dark"><a href="#"><img class="display_image"
-                                        src="images/book-open.svg" alt=""
+                                        src=" {{ asset('images/book-open.svg') }}" alt=""
                                         style="height: 40px; width: 40px; margin-right: 5%; margin-bottom: 10%; margin-top: 10%">Buku
                                     Pinjaman</a></li>
                             <li class="border-bottom border-dark"><a href="#"><img class="display_image"
-                                        src="images/school.svg" alt=""
+                                        src=" {{ asset('images/school.svg') }}" alt=""
                                         style="height: 40px; width: 40px; margin-right: 5%; margin-bottom: 10%; margin-top: 10%">Profile
                                     Perpustakaan</a></li>
                             <li class="border-bottom border-dark"><a href="#"><img class="display_image"
-                                        src="images/list-check.svg" alt=""
+                                        src=" {{ asset('images/list-check.svg') }}" alt=""
                                         style="height: 40px; width: 40px; margin-right: 5%; margin-bottom: 10%; margin-top: 10%">Buku
                                     Terpinjam</a></li>
-                            <li><a href="#"><img class="display_image" src="images/add.svg" alt=""
+                            <li><a href="#"><img class="display_image" src=" {{ asset('images/add.svg') }}" alt=""
                                         style="height: 40px; width: 40px; margin-right: 5%; margin-bottom: 10%; margin-top: 10%">Buku
                                     Perpustakaan User</a></li>
                         </ul>
@@ -181,22 +215,22 @@
                         @elseif (Auth::user()->hasRole('pustakawan'))
                         <ul>
                             <li class="border-bottom border-dark"><a href="{{ url('profile') }}"><img class="display_image"
-                                        src="images/user.svg" alt=""
+                                        src=" {{ asset('images/user.svg') }}" alt=""
                                         style="height: 40px; width: 40px; margin-right: 5%; margin-bottom: 10%; margin-top: 10%">Profile
                                 </a></li>
                             <li class="border-bottom border-dark"><a href="#"><img class="display_image"
-                                        src="images/book-open.svg" alt=""
+                                        src=" {{ asset('images/book-open.svg') }}" alt=""
                                         style="height: 40px; width: 40px; margin-right: 5%; margin-bottom: 10%; margin-top: 10%">Buku
                                     Pinjaman</a></li>
                             <li class="border-bottom border-dark"><a href="#"><img class="display_image"
-                                        src="images/school.svg" alt=""
+                                        src=" {{ asset('images/school.svg') }}" alt=""
                                         style="height: 40px; width: 40px; margin-right: 5%; margin-bottom: 10%; margin-top: 10%">Profile
                                     Perpustakaan</a></li>
                             <li class="border-bottom border-dark"><a href="#"><img class="display_image"
-                                        src="images/list-check.svg" alt=""
+                                        src=" {{ asset('images/list-check.svg') }}" alt=""
                                         style="height: 40px; width: 40px; margin-right: 5%; margin-bottom: 10%; margin-top: 10%">Buku
                                     Terpinjam</a></li>
-                            <li><a href="#"><img class="display_image" src="images/add.svg" alt=""
+                            <li><a href="#"><img class="display_image" src=" {{ asset('images/add.svg') }}" alt=""
                                         style="height: 40px; width: 40px; margin-right: 5%; margin-bottom: 10%; margin-top: 10%">Buku
                                     Perpustakaan Pustakawan</a></li>
                         </ul>
@@ -206,12 +240,14 @@
 
 
                 </nav>
+               
             </label>
-        </div>
+        
 
-
+            <div class="overlay"></div>
     </div>
 
+    
 
     <script type="text/javascript" src="mobile.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
