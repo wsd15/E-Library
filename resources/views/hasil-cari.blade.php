@@ -30,7 +30,7 @@
                     </div>
                 </div>
                 @endforeach
-                <div class="col mt-5 d-flex align-items-stretch justify-content-center">
+                {{-- <div class="col mt-5 d-flex align-items-stretch justify-content-center">
                     <div class="card" style="width: 17rem;">
                         <img class="mt-4" src="https://source.unsplash.com/random/150x200?person"
                             style="max-width: 65%;align-self: center" class="card-img-top" alt="...">
@@ -125,10 +125,11 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> --}}
 
             </div>
             {{-- buat row 2-3-4-5-6 --}}
+            {{ $data->links() }}
         </div>
 
 

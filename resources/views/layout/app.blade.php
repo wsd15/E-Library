@@ -109,32 +109,35 @@
                 <nav id="sidebar-menu">
                     {{-- <h3><a href="{{ url('') }}">E-Library</a></h3> --}}
                     <div class="row">
-                        <div class="col-md-8 col-sm-7 col-7">
+                        <div class="col-md-10 col-sm-10 col-10">
                             <a href="{{ url('') }}"> <img src="{{ asset('images/logo.png') }}" alt=""
                                 style="margin-right: 5%; margin-top: 10%"> 
                         </a>
                         </div>
-                        <div class="col-md-4 col-sm-5 col-5">
+                        <div class="col-md-2 col-sm-2 col-2">
                             <div class="callout float-end" id="close" data-closable>
                                 <button class="close-button" aria-label="Close alert" type="button" data-close onclick="document.getElementById('hamburger-input').checked = false;">
                                     <style scoped>
                                         /* 0 to 299 */
-                                        .close {
-                                            font-size: 10vw; 
+                                        #close {
+                                            font-size: 10vw;
+                                        }
+                                        .close-button{
+                                            margin-top: 6.3vw;
                                         }
                                         /* 300 to X */
-                                        @media (min-width: 576px) { /* or 301 if you want really the same as previously.  */
-                                            .close {   
-                                                font-size: 8vw;
-                                            }
-                                        }
+                                        
                                         @media (min-width: 720px) { /* or 301 if you want really the same as previously.  */
-                                            .close {   
-                                                font-size: 4vw;
+                                            #close {   
+                                                font-size: 3vw;
+                                                
+                                            }
+                                            .close-button{
+                                                margin-top: 1.4vw;
                                             }
                                         }
                                         </style>
-                                    <span class="close" aria-hidden="true" >&times;</span>
+                                   <i class='fas fa-times' id="close"></i>
                                 </button>
                             </div> 
                         </div>

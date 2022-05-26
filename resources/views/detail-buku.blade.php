@@ -98,7 +98,7 @@
         <div class="container rounded bg-white mt-5 mb-5">
             <div class="row">
                 <div class="col-md-3">
-                    <img id="bookPic" class="img-fluid" style="width:20vw " src="{{ asset($bookdet->file_path) }}">
+                    <img id="bookPic" class="img-fluid" style="width:20vw " src="{{ asset($bookdet[0]->file_path) }}">
                 </div>
                 <!-- {{-- <div class="col-md-4">
                     <div class="row" style="margin-top: 20px">
@@ -150,11 +150,11 @@
                     </div>
                 </div> --}} -->
                 <div class="col-md-7">
-                    <p class="fw-bold" style="font-size: 30px">{{ $bookdet->nama_buku }}</p>
-                    <p>{{ $bookdet->penerbit }}</p>
-                    <p>Tahun Terbit : {{ $bookdet->tahun_terbit }}</p>
+                    <p class="fw-bold" style="font-size: 30px">{{ $bookdet[0]->nama_buku }}</p>
+                    <p>{{ $bookdet[0]->penerbit }}</p>
+                    <p>Tahun Terbit : {{ $bookdet[0]->tahun_terbit }}</p>
                     <div style="padding-top:5vw">
-                        <p class="fw-bold" style="font-size: 30px">Perpustakaan ABC</p>
+                        <p class="fw-bold" style="font-size: 30px">{{ $bookdet[0]->nama_perpustakaan }}</p>
                         <p>Jakarta Pusat</p>
                         <p>Jalan Jendral Sudirman</p>
                     </div>
@@ -196,7 +196,7 @@
         <div class="container rounded bg-white mt-7 mb-5">
             <p class="fw-bold mb-3" style="font-size: 30px">Deskripsi</p>
             <p style="text-align: justify">
-                {{ $bookdet->deskripsi }}</p>
+                {{ $bookdet[0]->deskripsi }}</p>
         </div>
 
 
