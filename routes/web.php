@@ -84,4 +84,8 @@ Route::get('/pengembalian-buku', function () {
     return view('pengembalian-buku');
 });
 
+Route::get('/mendaftar-pustakawan', function () {
+    return view('mendaftar-pustakawan');
+});
+
 Route::get('/profile', [UserController::class, 'index'])->name('user');
