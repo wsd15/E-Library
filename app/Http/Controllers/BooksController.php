@@ -9,8 +9,16 @@ use Illuminate\Support\Facades\DB;
 
 class BooksController extends Controller
 {
-    public function index(){
-        $data =  Books::paginate(6);
+    public function index(Request $request){
+        if ($request->has('search')) {
+            $data =  Books::where('nama_buku','LIKE','%'.$request->search.'%')
+            ->orWhere('penulis','LIKE','%'.$request->search.'%')
+            ->orWhere('isbn','LIKE','%'.$request->search.'%')
+            ->paginate(6);
+        }else {
+            $data =  Books::paginate(6);
+        }
+        
         // dd($data);
         return view('hasil-cari',compact('data'));
     }
@@ -28,7 +36,7 @@ class BooksController extends Controller
     
     public function detail($id) {
     
-        $data = Books::find($id)->where('books.id','=',$id)->get();
+        // $data = Books::find($id)->where('books.id','=',$id)->get();
         $bookdet = DB::table('perpustakaans')
                 ->leftJoin('books', 'books.perpustakaan_id', '=', 'perpustakaans.id')
                 ->where('books.id','=',$id)
