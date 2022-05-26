@@ -40,14 +40,14 @@
 
 
                             <div class="col-md-6"><label class="labels ">First Name</label>
-                                <x-input type="text" class="form-control" placeholder="first name" value=""/>
+                                <x-input type="text" class="form-control" placeholder="{{ $userId->name }}" value=""/>
                             </div> 
                             <div class="col-md-6"><label class="labels">Last Name</label>
-                                <x-input type="text" class="form-control" value="" placeholder="last name"/>
+                                <x-input type="text" class="form-control" value="" placeholder="{{ $userId->last_name }}"/>
                             </div> 
 
                             <div class="col-md-6"><label class="labels mt-2">Email</label>
-                                <x-input type="text" class="form-control" placeholder="Email" value=""/>
+                                <x-input type="text" class="form-control" placeholder="{{ $userId->email }}" value=""/>
                             </div> 
                             <div class="col-md-6"><label class="labels mt-2">Nomor Ponsel</label>
                                 <x-input type="text" class="form-control" value="" placeholder="nomor ponsel"/>
