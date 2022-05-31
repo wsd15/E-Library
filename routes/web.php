@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\BooksController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,9 +15,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-});
+// Route::get('/', function () {
+//     return view('home');
+// });
+
+Route::get('/',[BooksController::class,'index2'])->name('books');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -60,9 +63,8 @@ Route::get('/halaman-donasi', function () {
     return view('halaman-donasi');
 });
 
-Route::get('/hasil-cari', function () {
-    return view('hasil-cari');
-});
+Route::get('/hasil-cari',[BooksController::class,'index'])->name('books');
+Route::get('/detail-buku/{id}', [BooksController::class,'detail']);
 
 Route::get('/daftar-buku-perpustakaan', function () {
     return view('daftar-buku-perpustakaan');
