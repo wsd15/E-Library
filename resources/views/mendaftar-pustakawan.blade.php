@@ -60,7 +60,7 @@
 
                             <div class="col-md-6 mb-3 mt-4">
                                 <label for="formFile" class="form-label">Upload KTP</label>
-                                <div class="pic-holder border" style="border-radius:0%">
+                                <div class="pic-holder border border-dark" style="border-radius:0%">
                                     <!-- uploaded pic shown here -->
                  
                                     <Input class="uploadProfileInput" type="file" name="profile_pic" id="newProfilePhoto" accept="image/*" style="opacity: 0;" />
@@ -95,12 +95,12 @@
             <div class=" border-right"> 
                 <div class="p-3 py-5"> 
                     <div class="d-flex justify-content-between align-items-center mb-3"> 
-                        <h1 class="text-right mb-3" style="font-size:3vw">Profile Perpustakaan</h1> 
+                        <h1 class="text-right mb-3" style="font-size:3vw;text-align: center">Profile Perpustakaan</h1> 
                     </div> 
 
-                    <div class="col-md-6 mb-3 mt-4 justify-content-between align-items-center">
+                    <div class="profile-pic-wrapper" style="text-align: center">
                         <label for="formFile" class="form-label">Upload foto Perpustakaan</label>
-                        <div class="pic-holder border" style="border-radius:0%">
+                        <div class="pic-holder border border-dark" style="border-radius:0%">
                             <!-- uploaded pic shown here -->
          
                             <Input class="uploadProfileInput" type="file" name="profile_pic" id="newProfilePhoto" accept="image/*" style="opacity: 0;" />
@@ -168,7 +168,7 @@
 
                         <div class="col-md-6 mb-3 mt-4">
                             <label for="formFile" class="form-label">Upload dokumen perpustakaan</label>
-                            <div class="pic-holder border" style="border-radius:0%">
+                            <div class="pic-holder border border-dark" style="border-radius:0%">
                                 <!-- uploaded pic shown here -->
              
                                 <Input class="uploadProfileInput" type="file" name="profile_pic" id="newProfilePhoto" accept="image/*" style="opacity: 0;" />
