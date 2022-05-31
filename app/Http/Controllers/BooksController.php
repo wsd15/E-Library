@@ -13,6 +13,7 @@ class BooksController extends Controller
         if ($request->has('search')) {
             $data =  Books::where('nama_buku','LIKE','%'.$request->search.'%')
             ->orWhere('penulis','LIKE','%'.$request->search.'%')
+            ->orWhere('penerbit','LIKE','%'.$request->search.'%')
             ->orWhere('isbn','LIKE','%'.$request->search.'%')
             ->paginate(6);
         }else {
@@ -21,6 +22,12 @@ class BooksController extends Controller
         
         // dd($data);
         return view('hasil-cari',compact('data'));
+    }
+
+    public function index2(Request $request){
+        
+        // dd($data);
+        return view('home');
     }
 
     // public function detail($id) {
