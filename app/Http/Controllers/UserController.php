@@ -11,7 +11,7 @@ class UserController extends Controller
 {
     public function index_user(){
         $id = Auth::user()->id;
-        $userId = User::find($id);
+        $userId = User::find($id); 
         return view('/profile',compact('userId'));
     }
 

@@ -171,7 +171,7 @@
 
                     @if (Auth::guest())
                     <ul>
-                        <li class="border-bottom border-dark"><a href="{{ url('profile') }}"><img class="display_image"
+                        <li class="border-bottom border-dark"><a href="{{ url('register') }}"><img class="display_image"
                                     src="{{ asset('images/user.svg') }}" alt=""
                                     style="height: 40px; width: 40px; margin-right: 5%; margin-bottom: 10%; margin-top: 10%">Profile
                             </a></li>
