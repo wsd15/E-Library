@@ -38,17 +38,17 @@
                     </div>
 
                     <div class="row mt-2">
-                        <div class="col-md-6"><label class="labels">First Name</label>
-                            <x-input type="text" class="form-control" placeholder="first name" value="" />
+                        <div class="col-md-6"><label class="labels">First Name </label>
+                            <x-input type="text" class="form-control" placeholder="{{ $userId->name }}" value="" />
                         </div>
                         <div class="col-md-6"><label class="labels">Last Name</label>
-                            <x-input type="text" class="form-control" value="" placeholder="last name" />
+                            <x-input type="text" class="form-control" value="" placeholder="{{ $userId->last_name }}" />
                         </div>
                     </div>
                     <div class="row mt-4">
                         <div class="col-md-12">
                             <label class="labels">Email</label>
-                            <x-input type="text" class="form-control" placeholder="enter email id" value="" />
+                            <x-input type="text" class="form-control" placeholder="{{ $userId->email }}" value="" />
                         </div>
                         <div class="col-md-12 mt-4"><label class="labels">Phone Number</label>
                             <x-input type="text" class="form-control" placeholder="enter phone number" value="" />

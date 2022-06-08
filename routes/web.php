@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\BooksController;
 use Illuminate\Support\Facades\Route;
 
@@ -67,13 +68,9 @@ Route::get('/halaman-donasi', function () {
 Route::get('/hasil-cari',[BooksController::class,'index'])->name('books');
 Route::get('/detail-buku/{id}', [BooksController::class,'detail']);
 
-// Route::get('/daftar-buku-perpustakaan', function () {
-//     return view('daftar-buku-perpustakaan');
-// });
+Route::get('/daftar-buku-perpustakaan',[BooksController::class,'index2'])->name('books');
 
-Route::get('/edit-buku', function () {
-    return view('edit-buku');
-});
+Route::post('/edit-buku',[BooksController::class,'insert'])->name('books');
 
 Route::get('/user-profile', function () {
     return view('user-profile');
@@ -87,7 +84,6 @@ Route::get('/pengembalian-buku', function () {
     return view('pengembalian-buku');
 });
 
+Route::get('/profile', [UserController::class, 'index_user'])->name('user');
 
-Route::post('/edit-buku',[BooksController::class,'insert'])->name('books');
-
-Route::get('/daftar-buku-perpustakaan',[BooksController::class,'index2'])->name('books');
+Route::get('/mendaftar-pustakawan', [UserController::class, 'index_daftarpustakawan'])->name('user');

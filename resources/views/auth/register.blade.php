@@ -17,12 +17,20 @@
 
                 <p class="text-center font-semibold" style="font-size: xx-large"> Register </p>
 
-                <!-- Name -->
+                <!-- First Name -->
                 <div class="mt-4">
                     {{-- <x-label for="name" :value="__('Name')" /> --}}
 
-                    <x-input id="name" class="block mt-1 w-full" placeholder="Your Name" type="text" name="name"
+                    <x-input id="name" class="block mt-1 w-full" placeholder="Your First Name" type="text" name="name"
                         :value="old('name')" required autofocus />
+                </div>
+
+                <!-- Last Name -->
+                <div class="mt-4">
+                    {{-- <x-label for="name" :value="__('Name')" /> --}}
+
+                    <x-input id="last_name" class="block mt-1 w-full" placeholder="Your Last Name" type="text" name="last_name"
+                        :value="old('last_name')" required autofocus />
                 </div>
 
                 <!-- Email Address -->
