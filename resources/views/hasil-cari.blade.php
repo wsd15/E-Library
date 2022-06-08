@@ -17,7 +17,7 @@
                 @foreach ($data as $buku)
                 <div class="col mt-5 d-flex align-items-stretch justify-content-center">
                     <div class="card" style="width: 17rem;">
-                        <img class="mt-4" src="{{asset($buku->file_path)}}"
+                        <img class="mt-4" src="/images/buku/{{$buku->file_path}}"
                             style="width:12vw;height: 16vw;align-self: center" class="card-img-top" alt="...">
                         <div class="card-body d-flex flex-column">
                             <h5 class="card-title text-center">{{ $buku->nama_buku }}</h5>
