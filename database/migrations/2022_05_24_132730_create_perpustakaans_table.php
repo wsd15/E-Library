@@ -15,7 +15,11 @@ class CreatePerpustakaansTable extends Migration
     {
         Schema::create('perpustakaans', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('user_id')->nullable();
+            $table->foreign('user_id')
+                  ->references('id')
+                  ->on('users')
+                  ->onDelete('set null');
             $table->string('nama_perpustakaan');
             $table->string('alamat_perpustakaan');
             $table->string('email_perpustakaan')->unique();

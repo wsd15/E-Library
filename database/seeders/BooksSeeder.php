@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 use App\Models\Books;
+use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
@@ -145,7 +146,7 @@ class BooksSeeder extends Seeder
             $user = Books::create($value);
         }
 
-
+        user::factory()->count(5)->create();
 
     }
 }
