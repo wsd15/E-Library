@@ -7,5 +7,16 @@ use Illuminate\Database\Eloquent\Model;
 
 class Books extends Model
 {
-    use HasFactory;
+    protected $fillable = [
+        'nama_buku',
+        'penerbit',
+        'penulis',
+        'perpustakaan_id',
+        'isbn',
+        'tahun_terbit',
+        'stok',
+        'deskripsi',
+        'file_path'
+
+    ];
 }

@@ -19,7 +19,9 @@ use Illuminate\Support\Facades\Route;
 //     return view('home');
 // });
 
-Route::get('/',[BooksController::class,'index2'])->name('books');
+Route::get('/', function () {
+    return view('home');
+});
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -66,13 +68,9 @@ Route::get('/halaman-donasi', function () {
 Route::get('/hasil-cari',[BooksController::class,'index'])->name('books');
 Route::get('/detail-buku/{id}', [BooksController::class,'detail']);
 
-Route::get('/daftar-buku-perpustakaan', function () {
-    return view('daftar-buku-perpustakaan');
-});
+Route::get('/daftar-buku-perpustakaan',[BooksController::class,'index2'])->name('books');
 
-Route::get('/edit-buku', function () {
-    return view('edit-buku');
-});
+Route::post('/edit-buku',[BooksController::class,'insert'])->name('books');
 
 Route::get('/user-profile', function () {
     return view('user-profile');
