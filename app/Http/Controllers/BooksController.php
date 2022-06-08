@@ -84,11 +84,28 @@ class BooksController extends Controller
         return view('daftar-buku-perpustakaan',compact('data'));
     }
 
-    public function editbuku($id){
+    public function editbukudetail($id){
         
         $buku = Books::find($id);
       
         return view('edit-buku',compact('buku'));
+    }
+
+    public function editbuku(Request $request,$id){
+        
+        $buku = Books::find($id);
+      
+        $buku->nama_buku=$request->input('nama_buku');
+        $buku->penerbit=$request->input('penerbit');
+        $buku->isbn=$request->input('isbn');
+        $buku->tahun_terbit=$request->input('tahun_terbit');
+        $buku->penulis=$request->input('penulis');
+        $buku->stok=$request->input('stok');
+        $buku->deskripsi=$request->input('deskripsi');
+        
+        $buku->save();
+      
+        return redirect('daftar-buku-perpustakaan');
     }
 
 }

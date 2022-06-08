@@ -6,7 +6,7 @@
     <body style="">
 
         <div class="container rounded bg-white mt-5 mb-5">
-            <form action="/edit-buku" method="POST" enctype="multipart/form-data">
+            <form action="/edit-buku/{{ $buku->id }}" method="POST" enctype="multipart/form-data">
             @csrf
             
             <div class="border-right">
@@ -107,7 +107,7 @@
 
                     <div class="col-md-12 mt-4"><label class="labels">Deskripsi Buku</label>
                         <textarea class="form-control rounded-md border-dark" name="deskripsi" placeholder="Masukkan Deskripsi Buku"
-                            id="exampleFormControlTextarea1" rows="5" value="{{ $buku->deskripsi }}"></textarea>
+                            id="exampleFormControlTextarea1" rows="5">{{ $buku->deskripsi }}</textarea>
                     </div>
 
                     

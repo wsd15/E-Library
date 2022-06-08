@@ -95,4 +95,5 @@ Route::post('/profile', [UserController::class, 'index_userupdated'])->name('use
 Route::get('/mendaftar-pustakawan', [UserController::class, 'index_daftarpustakawan'])->name('user');
 
 
-Route::get('/edit-buku/{id}', [BooksController::class,'editbuku']);
+Route::get('/edit-buku/{id}', [BooksController::class,'editbukudetail']);
+Route::post('/edit-buku/{id}', [BooksController::class,'editbuku']);
