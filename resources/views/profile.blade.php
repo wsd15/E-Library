@@ -9,7 +9,7 @@
 
             <div class=" border-right">
 
-                <form action="/profile/{{ $userId->id }}" method="POST" enctype="multipart/form-data">
+                <form action="/profile" method="POST" enctype="multipart/form-data">
                     @csrf
 
                     <div class="p-3 py-5">
@@ -44,25 +44,25 @@
     
                         <div class="row mt-2">
                             <div class="col-md-6"><label class="labels">First Name </label>
-                                <x-input type="text" class="form-control" placeholder="{{ $userId->name }}" value="{{ $userId->name }}" />
+                                <x-input type="text" class="form-control" name="name" placeholder="{{ $userId->name }}" value="{{ $userId->name }}" />
                             </div>
                             <div class="col-md-6"><label class="labels">Last Name</label>
-                                <x-input type="text" class="form-control" value="{{ $userId->last_name }}" placeholder="{{ $userId->last_name }}" />
+                                <x-input type="text" class="form-control" name="last_name" value="{{ $userId->last_name }}" placeholder="{{ $userId->last_name }}" />
                             </div>
                         </div>
                         <div class="row mt-4">
                             <div class="col-md-12">
                                 <label class="labels">Email</label>
-                                <x-input type="text" class="form-control" placeholder="{{ $userId->email }}" value="{{ $userId->email }}" />
+                                <x-input type="text" class="form-control" name="email" placeholder="{{ $userId->email }}" value="{{ $userId->email }}" />
                             </div>
                             <div class="col-md-12 mt-4"><label class="labels">Phone Number</label>
-                                <x-input type="text" class="form-control" placeholder="enter phone number" value="" />
+                                <x-input type="text" class="form-control" name="phonenumber" placeholder="enter phone number" value="" />
                             </div>
     
-                            <form class="mt-4">
-                                <label for="birthday">Birthday:</label>
-                                <x-input type="date" id="birthday" name="birthday" />
-                            </form>
+                            <div class="col-md-12 mt-4"><label class="labels">Birthday: </label>
+                                <x-input type="date" id="birthday" name="birthday" name="birthday" />
+                            </div>
+
     
     
                             <div class="mt-4">
