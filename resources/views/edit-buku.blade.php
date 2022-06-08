@@ -52,7 +52,7 @@
                             </div>
                           </label>
                         </div>
-                        <input id="back"  type="file" name="file_path" id="file_path" multiple>
+                        <input hidden id="back"  type="file" name="file_path" id="file_path" multiple>
                        
                         
                       </div>
@@ -111,9 +111,7 @@
                     </div>
 
                     
-                    {{-- <input type="hidden" name="perpustakaan_id" value="{{ DB::table('Perpustakaan')->where('user_id','=',Auth::user()->id)  }}"> --}}
-                    {{-- <input type="hidden" name="perpustakaanid" value="{{Auth::user()->id  }}"> --}}
-                    {{-- <input type="hidden" name="perpustakaan_id" value="{{ Perpustakaan::where('user_id',Auth::user()->id)->get() }}"> --}}
+                   
                     <div class="mt-5 text-center">
                         <x-button type="submit" class="">
                             SIMPAN

@@ -65,12 +65,17 @@ Route::get('/halaman-donasi', function () {
     return view('halaman-donasi');
 });
 
-Route::get('/hasil-cari',[BooksController::class,'index'])->name('books');
+
+
+Route::get('/hasil-cari',[BooksController::class,'index'])->name('books1');
 Route::get('/detail-buku/{id}', [BooksController::class,'detail']);
 
-Route::get('/daftar-buku-perpustakaan',[BooksController::class,'index2'])->name('books');
+Route::get('/daftar-buku-perpustakaan',[BooksController::class,'index2'])->name('books2');
 
-Route::post('/edit-buku',[BooksController::class,'insert'])->name('books');
+Route::get('/edit-buku', function () {
+    return view('edit-buku');
+});
+Route::post('/edit-buku',[BooksController::class,'insert']);
 
 Route::get('/user-profile', function () {
     return view('user-profile');
