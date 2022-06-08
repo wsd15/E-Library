@@ -87,5 +87,6 @@ Route::get('/pengembalian-buku', function () {
 });
 
 Route::get('/profile', [UserController::class, 'index_user'])->name('user');
+Route::post('/profile/{id}', [UserController::class, 'index_userupdated'])->name('user');
 
 Route::get('/mendaftar-pustakawan', [UserController::class, 'index_daftarpustakawan'])->name('user');
