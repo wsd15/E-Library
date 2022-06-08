@@ -84,4 +84,11 @@ class BooksController extends Controller
         return view('daftar-buku-perpustakaan',compact('data'));
     }
 
+    public function editbuku($id){
+        
+        $buku = Books::find($id);
+      
+        return view('edit-buku',compact('buku'));
+    }
+
 }

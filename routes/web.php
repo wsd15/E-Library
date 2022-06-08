@@ -72,10 +72,10 @@ Route::get('/detail-buku/{id}', [BooksController::class,'detail']);
 
 Route::get('/daftar-buku-perpustakaan',[BooksController::class,'index2'])->name('books2');
 
-Route::get('/edit-buku', function () {
-    return view('edit-buku');
+Route::get('/add-buku', function () {
+    return view('add-buku');
 });
-Route::post('/edit-buku',[BooksController::class,'insert']);
+Route::post('/add-buku',[BooksController::class,'insert']);
 
 Route::get('/user-profile', function () {
     return view('user-profile');
@@ -93,3 +93,6 @@ Route::get('/profile', [UserController::class, 'index_user'])->name('user');
 Route::post('/profile', [UserController::class, 'index_userupdated'])->name('user');
 
 Route::get('/mendaftar-pustakawan', [UserController::class, 'index_daftarpustakawan'])->name('user');
+
+
+Route::get('/edit-buku/{id}', [BooksController::class,'editbuku']);

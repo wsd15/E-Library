@@ -14,7 +14,7 @@
                 <div class="col-4">
                     <div class="mb-2">
                         <center>
-                            <a href="/edit-buku">
+                            <a href="/add-buku">
                             <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor"
                                 class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
                                 <path
@@ -35,14 +35,14 @@
                 @foreach ($data as $buku)
                 <div class="col mt-5 d-flex align-items-stretch justify-content-center">
                     <div class="card" style="width: 17rem;">
-                        <img class="mt-4" src="{{asset($buku->file_path)}}"
+                        <img class="mt-4" src="/images/buku/{{ $buku->file_path }}"
                             style="width:12vw;height: 16vw;align-self: center" class="card-img-top" alt="...">
                         <div class="card-body d-flex flex-column">
                             <h5 class="card-title text-center">{{ $buku->nama_buku }}</h5>
                             <p class="card-text text-center">{{ $buku->penulis }}</p>
                             <p class="card-text text-center mb-4">Jakarta Utara</p>
                             <div class="d-flex justify-content-center" style="margin-top: auto">
-                                <a href="{{url('/detail-buku/'.$buku->id)}}">
+                                <a href="{{url('/edit-buku/'.$buku->id)}}">
                                     <x-button class=" align-self-end" style="align-self: center;">
                                         {{ __('Ubah') }}
                                     </x-button>
