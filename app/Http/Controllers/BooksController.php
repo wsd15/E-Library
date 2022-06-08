@@ -47,6 +47,7 @@ class BooksController extends Controller
 
     //     return redirect('daftar-buku-perpustakaan');
     // }
+    
 
 
     public function insert(Request $request){
