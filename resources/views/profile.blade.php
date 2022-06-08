@@ -8,69 +8,78 @@
         <div class="container rounded bg-white mt-5 mb-5">
 
             <div class=" border-right">
-                <div class="p-3 py-5">
-                    <div class="d-flex justify-content-between align-items-center mb-3">
-                        <h1 class="text-right mb-3" style="font-size:3vw">My Profile</h1>
-                    </div>
 
-                    <div class="profile-pic-wrapper">
-                        <div class="pic-holder">
-                            <!-- uploaded pic shown here -->
-                            <img id="profilePic" class="pic"
-                                src="https://source.unsplash.com/random/150x150?person">
+                <form action="/profile" method="POST" enctype="multipart/form-data">
+                    @csrf
 
-                            <Input class="uploadProfileInput" type="file" name="profile_pic" id="newProfilePhoto"
-                                accept="image/*" style="opacity: 0;" />
-                            <label for="newProfilePhoto" class="upload-file-block">
-                                <div class="text-center">
-                                    <div class="mb-2">
-                                        <i class="fa fa-camera fa-2x"></i>
+                    <div class="p-3 py-5">
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <h1 class="text-right mb-3" style="font-size:3vw">My Profile</h1>
+                        </div>
+    
+    
+                        <div class="profile-pic-wrapper">
+                            <div class="pic-holder">
+                                <!-- uploaded pic shown here -->
+                                <img id="profilePic" class="pic"
+                                    src="https://source.unsplash.com/random/150x150?person">
+    
+                                <Input class="uploadProfileInput" type="file" name="profile_pic" id="newProfilePhoto"
+                                    accept="image/*" style="opacity: 0;" />
+                                <label for="newProfilePhoto" class="upload-file-block">
+                                    <div class="text-center">
+                                        <div class="mb-2">
+                                            <i class="fa fa-camera fa-2x"></i>
+                                        </div>
+                                        <div class="text-uppercase">
+                                            Update <br /> Profile Photo
+                                        </div>
                                     </div>
-                                    <div class="text-uppercase">
-                                        Update <br /> Profile Photo
-                                    </div>
-                                </div>
-                            </label>
+                                </label>
+                            </div>
+    
+    
+    
                         </div>
+    
+                        <div class="row mt-2">
+                            <div class="col-md-6"><label class="labels">First Name </label>
+                                <x-input type="text" class="form-control" name="name" placeholder="{{ $userId->name }}" value="{{ $userId->name }}" />
+                            </div>
+                            <div class="col-md-6"><label class="labels">Last Name</label>
+                                <x-input type="text" class="form-control" name="last_name" value="{{ $userId->last_name }}" placeholder="{{ $userId->last_name }}" />
+                            </div>
+                        </div>
+                        <div class="row mt-4">
+                            <div class="col-md-12">
+                                <label class="labels">Email</label>
+                                <x-input type="text" class="form-control" name="email" placeholder="{{ $userId->email }}" value="{{ $userId->email }}" />
+                            </div>
+                            <div class="col-md-12 mt-4"><label class="labels">Phone Number</label>
+                                <x-input type="text" class="form-control" name="phonenumber" placeholder="enter phone number" value="" />
+                            </div>
+    
+                            <div class="col-md-12 mt-4"><label class="labels">Birthday: </label>
+                                <x-input type="date" id="birthday" name="birthday" name="birthday" />
+                            </div>
 
-
-
+    
+    
+                            <div class="mt-4">
+                                <label for="pass">Password (8 characters minimum):</label>
+                                <x-input type="password" id="pass" name="password" minlength="8" required />
+                            </div>
+                        </div>
+                        <div class="mt-5 text-center">
+                            <x-button class="">
+                                Save
+                            </x-button>
+                        </div>
                     </div>
-
-                    <div class="row mt-2">
-                        <div class="col-md-6"><label class="labels">First Name </label>
-                            <x-input type="text" class="form-control" placeholder="{{ $userId->name }}" value="" />
-                        </div>
-                        <div class="col-md-6"><label class="labels">Last Name</label>
-                            <x-input type="text" class="form-control" value="" placeholder="{{ $userId->last_name }}" />
-                        </div>
-                    </div>
-                    <div class="row mt-4">
-                        <div class="col-md-12">
-                            <label class="labels">Email</label>
-                            <x-input type="text" class="form-control" placeholder="{{ $userId->email }}" value="" />
-                        </div>
-                        <div class="col-md-12 mt-4"><label class="labels">Phone Number</label>
-                            <x-input type="text" class="form-control" placeholder="enter phone number" value="" />
-                        </div>
-
-                        <form class="mt-4">
-                            <label for="birthday">Birthday:</label>
-                            <x-input type="date" id="birthday" name="birthday" />
-                        </form>
+                    
+                </form>
 
 
-                        <div class="mt-4">
-                            <label for="pass">Password (8 characters minimum):</label>
-                            <x-input type="password" id="pass" name="password" minlength="8" required />
-                        </div>
-                    </div>
-                    <div class="mt-5 text-center">
-                        <x-button class="">
-                            Save
-                        </x-button>
-                    </div>
-                </div>
             </div>
 
         </div>

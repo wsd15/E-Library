@@ -33,10 +33,6 @@
                             <x-input type="text" class="form-control" placeholder="15/05/2001" readonly />
                         </div>
 
-                        {{-- <form class="mt-4">
-                            <label for="birthday">Birthday:</label>
-                            <x-input type="date" id="birthday" name="birthday" readonly/>
-                        </form> --}}
                     </div>
                     <div class="mt-5 text-center">
                         <x-button class="">
