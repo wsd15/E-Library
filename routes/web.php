@@ -97,3 +97,5 @@ Route::get('/mendaftar-pustakawan', [UserController::class, 'index_daftarpustaka
 
 Route::get('/edit-buku/{id}', [BooksController::class,'editbukudetail']);
 Route::post('/edit-buku/{id}', [BooksController::class,'editbuku']);
+
+Route::delete('daftar-buku-perpustakaan/{id}', [BooksController::class,'destroy']);

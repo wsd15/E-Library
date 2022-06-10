@@ -38,8 +38,8 @@
                     <div class="profile-pic-wrapper">
                         <div class="pic-holder border border-dark" style="border-radius: 0px;">
                           <!-- uploaded pic shown here -->
-                          <img id="profilePic" class="pic" src="/images/buku/{{ $buku->file_path }}" >
-                          <Input  class="uploadProfileInput" type="file" name="newProfilePhoto" id="newProfilePhoto" accept="image/*" style="opacity: 0" multiple />
+                          <img id="profilePic" class="pic" src="{{asset('/images/buku/'.$buku->file_path)}}" >
+                          <Input  class="uploadProfileInput" type="file" name="newProfilePhoto" name="old" id="newProfilePhoto" accept="image/*" style="opacity: 0" multiple />
                           
                             <label for="newProfilePhoto" class="upload-file-block">
                             <div class="text-center">
