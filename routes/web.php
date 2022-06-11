@@ -89,10 +89,13 @@ Route::get('/pengembalian-buku', function () {
     return view('pengembalian-buku');
 });
 
-Route::get('/profile', [UserController::class, 'index_user'])->name('user');
+Route::get('/profile', [UserController::class, 'index_user'])->name('profile');
 Route::post('/profile', [UserController::class, 'index_userupdated'])->name('user');
 
 Route::get('/mendaftar-pustakawan', [UserController::class, 'index_daftarpustakawan'])->name('user');
 
 
-Route::get('/edit-buku/{id}', [BooksController::class,'editbuku']);
+Route::get('/edit-buku/{id}', [BooksController::class,'editbukudetail']);
+Route::post('/edit-buku/{id}', [BooksController::class,'editbuku']);
+
+Route::delete('daftar-buku-perpustakaan/{id}', [BooksController::class,'destroy']);

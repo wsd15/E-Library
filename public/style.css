@@ -440,6 +440,12 @@ body {
   .pic-holder.uploadInProgress .upload-loader {
     opacity: 1;
   }
+
+  .bi-trash:hover,
+.bi-trash:focus {
+  filter: invert(27%) sepia(51%) saturate(2878%) hue-rotate(346deg) brightness(104%) contrast(97%);
+  
+}
   
   /* Snackbar css */
   .snackbar {

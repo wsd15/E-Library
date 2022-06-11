@@ -7,7 +7,7 @@ use App\Models\Perpustakaan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
-
+use Illuminate\Support\Facades\File;
 class BooksController extends Controller
 {
     public function index(Request $request){
@@ -58,7 +58,7 @@ class BooksController extends Controller
         // dd($id2);
         $img_ext = $request->file('file_path')->getClientOriginalExtension();
         $filename = 'foto-buku-' . time() . '.' . $img_ext;
-        $path = $request->file('file_path')->move(public_path(), $filename);//image save public folder
+        $path = $request->file('file_path')->move(public_path('/images/buku'), $filename);//image save public folder
       
         Books::create([
             'nama_buku' =>$request->input('nama_buku'),
@@ -84,11 +84,53 @@ class BooksController extends Controller
         return view('daftar-buku-perpustakaan',compact('data'));
     }
 
-    public function editbuku($id){
+    public function editbukudetail($id){
         
         $buku = Books::find($id);
       
         return view('edit-buku',compact('buku'));
+    }
+
+    public function editbuku(Request $request,$id){
+        
+        $buku = Books::find($id);
+
+        if($request->hasFile('file_path'))
+        {
+            $img_ext = $request->file('file_path')->getClientOriginalExtension();
+            $imagePath = public_path('/images/buku/'.$buku->file_path);
+           
+            if(File::exists($imagePath)){
+                unlink($imagePath);
+            }
+            $filename = 'foto-buku-' . time() . '.' . $img_ext;
+            $path = $request->file('file_path')->move(public_path('/images/buku'), $filename);//image save public folder
+            $buku->file_path=$filename;
+        }
+        $buku->nama_buku=$request->input('nama_buku');
+        $buku->penerbit=$request->input('penerbit');
+        $buku->isbn=$request->input('isbn');
+       
+        $buku->tahun_terbit=$request->input('tahun_terbit');
+        $buku->penulis=$request->input('penulis');
+        $buku->stok=$request->input('stok');
+        $buku->deskripsi=$request->input('deskripsi');
+        
+        $buku->save();
+      
+        return redirect('daftar-buku-perpustakaan');
+    }
+
+    public function destroy($id){
+        $book= Books::find($id);
+        $imagePath = public_path('/images/buku/'.$book->file_path);
+           
+            if(File::exists($imagePath)){
+                unlink($imagePath);
+            }
+        $book->delete();
+        return redirect('/daftar-buku-perpustakaan');
+
     }
 
 }
