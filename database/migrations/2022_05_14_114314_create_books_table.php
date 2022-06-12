@@ -19,7 +19,11 @@ class CreateBooksTable extends Migration
             $table->string('nama_buku');
             $table->string('penerbit');
             $table->string('penulis');
-            $table->unsignedBigInteger('perpustakaan_id');
+            $table->unsignedBigInteger('perpustakaan_id')->nullable();
+            $table->foreign('perpustakaan_id')
+                  ->references('id')
+                  ->on('perpustakaans')
+                  ->onDelete('set null');
             $table->string('isbn');
             $table->string('tahun_terbit');
             $table->integer('stok');

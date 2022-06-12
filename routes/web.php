@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\BooksController;
+use App\Http\Controllers\WishlistController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -99,3 +100,13 @@ Route::get('/edit-buku/{id}', [BooksController::class,'editbukudetail']);
 Route::post('/edit-buku/{id}', [BooksController::class,'editbuku']);
 
 Route::delete('daftar-buku-perpustakaan/{id}', [BooksController::class,'destroy']);
+
+
+// Route::resource('wishlist', 'WishlistController')->only([
+//     'store'
+// ]);
+
+Route::post('/detail-buku/{id}',[WishlistController::class,'store'])->name('store');
+
+Route::get('/wishlist',[WishlistController::class,'index']);
+Route::delete('/wishlist/{id}',[WishlistController::class,'destroy']);

@@ -9,6 +9,7 @@ class Perpustakaan extends Model
 {
     use HasFactory;
 
+    protected $table ='perpustakaans';
     protected $fillable = [
         'user_id',
         'nama_perpustakaan',

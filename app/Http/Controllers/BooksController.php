@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Books;
 use App\Models\Perpustakaan;
+use App\Models\Wishlist;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
@@ -17,6 +18,7 @@ class BooksController extends Controller
             ->orWhere('penerbit','LIKE','%'.$request->search.'%')
             ->orWhere('isbn','LIKE','%'.$request->search.'%')
             ->paginate(6);
+            // dd($data);
         }else {
             $data =  Books::paginate(6);
         }
@@ -30,14 +32,32 @@ class BooksController extends Controller
     public function detail($id) {
     
         // $data = Books::find($id)->where('books.id','=',$id)->get();
-        $bookdet = DB::table('perpustakaans')
-                ->leftJoin('books', 'books.perpustakaan_id', '=', 'perpustakaans.id')
-                ->where('books.id','=',$id)
-                ->get();
+        // $bookdet = DB::table('perpustakaans')
+        //         ->leftJoin('books', 'books.perpustakaan_id', '=', 'perpustakaans.id')
+        //         ->where('books.id','=',$id)
+        //         ->get();
         // $bookdet = $data->concat($data2); 
-                // dd($bookdet);
+                // dd($bookdet[0]);
+                $itemproduk = Books::find($id);
+            // dd($itemproduk->id);
+                
 
-        return view('detail-buku',compact('bookdet'));
+        $bookdet = Books::where('id',$id)->paginate(1);
+
+
+        if(Auth::user()){
+            $itemuser = Auth::user()->id;
+            $itemwishlist = Wishlist::where('produk_id', $itemproduk->id)
+            ->where('user_id', $itemuser)
+            ->first();
+            // dd($itemwishlist);
+// dd($bookdet[0]);
+
+            return view('detail-buku',compact('bookdet','itemwishlist'));
+        }else{
+            return view('detail-buku',compact('bookdet'));
+        }
+       
     }
 
     // public function insert(Request $request){
@@ -77,17 +97,17 @@ class BooksController extends Controller
 
     public function index2(Request $request){
         $id2 = Perpustakaan::where('user_id',Auth::user()->id)->select('id')->get()->pluck('id');
-    
+    // dd($id2);
         $data =  Books::where('perpustakaan_id','=',$id2)->paginate(6);
         
-
+dd($data);
         return view('daftar-buku-perpustakaan',compact('data'));
     }
 
     public function editbukudetail($id){
         
         $buku = Books::find($id);
-      
+        
         return view('edit-buku',compact('buku'));
     }
 

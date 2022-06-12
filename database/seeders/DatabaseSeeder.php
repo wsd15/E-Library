@@ -14,6 +14,6 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         // \App\Models\User::factory(10)->create();
-        $this->call([LaratrustSeeder::class,BooksSeeder::class,PerpustakaanSeeder::class]);
+        $this->call([LaratrustSeeder::class,PerpustakaanSeeder::class,BooksSeeder::class]);
     }
 }
