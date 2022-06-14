@@ -5,6 +5,67 @@
 <html>
     <p class="fs-1 text-center">Pembayaran</p>
 
+    @php ($counter=1) @endphp
+           
+    @php ($array=[]) @endphp
+
+
+    <div class="container mt-5 border border-dark rounded-3">
+        @foreach($itemcart->detail as $detail)
+                        @php ($counter2=$detail->buku->perpustakaan_id) @endphp
+                            @php 
+                            if (in_array($detail->buku->perpustakaan_id,$array)) {
+                                continue;
+                            }else
+                            {
+                                array_push($array, $detail->buku->perpustakaan_id); 
+                            }
+                            @endphp
+            @if ($detail->buku->bukuperpus->id == $ids)
+            {{ $detail->buku->bukuperpus->nama_perpustakaan }}    
+                            <br>
+                                @foreach ($itemcart->detail as $item)
+                                
+                                        @if ($item->buku->perpustakaan_id===$detail->buku->perpustakaan_id)
+                                        <div class="card card-body border mt-2 mb-3 border-dark rounded-3">
+                                            <div class="row">
+                                                <div class="col-2">
+                                                    test
+                                                </div>
+                                                <div class="col-10">
+                                                    {{ $item->buku->nama_buku }} <br>
+                                                </div>
+                                                
+                                            </div>
+                                        
+                                        </div>
+                                        @endif
+                                    
+                                @endforeach
+                            
+                            <br>
+                        
+                            <p class="text-start mt-2 fs-3 fw-bold">
+                                Total Deposito
+                            </p>
+                        
+                            <p class="text-start mt-2 fs-5">
+                                Rp 300.005
+                            </p>
+                        
+                            <p class="text-start mt-2 fs-3 fw-bold">
+                                BCA Virtual account
+                            </p>
+                        
+                            <p class="text-start mt-2 fs-5">
+                                52798920857
+                            </p>
+                        
+            @endif                
+                @php($counter=$counter+1)
+        @endforeach
+    </div>
+
     
 
     <div class="p-2 bd-highlight">

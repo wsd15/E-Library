@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\BooksController;
+use App\Http\Controllers\CartController;
+use App\Http\Controllers\CartDetailController;
 use App\Http\Controllers\WishlistController;
 use Illuminate\Support\Facades\Route;
 
@@ -106,7 +108,20 @@ Route::delete('daftar-buku-perpustakaan/{id}', [BooksController::class,'destroy'
 //     'store'
 // ]);
 
-Route::post('/detail-buku/{id}',[WishlistController::class,'store'])->name('store');
+Route::post('/detail-buku/{id}',[WishlistController::class,'store']);
 
-Route::get('/wishlist',[WishlistController::class,'index']);
+Route::get('/wishlist',[WishlistController::class,'index'])->middleware(['auth']);;
 Route::delete('/wishlist/{id}',[WishlistController::class,'destroy']);
+
+
+Route::resource('cartdet', CartDetailController::class)->only([
+    'store'
+]);
+
+Route::resource('cart', CartController::class)->only([
+    'index'
+]);
+
+// Route::get('/cart',[CartController::class,'index']);
+
+Route::get('/pembayaran/{id}', [CartController::class,'detail']);

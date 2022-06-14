@@ -4,9 +4,9 @@
     <html>
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <body style="">
-        @php
-            
-        @endphp
+        <form>
+            <input type="button" value="Go back!" onclick="history.back()">
+        </form>
 
         <div class="container rounded bg-white mt-5 mb-5">
             <div class="row">
@@ -17,10 +17,11 @@
                 
                 <div class="col-md-7">
                     <p class="fw-bold" style="font-size: 30px">{{ $bookdet[0]->nama_buku }}</p>
-                    <p>{{ $bookdet[0]->penerbit }}</p>
+                    <p>Penulis      : {{ $bookdet[0]->penulis }}</p>
+                    <p>Penerbit     : {{ $bookdet[0]->penerbit }}</p>
                     <p>Tahun Terbit : {{ $bookdet[0]->tahun_terbit }}</p>
-                    <p>Stok : {{ $bookdet[0]->stok }}</p>
-                    <p>ISBN : {{ $bookdet[0]->isbn }}</p>
+                    <p>Stok         : {{ $bookdet[0]->stok }}</p>
+                    <p>ISBN         : {{ $bookdet[0]->isbn }}</p>
                     <div style="padding-top:2vw">
                         <p class="fw-bold" style="font-size: 30px">{{ $bookdet[0]->bukuperpus->nama_perpustakaan }}</p>
                         <p>Jakarta Pusat</p>
@@ -55,7 +56,7 @@
                     <span id=heart><i class="fa fa-heart fa-2x" aria-hidden="true"></i> </span> --}}
                     
                     
-                    <form action="{{ route('store', $bookdet[0]->id) }}" method="post">
+                    <form action="/detail-buku/{{ $bookdet[0]->id }}" method="post">
                         @csrf
                         <input type="hidden" name="produk_id" value={{ $bookdet[0]->id }}>
                         <button type="submit" class="">
@@ -70,6 +71,15 @@
                         <x-button class="mt-5" style="width: 170px; font-size: 15px">
                             {{ __('Add To Cart') }}
                         </x-button>
+                        
+                        <form action="{{ route('cartdet.store') }}" method="POST" >
+                            @csrf
+                            <input type="hidden" name="produk_id" value={{$bookdet[0]->id}}>
+                            <button class="btn btn-block btn-primary" type="submit">
+                            <i class="fa fa-shopping-cart"></i> Tambahkan Ke Keranjang
+                            </button>
+                        </form>
+
                     </div>
 
                     {{-- <script>

@@ -9,11 +9,20 @@
         
         <div class="container">
             <form class="form-inline mt-5">
-                <input class="form-control mr-sm-2" name="search" type="search" placeholder="Search Judul Buku/Penerbit/Penulis/ISBN/Lokasi Perpustakaan (Format ISBN 1-1234-1234-2)" aria-label="Search">
-                <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">Search</button>
+                <div class="row align-items-center">
+                    <div class="col-11 ">
+                        <input class="form-control mr-sm-2" name="search" type="search" placeholder="Search Judul Buku/Penerbit/Penulis/ISBN/Lokasi Perpustakaan (Format ISBN 1-1234-1234-2)" aria-label="Search">
+                    </div>
+                    <div class="col-1">
+                        <button class="btn btn-outline-secondary mr-sm-2" type="submit">Search</button>
+                    </div>
+                </div>    
               </form>
+
+
+            </form>
             
-            <div class="row mt-5 row-cols-3">
+            <div class="row mt-2 row-cols-3 mb-5">
                 @foreach ($data as $buku)
                 <div class="col mt-5 d-flex align-items-stretch justify-content-center">
                     <div class="card" style="width: 17rem;">
@@ -49,7 +58,7 @@
 
             </div>
             {{-- buat row 2-3-4-5-6 --}}
-            {{ $data->links() }}
+            <div class="mb-4">{{ $data->links() }}</div>
         </div>
 
 

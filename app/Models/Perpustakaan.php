@@ -22,4 +22,8 @@ class Perpustakaan extends Model
     {
         return $this->hasOne(User::class,'user_id');
     }
+    public function cartdetail()
+    {
+        return $this->hasMany(CartDetail::class,'id');
+    }
 }

@@ -5,25 +5,25 @@
 
 <html>
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <div class="container justify-content-between align-items-center rounded bg-white mt-5 mb-5">
+    <div class="container justify-content-between align-items-center rounded bg-white mt-3 mb-1">
         <h1 class="text-right mb-3" style="font-size:3vw">Wishlist</h1> 
-        @php($counter=0)
+      
         @if($itemwishlist->isEmpty())
-        <div class="alert alert-warning text-center">
-            <h1>Kamu belum menambahkan buku apapun ke dalam keranjang</h1>
-        </div>    
-    @endif 
+            <div class="alert alert-warning text-center">
+                <h1>Kamu belum menambahkan buku apapun ke dalam keranjang</h1>
+            </div>    
+        @endif 
         @foreach ($itemwishlist as $key=> $wishlist)
 
        
             
-            <div class="card card-body">
+            <div class="card card-body mb-2">
                 <div class="row">
-                    <div class="col-md-1">No . {{ $key+1 }}</div>
+                  
                     <div class="col-md-2 align-middle" style="text-align: center">
                         <img id="bookPic" class="rounded mx-auto d-block" width="150" height="150" src="{{asset('/images/buku/'.$wishlist->produk->file_path)}}">
                     </div>
-                    <div class="col-md-7">
+                    <div class="col-md-8">
                         <h6 class="media-title font-weight-semibold text-start" style="font-size:2vw">
                             <b href="#" data-abc="true">{{ $wishlist->produk->nama_buku}}</b>
                         </h6>
@@ -34,40 +34,8 @@
 
 
                         <h5 class="text-start" style="font-size:2vw">
-                            @if($counter ==0)
-                                <b>{{ $b[0]->bukuperpus->nama_perpustakaan }}</b>
-                            @endif
-                            @if($counter ==1)
-                                <b>{{ $b[1]->bukuperpus->nama_perpustakaan }}</b>
-                            @endif
-                            @if($counter ==2)
-                                <b>{{ $b[2]->bukuperpus->nama_perpustakaan }}</b>
-                            @endif
-                            @if($counter ==3)
-                                <b>{{ $b[3]->bukuperpus->nama_perpustakaan }}</b>
-                            @endif
-                            @if($counter ==4)
-                                <b>{{ $b[4]->bukuperpus->nama_perpustakaan }}</b>
-                            @endif
-                            @if($counter ==5)
-                                <b>{{ $b[5]->bukuperpus->nama_perpustakaan }}</b>
-                            @endif
-                            @if($counter ==6)
-                                <b>{{ $b[6]->bukuperpus->nama_perpustakaan }}</b>
-                            @endif
-                            @if($counter ==7)
-                                <b>{{ $b[7]->bukuperpus->nama_perpustakaan }}</b>
-                            @endif
-                            @if($counter ==8)
-                                <b>{{ $b[8]->bukuperpus->nama_perpustakaan }}</b>
-                            @endif
-                            @if($counter ==9)
-                                <b>{{ $b[9]->bukuperpus->nama_perpustakaan }}</b>
-                            @endif
-                            @if($counter ==10)
-                                <b>{{ $b[10]->bukuperpus->nama_perpustakaan }}</b>
-                            @endif
-                            @php($counter=$counter+1)
+                            <b>{{ $b[$loop->index]->bukuperpus->nama_perpustakaan }}</b>
+                              
                             
                         </h5>
                         <span class="limit_text">{{ $wishlist->produk->deskripsi }}</span>

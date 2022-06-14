@@ -157,7 +157,7 @@
                                     // If upload successful
                                     if (Math.random() < 0.9) {
                                     $(wrapper).append(
-                                        '<div class="snackbar show" role="alert"><i class="fa fa-check-circle text-success"></i> Profile image updated successfully</div>'
+                                        // '<div class="snackbar show" role="alert"><i class="fa fa-check-circle text-success"></i> Profile image updated successfully</div>'
                                     );
 
                                     // Clear input after upload
@@ -169,7 +169,7 @@
                                     } else {
                                     $(holder).find(".pic").attr("src", currentImg);
                                     $(wrapper).append(
-                                        '<div class="snackbar show" role="alert"><i class="fa fa-times-circle text-danger"></i> There is an error while uploading! Please try again later.</div>'
+                                        // '<div class="snackbar show" role="alert"><i class="fa fa-times-circle text-danger"></i> There is an error while uploading! Please try again later.</div>'
                                     );
 
                                     // Clear input after upload

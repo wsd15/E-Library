@@ -5,63 +5,68 @@
 <html>
     <p class="fs-1 text-center">Keranjang</p>
 
-    <div class="container mt-50 mb-50 border">
+            @php ($counter=1) @endphp
+           
+            @php ($array=[]) @endphp
 
-        <div class="d-flex flex-column bd-highlight mb-3">
-            <div class="p-2 bd-highlight">
-                {{-- Content box --}}
-                <div class="container justify-content-center mt-30 mb-30">
-                    <p class="fs-3 text-sm-start">Perpustakaan A</p>
-                    <div class="row">
-                    <div class="col-md-12">
-                        
-                            <div class="card card-body mt-2">
-                                        <div class="media align-items-center align-items-lg-start text-center text-lg-left flex-column flex-lg-row">
+    @foreach($itemcart->detail as $detail)
+            @php ($counter2=$detail->buku->perpustakaan_id) @endphp
+            @php 
             
-                                            <div class="container">
-                                                <div class="row">
-                                                    <div class="col col-2">
-                                                        <div class="mb-3 mb-lg-0">                                 
-                                                            <img src="https://source.unsplash.com/random/150x150?person" width="150" height="150" alt="">
-                                                    </div>
-                                                    </div>
-                                                    <div class="col col-10">
-                                                        <div class="mt-2 row">
-                                                            <div class="col">
-                                                                <h6 class="media-title font-weight-semibold text-start" style="font-size:2vw">
-                                                                    <b href="#" data-abc="true">Lord of The Flies</b>
-                                                                </h6>
-                            
-                                                                <h5 class="text-start mt-2">
-                                                                    <a>Biaya deposit: Rp. 100.000</a>
-                                                                </h5>
-                        
-                                                            </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    </div>
-                                </div>
-                                    
+            if (in_array($detail->buku->perpustakaan_id,$array)) {
+              
+                continue;
+            }else
+            {
+                array_push($array, $detail->buku->perpustakaan_id);
+                
+            }
+           
+
+            @endphp
+
+
+
+           <div class="border mt-3 mb-5">    
+                    {{ $detail->buku->bukuperpus->nama_perpustakaan }} 
+                    <br>
+                        @foreach ($itemcart->detail as $item)
                                 
-                        </div>                     
-                    </div>
-                </div>
-            </div>
+                                @if ($item->buku->perpustakaan_id===$detail->buku->perpustakaan_id)
+                                {{ $item->buku->nama_buku }} <br>
+                                @endif
+                                
+                        @endforeach
+                    <br>
 
-            <div class="p-2 bd-highlight">
-                {{-- Checkout button --}}
-                <div class="mt-5 text-center">
-                    <x-button class="">
-                        Checkout
-                    </x-button>
-                    </div> 
-                </div>
-            </div>
-          </div>
+                    <a href="{{url('/pembayaran/'.$detail->buku->perpustakaan_id)}}">
+                        <x-button class=" align-self-end" id="button1" style="align-self: center;">
+                            {{ __('Detail Buku') }}
+                        </x-button>
+                        <style>
+                            #button1 {   
+                                font-size: 3vw;
+                                
+                            }
+                        @media (min-width: 720px) { /* or 301 if you want really the same as previously.  */
+                            #button1 {   
+                                font-size: 1.4vw;
+                                
+                            }
+                        }
+                        </style>
+                    </a>
 
-    </div>
+            </div> 
+
+        @php($counter=$counter+1)
+    @endforeach
+   
+
+
+
+        
+   
 </html>
 
 @endsection

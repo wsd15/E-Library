@@ -30,9 +30,9 @@ class WishlistController extends Controller
                             ->paginate(5);
 
 
-                               $a = Wishlist::where('user_id',Auth::user()->id)->get('produk_id')->toArray();
+                                $a = Wishlist::where('user_id',Auth::user()->id)->get('produk_id')->toArray();
                             //    $b=  Books::where('id',$a)->get()->toArray();
-                            $b=  Books::whereIn('id',$a)->paginate(5);
+                                $b=  Books::whereIn('id',$a)->paginate(5);
                     //        $c= Perpustakaan::select('nama_perpustakaan')->where('id',$b)->get();
                             // dd($itemwishlist);
                           
