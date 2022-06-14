@@ -8,13 +8,14 @@
         <div class="container rounded bg-white mt-5 mb-5">
             <div class="row">
                 <div class="col-md-3">
-                    <img id="bookPic" class="img-fluid" style="width:20vw " src="{{ asset($bookdet[0]->file_path) }}">
+                    <img id="bookPic" class="img-fluid" style="width:20vw " src="{{asset('/images/buku/'.$bookdet[0]->file_path)}}">
                 </div>
                 
                 <div class="col-md-7">
                     <p class="fw-bold" style="font-size: 30px">{{ $bookdet[0]->nama_buku }}</p>
                     <p>{{ $bookdet[0]->penerbit }}</p>
                     <p>Tahun Terbit : {{ $bookdet[0]->tahun_terbit }}</p>
+                    <p>Stok : {{ $bookdet[0]->stok }}</p>
                     <div style="padding-top:5vw">
                         <p class="fw-bold" style="font-size: 30px">{{ $bookdet[0]->nama_perpustakaan }}</p>
                         <p>Jakarta Pusat</p>
@@ -28,7 +29,7 @@
                                     src="https://maps.google.com/maps?q={{$fields}}&t=&z=19&ie=UTF8&iwloc=&output=embed" 
                                     frameborder="0" scrolling="no" marginheight="0" marginwidth="0">
                                     </iframe>
-                            <a href="https://123movies-to.org"></a><br>
+                            <br>
                                     <style>.mapouter{position:relative;text-align:right;height:500px;width:600px;}</style>
                             <a href="https://www.embedgooglemap.net">google maps plugin html</a><style>.gmap_canvas 
                             {overflow:hidden;background:none!important;height:500px;width:600px;}</style>

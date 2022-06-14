@@ -6,13 +6,13 @@
     <body style="">
 
         <div class="container rounded bg-white mt-5 mb-5">
-            <form action="/edit-buku/{{ $buku->id }}" method="POST" enctype="multipart/form-data">
+            <form action="/add-buku" method="POST" enctype="multipart/form-data">
             @csrf
             
             <div class="border-right">
                 <div class="p-3 py-5">
                     <div class="d-flex justify-content-center align-items-center mb-3">
-                        <h1 class="mb-3" style="font-size:48px">Edit Buku</h1>
+                        <h1 class="mb-3" style="font-size:48px">Tambah Buku</h1>
                     </div>
 
                     {{-- <div class="profile-pic-wrapper">
@@ -38,8 +38,8 @@
                     <div class="profile-pic-wrapper">
                         <div class="pic-holder border border-dark" style="border-radius: 0px;">
                           <!-- uploaded pic shown here -->
-                          <img id="profilePic" class="pic" src="{{asset('/images/buku/'.$buku->file_path)}}" >
-                          <Input  class="uploadProfileInput" type="file" name="newProfilePhoto" name="old" id="newProfilePhoto" accept="image/*" style="opacity: 0" multiple />
+                          <img id="profilePic" class="pic" >
+                          <Input  class="uploadProfileInput" type="file" name="newProfilePhoto" id="newProfilePhoto" accept="image/*" style="opacity: 0" multiple />
                           
                             <label for="newProfilePhoto" class="upload-file-block">
                             <div class="text-center">
@@ -80,34 +80,34 @@
 
                     <div class="row mt-2">
                         <div class="col-md-6"><label class="labels">Judul Buku</label>
-                            <x-input type="text" class="form-control" name="nama_buku" placeholder="Masukkan Judul Buku" value="{{ $buku->nama_buku }}" />
+                            <x-input type="text" class="form-control" name="nama_buku" placeholder="Masukkan Judul Buku" value="" />
                         </div>
                         <div class="col-md-6"><label class="labels">Penerbit</label>
-                            <x-input type="text" class="form-control" value="{{ $buku->penerbit }}" name="penerbit" placeholder="Masukkan Penerbit" />
+                            <x-input type="text" class="form-control" value="" name="penerbit" placeholder="Masukkan Penerbit" />
                         </div>
                     </div>
 
                     <div class="row mt-2">
                         <div class="col-md-6"><label class="labels">ISBN</label>
-                            <x-input type="text" class="form-control" name="isbn" placeholder="Masukkan ISBN" value="{{ $buku->isbn }}" />
+                            <x-input type="text" class="form-control" name="isbn" placeholder="Masukkan ISBN" value="" />
                         </div>
                         <div class="col-md-6"><label class="labels">Tahun Terbit</label>
-                            <x-input type="text" class="form-control" value="{{ $buku->tahun_terbit }}" name="tahun_terbit" placeholder="Masukkan Tahun Terbit" />
+                            <x-input type="text" class="form-control" value="" name="tahun_terbit" placeholder="Masukkan Tahun Terbit" />
                         </div>
                     </div>
 
                     <div class="row mt-2">
                         <div class="col-md-6"><label class="labels">Penulis</label>
-                            <x-input type="text" class="form-control" name="penulis" placeholder="Masukkan Penulis" value="{{ $buku->penulis }}" />
+                            <x-input type="text" class="form-control" name="penulis" placeholder="Masukkan Penulis" value="" />
                         </div>
                         <div class="col-md-6"><label class="labels">Stok</label>
-                            <x-input type="text" class="form-control" value="{{ $buku->stok }}" name="stok" placeholder="Qty" />
+                            <x-input type="text" class="form-control" value="" name="stok" placeholder="Qty" />
                         </div>
                     </div>
 
                     <div class="col-md-12 mt-4"><label class="labels">Deskripsi Buku</label>
                         <textarea class="form-control rounded-md border-dark" name="deskripsi" placeholder="Masukkan Deskripsi Buku"
-                            id="exampleFormControlTextarea1" rows="5">{{ $buku->deskripsi }}</textarea>
+                            id="exampleFormControlTextarea1" rows="5"></textarea>
                     </div>
 
                     
