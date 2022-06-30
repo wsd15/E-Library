@@ -15,6 +15,8 @@
     @php ($array=[]) @endphp
 
 
+
+
     <div class="container mt-5 ">
         @foreach($itemcart->detail as $detail)
                         @php ($counter2=$detail->buku->perpustakaan_id) @endphp
@@ -27,21 +29,26 @@
                             }
                             @endphp
        
-       <p class="fs-3 text-sm-start pl-50">{{ $detail->buku->bukuperpus->nama_perpustakaan }}</p>    
-                        
+          <div class="row">
+            <div class="col"><p class="fs-3 text-sm-start pl-50">{{ $detail->buku->bukuperpus->nama_perpustakaan }}</p>     </div> 
+            @if ($itemcart->status_pembayaran ==='sudah terbayar')
+            <div class="col text-end">Status Pembayaran : <p style="display: inline-block;color: green">Sudah Terbayar</p> </div>
+            @endif 
+            </div>  
+                            
                                 @foreach ($itemcart->detail as $item)
                                 
                                        
-                                        <div class="container mt-2 mb-3 ">
-                                            <div class="row  border border-dark rounded-3" style="background: #E2E2E2">
-                                                <div class="col-1 desktop mt-2 mb-2">
+                                        <div class="card card-body border mt-2 mb-3 border-dark rounded-3" style="background-color: #E2E2E2">
+                                            <div class="row">
+                                                <div class="col-1 desktop">
                                                     <img id="bookPic" class="img-fluid " style="width:5vw " src="{{asset('/images/buku/'.$item->buku->file_path)}}">
                                                 </div>
-                                                <div class="col-3 mobile mt-2 mb-2">
+                                                <div class="col-3 mobile">
                                                     <img id="bookPic" class="img-fluid " style="width:20vw " src="{{asset('/images/buku/'.$item->buku->file_path)}}">
                                                 </div>
 
-                                                <div class="col mt-2 mb-2">
+                                                <div class="col ">
 
                                                     <h6 class="media-title font-weight-semibold text-start" style="font-size:2vw">
                                                         <b href="#" data-abc="true">{{ $item->buku->nama_buku }} </b>
@@ -79,7 +86,7 @@
                         
                       
                 @php($counter=$counter+1)
-        @endforeach
+      @endforeach
 
         <button class="btn btn-outline-dark mb-3" style="color: black;background-color: white;width: 18rem;" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
           Cara Pembayaran via ATM BCA &#x25BC;
@@ -189,85 +196,31 @@
            </div>
           </div>
 
-        
-
-          <form action="{{ route('transaction.store') }}" method="POST" >
-            @csrf
-            <input type="hidden" name="cart_id" value={{$itemcart->id}}>
-            <div class="mt-3 mb-3 text-center">
-              <x-button class="">
+         @if ($itemcart->status_pembayaran === 'belum')
+                <form action="{{ route('transaction.store') }}" method="POST" >
+                  @csrf
+                  <input type="hidden" name="cart_id" value={{$itemcart->id}}>
+                      <div class="mt-3 mb-3 text-center">
+                        <x-button class="" >
+                            Cek Status Pembayaran
+                        </x-button>
+                      </div> 
+              </form>
+          @else
+          <div class="mt-3 mb-3 text-center">
+              <x-button class="" disabled>
                   Cek Status Pembayaran
-              </x-button>
-              </div> 
-        </form>
+                </x-button>
+        </div>
+         @endif
+
+        
 
     </div>
 
+  
     
-
-    {{-- <div class="p-2 bd-highlight"> --}}
-        {{-- Content box --}}
-        {{-- <div class="container justify-content-center mt-30 mb-30">
-            
-            <p class="fs-3 text-sm-start pl-50">Perpustakaan A</p>
-
-            <div class="row">
-            <div class="col-md-10">
-                
-                    <div class="card card-body mt-2">
-                                <div class="media align-items-center align-items-lg-start text-center text-lg-left flex-column flex-lg-row">
     
-                                    <div class="container">
-                                        <div class="row">
-                                            <div class="col col-2">
-                                                <div class="mb-3 mb-lg-0">                                 
-                                                    <img src="https://source.unsplash.com/random/150x150?person" width="150" height="150" alt="">
-                                            </div>
-                                            </div>
-                                            <div class="col col-10">
-                                                <div class="mt-2 row">
-                                                    <div class="col">
-                                                        <h6 class="media-title font-weight-semibold text-start" style="font-size:2vw">
-                                                            <b href="#" data-abc="true">Lord of The Flies</b>
-                                                        </h6>
-                    
-                                                        <h5 class="text-start mt-2">
-                                                            <a>Biaya deposit: Rp. 100.000</a>
-                                                        </h5>
-                
-                                                    </div>
-                                                <div class="col">
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            </div>
-                        </div>
-                            
-                        
-                </div>                     
-            </div>
-
-            <p class="text-start mt-2 fs-3 fw-bold">
-                Total Deposito
-            </p>
-        
-            <p class="text-start mt-2 fs-5">
-                Rp 300.005
-            </p>
-        
-            <p class="text-start mt-2 fs-3 fw-bold">
-                BCA Virtual account
-            </p>
-        
-            <p class="text-start mt-2 fs-5">
-                52798920857
-            </p>
-
-        </div>
-    </div> --}}
 
     
 

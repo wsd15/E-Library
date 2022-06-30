@@ -45,32 +45,18 @@
                 </nav>
             </div>
         @else
-            @if (Auth::user()->hasRole('user'))
                 <div id="navbar" class="">
                     <nav id="main-menu">
                         <ul>
                             <li><a href="#"></a></li>
                             <li><a href="#"></a></li>
                             <li><a href="#"></a></li>
+                            <li><a href="{{ url('cart') }}"> <i class="fa fa-shopping-cart"></i></a></li>
                             <li><a href="/profile">{{ Auth::user()->name }}</a></li>
                             <li><a href="/logout">Logout</a></li>
                         </ul>
                     </nav>
                 </div>
-            @elseif (Auth::user()->hasRole('pustakawan'))
-                <div id="navbar" class="">
-                    <nav id="main-menu">
-                        <ul>
-                            <li><a href="#"></a></li>
-                            <li><a href="#"></a></li>
-                            <li><a href="#"></a></li>
-                            <li><a href="/profile">{{ Auth::user()->name }}</a></li>
-                            <li><a href="/logout">Logout</a></li>
-                        </ul>
-                    </nav>
-                </div>
-            @endif
-
         @endif
 
 
@@ -175,19 +161,19 @@
                                     src="{{ asset('images/user.svg') }}" alt=""
                                     style="height: 40px; width: 40px; margin-right: 5%; margin-bottom: 10%; margin-top: 10%">Profile
                             </a></li>
-                        <li class="border-bottom border-dark"><a href="#"><img class="display_image"
+                        <li class="border-bottom border-dark"><a href="{{ url('register') }}"><img class="display_image"
                                     src="{{ asset('images/book-open.svg') }}" alt=""
                                     style="height: 40px; width: 40px; margin-right: 5%; margin-bottom: 10%; margin-top: 10%">Buku
                                 Pinjaman</a></li>
-                        <li class="border-bottom border-dark"><a href="#"><img class="display_image"
+                        <li class="border-bottom border-dark"><a href="{{ url('register') }}"><img class="display_image"
                                     src="{{ asset('images/school.svg') }}" alt=""
                                     style="height: 40px; width: 40px; margin-right: 5%; margin-bottom: 10%; margin-top: 10%">Profile
                                 Perpustakaan</a></li>
-                        <li class="border-bottom border-dark"><a href="#"><img class="display_image"
+                        <li class="border-bottom border-dark"><a href="{{ url('register') }}"><img class="display_image"
                                     src="{{ asset('images/list-check.svg') }}" alt=""
                                     style="height: 40px; width: 40px; margin-right: 5%; margin-bottom: 10%; margin-top: 10%">Buku
                                 Terpinjam</a></li>
-                        <li><a href="#"><img class="display_image" src="{{ asset('images/add.svg') }}" alt=""
+                        <li><a href="{{ url('register') }}"><img class="display_image" src="{{ asset('images/add.svg') }}" alt=""
                                     style="height: 40px; width: 40px; margin-right: 5%; margin-bottom: 10%; margin-top: 10%">Buku
                                 Perpustakaan Guest</a></li>
                     </ul>
@@ -196,35 +182,52 @@
                         <ul>
                             <li class="border-bottom border-dark"><a href="{{ url('profile') }}"><img class="display_image"
                                         src="{{ asset('images/user.svg') }}" alt=""
-                                        style="height: 40px; width: 40px; margin-right: 5%; margin-bottom: 10%; margin-top: 10%">Profile
-                                </a></li>
-                            <li class="border-bottom border-dark"><a href="#"><img class="display_image"
+                                        style="height: 40px; width: 40px; margin-right: 5%; margin-bottom: 5%; margin-top: 5%">Profile
+                                </a>
+                            </li>
+                                <li class="border-bottom border-dark"><a href="{{ url('wishlist') }}"><img class="display_image"
+                                    src=" {{ asset('images/heart.svg') }}" alt=""
+                                    style="height: 40px; width: 40px; margin-right: 5%; margin-bottom: 5%; margin-top: 5%">Wishlist</a>
+                                </li>
+                            <li class="border-bottom border-dark"><a href="{{ url('buku-pinjaman') }}"><img class="display_image"
                                         src=" {{ asset('images/book-open.svg') }}" alt=""
-                                        style="height: 40px; width: 40px; margin-right: 5%; margin-bottom: 10%; margin-top: 10%">Buku
-                                    Pinjaman</a></li>
-                            <li class="border-bottom border-dark"><a href="#"><img class="display_image"
-                                        src=" {{ asset('images/school.svg') }}" alt=""
-                                        style="height: 40px; width: 40px; margin-right: 5%; margin-bottom: 10%; margin-top: 10%">Profile
-                                    Perpustakaan</a></li>
-                            <li class="border-bottom border-dark"><a href="#"><img class="display_image"
+                                        style="height: 40px; width: 40px; margin-right: 5%; margin-bottom: 5%; margin-top: 5%">Buku
+                                    Pinjaman
+                                </a>
+                            </li>
+                            <li class="border-bottom border-dark"><a href="{{ url('mendaftar-pustakawan') }}"><img class="display_image"
+                                        src=" {{ asset('images/list-check.svg') }}" alt=""
+                                        style="height: 40px; width: 40px; margin-right: 5%;margin-bottom: 5%; margin-top: 5%">Mendaftar
+                                    Perpustakaan
+                                </a>
+                            </li>
+                            {{-- <li class="border-bottom border-dark"><a href="#"><img class="display_image"
                                         src=" {{ asset('images/list-check.svg') }}" alt=""
                                         style="height: 40px; width: 40px; margin-right: 5%; margin-bottom: 10%; margin-top: 10%">Buku
-                                    Terpinjam</a></li>
-                            <li><a href="#"><img class="display_image" src=" {{ asset('images/add.svg') }}" alt=""
+                                    Terpinjam</a></li> --}}
+                            {{-- <li><a href="#"><img class="display_image" src=" {{ asset('images/add.svg') }}" alt=""
                                         style="height: 40px; width: 40px; margin-right: 5%; margin-bottom: 10%; margin-top: 10%">Buku
-                                    Perpustakaan User</a></li>
+                                    Perpustakaan User</a></li> --}}
                         </ul>
 
                         @elseif (Auth::user()->hasRole('pustakawan'))
-                        <ul>
-                            <li class="border-bottom border-dark"><a href="{{ url('profile') }}"><img class="display_image"
-                                        src=" {{ asset('images/user.svg') }}" alt=""
-                                        style="height: 40px; width: 40px; margin-right: 5%; margin-bottom: 10%; margin-top: 10%">Profile
-                                </a></li>
-                            <li class="border-bottom border-dark"><a href="#"><img class="display_image"
+                                <ul>
+                                    <li class="border-bottom border-dark"><a href="{{ url('profile') }}"><img class="display_image"
+                                        src="{{ asset('images/user.svg') }}" alt=""
+                                        style="height: 40px; width: 40px; margin-right: 5%; margin-bottom: 5%; margin-top: 5%">Profile
+                                </a>
+                            </li>
+                                <li class="border-bottom border-dark"><a href="{{ url('wishlist') }}"><img class="display_image"
+                                    src=" {{ asset('images/heart.svg') }}" alt=""
+                                    style="height: 40px; width: 40px; margin-right: 5%; margin-bottom: 5%; margin-top: 5%">Wishlist</a>
+                                </li>
+                            <li class="border-bottom border-dark"><a href="{{ url('buku-pinjaman') }}"><img class="display_image"
                                         src=" {{ asset('images/book-open.svg') }}" alt=""
-                                        style="height: 40px; width: 40px; margin-right: 5%; margin-bottom: 10%; margin-top: 10%">Buku
-                                    Pinjaman</a></li>
+                                        style="height: 40px; width: 40px; margin-right: 5%; margin-bottom: 5%; margin-top: 5%">Buku
+                                    Pinjaman
+                                </a>
+                            </li>
+                 
                             <li class="border-bottom border-dark"><a href="#"><img class="display_image"
                                         src=" {{ asset('images/school.svg') }}" alt=""
                                         style="height: 40px; width: 40px; margin-right: 5%; margin-bottom: 10%; margin-top: 10%">Profile

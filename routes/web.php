@@ -4,6 +4,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\BooksController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CartDetailController;
+use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\WishlistController;
 use Illuminate\Support\Facades\Route;
 
@@ -95,8 +96,8 @@ Route::get('/pengembalian-buku', function () {
 Route::get('/profile', [UserController::class, 'index_user'])->name('profile');
 Route::post('/profile', [UserController::class, 'index_userupdated'])->name('user');
 
-Route::get('/mendaftar-pustakawan', [UserController::class, 'index_daftarpustakawan'])->name('user');
-
+Route::get('/mendaftar-pustakawan', [UserController::class, 'index_daftarpustakawan']);
+Route::post('/mendaftar-pustakawan',[UserController::class,'daftarperpus']);
 
 Route::get('/edit-buku/{id}', [BooksController::class,'editbukudetail']);
 Route::post('/edit-buku/{id}', [BooksController::class,'editbuku']);
@@ -115,13 +116,29 @@ Route::delete('/wishlist/{id}',[WishlistController::class,'destroy']);
 
 
 Route::resource('cartdet', CartDetailController::class)->only([
-    'store'
+    'destroy','store'
 ]);
 
 Route::resource('cart', CartController::class)->only([
     'index'
 ]);
 
+Route::resource('transaction', TransactionController::class)->only([
+    'store',
+]);
+
+// Route::post('/detail-buku/{id}',[CartDetailController::class,'store']);
 // Route::get('/cart',[CartController::class,'index']);
 
 Route::get('/pembayaran/{id}', [CartController::class,'detail']);
+Route::get('/pembayaran-peminjaman/{id}', [TransactionController::class,'payment']);
+
+Route::get('/status-pembayaran', function () {
+    return view('status-pembayaran');
+});
+
+Route::get('/buku-pinjaman', [TransactionController::class,'detail']);
+
+Route::get('/perpanjangan-durasi-peminjaman/{id}',[TransactionController::class,'perpanjangan']);
+
+

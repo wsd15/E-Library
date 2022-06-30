@@ -14,7 +14,7 @@ class CreateCartDetailsTable extends Migration
     public function up()
     {
         Schema::create('cart_details', function (Blueprint $table) {
-            $table->increments('id');
+            $table->id();
             $table->unsignedBigInteger('produk_id')->nullable();
             $table->unsignedBigInteger('cart_id')->nullable();
             $table->double('qty', 12, 2)->default(0);

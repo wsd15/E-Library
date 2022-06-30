@@ -17,6 +17,7 @@ class Books extends Model
         'tahun_terbit',
         'stok',
         'deskripsi',
+        'deposit',
         'file_path'
 
     ];

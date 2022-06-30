@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Cart;
 use App\Models\CartDetail;
 use App\Models\Books;
+use App\Models\Perpustakaan;
 use Illuminate\Http\Request;
 
 class CartDetailController extends Controller
@@ -41,19 +42,26 @@ class CartDetailController extends Controller
             'produk_id' => 'required',
         ]);
         $itemuser = $request->user();
+       
         
-        $itemproduk = Books::findOrFail($request->produk_id);
+        $itemproduk = Books::Where('id',$request->produk_id)->where('stok','!=','0')->first();
+        $perpus = Perpustakaan::findorfail($itemproduk->perpustakaan_id);
+       
         // cek dulu apakah sudah ada shopping cart untuk user yang sedang login
         $cart = Cart::where('user_id', $itemuser->id)
+                    ->where('perpustakaan_id',$perpus->id)
                     ->where('status_cart', 'cart')
                     ->first();
-        
+    
+      
+
         if ($cart) {
             $itemcart = $cart;
         } else {
             $no_invoice = Cart::where('user_id', $itemuser->id)->count();
             //nyari jumlah cart berdasarkan user yang sedang login untuk dibuat no invoice
             $inputancart['user_id'] = $itemuser->id;
+            $inputancart['perpustakaan_id'] = $perpus->id;
             $inputancart['no_invoice'] = 'INV '.str_pad(($no_invoice + 1),'3', '0', STR_PAD_LEFT);
             $inputancart['status_cart'] = 'cart';
             $inputancart['status_pembayaran'] = 'belum';
@@ -65,22 +73,25 @@ class CartDetailController extends Controller
                                 ->where('produk_id', $itemproduk->id)
                                 ->first();
         $qty = 1;// diisi 1, karena kita set ordernya 1
-        $harga = $itemproduk->harga;//ambil harga produk
+        $harga = $itemproduk->deposit;//ambil harga produk
         //$diskon = $itemproduk->promo != null ? $itemproduk->promo->diskon_nominal: 0;
         $subtotal = ($qty * $harga);
         // diskon diambil kalo produk itu ada promo, cek materi sebelumnya
         if ($cekdetail) {
             // update detail di table cart_detail
-            $cekdetail->updatedetail($cekdetail, $qty, $harga);
+            // $cekdetail->updatedetail($cekdetail, $qty, $harga);
             // update subtotal dan total di table cart
-            $cekdetail->cart->updatetotal($cekdetail->cart, $subtotal);
+            // $cekdetail->cart->updatetotal($cekdetail->cart, $subtotal);
         } else {
+        // $itemproduk->stok = $itemproduk->stok-1;
+        // $itemproduk->save(); kodingan penting
+
             $hargapalsu =1;
             $inputan = $request->all();
             $inputan['cart_id'] = $itemcart->id;
             $inputan['produk_id'] = $itemproduk->id;
             $inputan['qty'] = $qty;
-            $inputan['harga'] = $hargapalsu;
+            $inputan['harga'] = $harga;
             // $inputan['diskon'] = $diskon;
             $inputan['subtotal'] = ($harga * $qty);
             $itemdetail = CartDetail::create($inputan);
@@ -134,6 +145,7 @@ class CartDetailController extends Controller
     public function destroy($id)
     {
         $itemdetail = CartDetail::findOrFail($id);
+      
         // update total cart dulu
         $itemdetail->cart->updatetotal($itemdetail->cart, '-'.$itemdetail->subtotal);
         if ($itemdetail->delete()) {
@@ -142,4 +154,12 @@ class CartDetailController extends Controller
             return back()->with('error', 'Item gagal dihapus');
         }
     }
+        
+    // public function destroy($id){
+    //     $itemdetail= CartDetail::findOrFail($id);
+    //     dd($itemdetail);
+    //     $itemdetail->delete();
+
+    //     return back();
+    // }
 }

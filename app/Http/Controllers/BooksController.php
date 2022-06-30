@@ -9,6 +9,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Validator;
+
+
 class BooksController extends Controller
 {
     public function index(Request $request){
@@ -89,6 +92,7 @@ class BooksController extends Controller
             'file_path'=>$filename,
             'tahun_terbit'=>$request->input('tahun_terbit'),
             'stok'=>$request->input('stok'),
+            'deposit'=>$request->input('deposit'),
             'deskripsi'=>$request->input('deskripsi'),
         ]);
 
@@ -99,8 +103,7 @@ class BooksController extends Controller
         $id2 = Perpustakaan::where('user_id',Auth::user()->id)->select('id')->get()->pluck('id');
     // dd($id2);
         $data =  Books::where('perpustakaan_id','=',$id2)->paginate(6);
-        
-dd($data);
+
         return view('daftar-buku-perpustakaan',compact('data'));
     }
 
@@ -112,6 +115,19 @@ dd($data);
     }
 
     public function editbuku(Request $request,$id){
+
+        $validated=  $request->validate([
+            'nama_buku' => 'required|max:255',
+            'penerbit' => 'required',
+            'isbn'=> 'integer',
+            'tahun_terbit' => 'required',
+            'penulis' => 'required',
+            'stok' => 'required|integer',
+            'deskripsi' => 'required|max:255',
+
+        ]);
+
+     
         
         $buku = Books::find($id);
 
@@ -124,7 +140,7 @@ dd($data);
                 unlink($imagePath);
             }
             $filename = 'foto-buku-' . time() . '.' . $img_ext;
-            $path = $request->file('file_path')->move(public_path('/images/buku'), $filename);//image save public folder
+            $request->file('file_path')->move(public_path('/images/buku'), $filename);//image save public folder
             $buku->file_path=$filename;
         }
         $buku->nama_buku=$request->input('nama_buku');

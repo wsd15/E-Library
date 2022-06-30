@@ -88,12 +88,13 @@ class WishlistController extends Controller
                                     ->first();
         if ($validasiwishlist) {
             $validasiwishlist->delete();//kalo udah ada, berarti wishlist dihapus
-            return back()->with('success', 'Wishlist berhasil dihapus');
+            return redirect('/detail-buku/'.$request->id);
         } else {
             $inputan = $request->all();
             $inputan['user_id'] = $itemuser->id;
             $itemwishlist = Wishlist::create($inputan);
-            return back()->with('success', 'Produk berhasil ditambahkan ke wishlist');
+            // return back()->with('success', 'Produk berhasil ditambahkan ke wishlist');
+            return redirect('wishlist');
         }
     }
 

@@ -3,16 +3,52 @@
 @section('content')
     <html>
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <body style="">
-        <form>
-            <input type="button" value="Go back!" onclick="history.back()">
-        </form>
+    <body style="">       
+           
+     {{-- <div class="mt-3" style="margin-left: 3rem"><a class="" href="{{ url('hasil-cari') }}">Go Back</a></div> --}}
 
-        <div class="container rounded bg-white mt-5 mb-5">
+        <div class="container rounded bg-white mt-3 mb-5">
+            
             <div class="row">
                 <div class="col-md-3">
                   
-                    <img id="bookPic" class="img-fluid" style="width:20vw " src="{{asset('/images/buku/'.$bookdet[0]->file_path)}}">
+                    <img id="bookPic" class="img-fluid desktop" style="width:20vw " src="{{asset('/images/buku/'.$bookdet[0]->file_path)}}">
+                        
+                    <div class="row">
+                        <div class="col mobile">
+                                <img id="bookPic" class="img-fluid " style="width:50vw; margin-right: -10%;" src="{{asset('/images/buku/'.$bookdet[0]->file_path)}}">
+                                <p> Harga Deposit : <br> Rp {{ $bookdet[0]->deposit }} </p>
+                        </div> 
+                        <div class="col mobile">
+                            
+                            <form action="/detail-buku/{{ $bookdet[0]->id }}" method="post" >
+                                @csrf
+                                <input type="hidden" name="produk_id" value={{ $bookdet[0]->id }}>
+                                <button type="submit" class="" style="margin-bottom: 3vw;margin-left: 6%;">
+                                @if(isset($itemwishlist)&& $itemwishlist)
+                                <i class="fa fa-heart fa-2x" style="margin-left: 50%"></i> 
+                                @else
+                                <i class="fa fa-heart-o fa-2x" style=""></i>
+                                @endif
+                                </button>
+                            </form>
+
+                            <div class="" style="margin-top:3vw">
+                       
+                        
+                                <form action="{{ route('cartdet.store') }}" method="POST" >
+                                    @csrf
+                                    <input type="hidden" name="produk_id" value={{$bookdet[0]->id}}>
+                                    <x-button class="d-flex justify-content-center" style=" margin-left: 2%; width: 170px; font-size: 15px; ">
+                                         {{ __('Add To Cart') }} <i class="ml-1 fa fa-shopping-cart"> </i>  
+                                    </x-button>
+                                    </button>
+                                </form>
+        
+                            </div>
+    
+                        </div> 
+                    </div>
                 </div>
                 
                 <div class="col-md-7">
@@ -26,7 +62,7 @@
                         <p class="fw-bold" style="font-size: 30px">{{ $bookdet[0]->bukuperpus->nama_perpustakaan }}</p>
                         <p>Jakarta Pusat</p>
                         <a href="https://goo.gl/maps/kv4NAnpTaNK7CRRn8"><p style="color: blue">Jalan Jendral Sudirman</p></a>
-                        @foreach(explode('+', $bookdet[0]->bukuperpus->nama_perpustakaan) as $fields) 
+                        {{-- @foreach(explode('+', $bookdet[0]->bukuperpus->nama_perpustakaan) as $fields) 
                         <div class="mapouter">
                             
                 
@@ -41,10 +77,12 @@
                             {overflow:hidden;background:none!important;height:500px;width:600px;}</style>
                             </div>
                         </div>
-                        @endforeach
+                        @endforeach --}}
                     </div>
                 </div>
-                <div class="col-md-2 ">
+
+
+                <div class="col-md-2 desktop">
                     <link rel="stylesheet"
                         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
                     <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
@@ -59,7 +97,7 @@
                     <form action="/detail-buku/{{ $bookdet[0]->id }}" method="post">
                         @csrf
                         <input type="hidden" name="produk_id" value={{ $bookdet[0]->id }}>
-                        <button type="submit" class="">
+                        <button type="submit" class="" style="margin-bottom: 3vw;margin-right: 50%">
                         @if(isset($itemwishlist)&& $itemwishlist)
                         <i class="fa fa-heart fa-2x"></i> 
                         @else
@@ -67,16 +105,17 @@
                         @endif
                         </button>
                     </form>
-                    <div class="" style="margin-top:9vw">
-                        <x-button class="mt-5" style="width: 170px; font-size: 15px">
-                            {{ __('Add To Cart') }}
-                        </x-button>
+                   <p> Harga Deposit : <br> Rp {{ $bookdet[0]->deposit }} </p>
+                    <div class="" style="margin-top:3vw">
+                       
+                        
                         
                         <form action="{{ route('cartdet.store') }}" method="POST" >
                             @csrf
                             <input type="hidden" name="produk_id" value={{$bookdet[0]->id}}>
-                            <button class="btn btn-block btn-primary" type="submit">
-                            <i class="fa fa-shopping-cart"></i> Tambahkan Ke Keranjang
+                            <x-button class="d-flex justify-content-center" style=" margin-left: 2%; width: 170px; font-size: 15px; ">
+                                 {{ __('Add To Cart') }} <i class="ml-1 fa fa-shopping-cart"> </i>  
+                            </x-button>
                             </button>
                         </form>
 

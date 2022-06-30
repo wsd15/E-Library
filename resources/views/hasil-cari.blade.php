@@ -14,7 +14,7 @@
                         <input class="form-control mr-sm-2" name="search" type="search" placeholder="Search Judul Buku/Penerbit/Penulis/ISBN/Lokasi Perpustakaan (Format ISBN 1-1234-1234-2)" aria-label="Search">
                     </div>
                     <div class="col-1">
-                        <button class="btn btn-outline-secondary mr-sm-2" type="submit">Search</button>
+                        <button class="btn btn-outline-secondary mr-sm-2" type="submit" style="color : black">Search</button>
                     </div>
                 </div>    
               </form>

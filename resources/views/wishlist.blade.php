@@ -10,7 +10,7 @@
       
         @if($itemwishlist->isEmpty())
             <div class="alert alert-warning text-center">
-                <h1>Kamu belum menambahkan buku apapun ke dalam keranjang</h1>
+                <h1>Kamu belum menambahkan buku apapun ke dalam wishlist</h1>
             </div>    
         @endif 
         @foreach ($itemwishlist as $key=> $wishlist)
@@ -25,7 +25,7 @@
                     </div>
                     <div class="col-md-8">
                         <h6 class="media-title font-weight-semibold text-start" style="font-size:2vw">
-                            <b href="#" data-abc="true">{{ $wishlist->produk->nama_buku}}</b>
+                         <a href="/detail-buku/{{$wishlist->produk->id  }}">   <b href="#" data-abc="true">{{ $wishlist->produk->nama_buku}}</b> </a>
                         </h6>
 
                         <h5 class="text-start">
@@ -34,7 +34,7 @@
 
 
                         <h5 class="text-start" style="font-size:2vw">
-                            <b>{{ $b[$loop->index]->bukuperpus->nama_perpustakaan }}</b>
+                        <a href="">href ke perpus</a>    <b>{{ $b[$loop->index]->bukuperpus->nama_perpustakaan }}</b>
                               
                             
                         </h5>

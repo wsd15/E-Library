@@ -4,10 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Models\Cart;
 use App\Models\Books;
+use App\Models\CartDetail;
 use App\Models\Perpustakaan;
+use App\Models\Transaction;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
+
 
 class CartController extends Controller
 {
@@ -23,22 +27,60 @@ class CartController extends Controller
         // dd($itemuser);
         $itemcart = Cart::where('user_id', $itemuser->id)
                         ->where('status_cart', 'cart')
-                        ->first();
-
+                        ->get();
+                        // dd($itemcart);
+                        
                 //   dd($b);
                 //   dd($book);
                   $data = array('title' => 'Shopping Cart',
-                  'itemcart' => $itemcart );
+                  'itemcart' => $itemcart);
         return view('cart', $data);
+     
     }
 
-    public function detail($id){
+    public function detail(Request $request,$id){
+        $transactionuser = $request->user();
+        $ids=$id;
 
         $itemcart = Cart::where('user_id',  $itemuser = Auth::user()->id)
-                        ->where('status_cart', 'cart')
+                        
+                        ->where('id',$ids)
                         ->first();
+        $checkcart = Cart::where('user_id',  $itemuser = Auth::user()->id)
+                            ->where('status_cart','sudah')
+                            ->where('id',$ids)
+                            ->first();
+                       
+
+      $transactioncheck = Transaction::where('user_id',Auth::user()->id)
+                            ->where('status_pembayaran','belum dibayar')
+                            ->where('cart_id',$ids)
+                            ->first();
+
         
-        $ids =$id;
+                            if($checkcart){
+
+                            }else{
+
+                           
+                                $itemcart->status_cart = 'sudah';
+                                $itemcart->save();
+                                $transaction = $request->all();
+       
+                                $transaction['user_id'] = $transactionuser->id;
+                                $transaction['cart_id'] = $ids;
+                                $transaction['perpustakaan_id'] = $itemcart->perpustakaan_id;
+                                $transaction['total_deposito'] = $itemcart->total;
+                                $transaction['status_pembayaran'] = 'belum dibayar';
+                                $transaction['no_invoice'] = $itemcart->no_invoice;
+                                $transaction['counter']= 0;
+                                $transaction['tanggal_pengembalian'] = Carbon::now()->addDays(14);
+                                $create = Transaction::create($transaction);
+                            }
+                           
+                        
+        
+       
             
         return view('pembayaran',compact('itemcart','ids'));
     }

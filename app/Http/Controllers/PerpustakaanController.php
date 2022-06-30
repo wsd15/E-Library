@@ -8,6 +8,6 @@ class PerpustakaanController extends Controller
 {
     public function index(){
 
-        return view('hasil-cari')
+        return view('hasil-cari');
     }
 }

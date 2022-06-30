@@ -10,6 +10,7 @@ class Cart extends Model
     protected $table = 'carts';
     protected $fillable = [
         'user_id',
+        'perpustakaan_id',
         'no_invoice',
         'status_cart',
         'status_pembayaran',
@@ -20,6 +21,10 @@ class Cart extends Model
 
     public function user() {
         return $this->belongsTo(User::class,'user_id');
+    }
+
+    public function perpustakaancart() {
+        return $this->belongsTo(Perpustakaan::class,'perpustakaan_id');
     }
 
     public function detail() {

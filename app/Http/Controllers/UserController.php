@@ -16,7 +16,7 @@ class UserController extends Controller
         return view('/profile',compact('userId'));
     }
 
-    public function index_daftarpustakawan(){
+    public function index_daftarpustakawan(Request $request){
         $id = Auth::user()->id;
         $userId = User::find($id);
         return view('/mendaftar-pustakawan',compact('userId'));
@@ -45,7 +45,7 @@ class UserController extends Controller
             $path = $request->file('file_path')->move(public_path('/images/profile'), $filename);//image save public folder
             $userId->file_path=$filename;
         }
-
+      
         $userId->phonenumber=$request->input('phonenumber');
         $userId->name=$request->input('name');
         $userId->last_name=$request->input('last_name');
@@ -57,4 +57,35 @@ class UserController extends Controller
 
         return redirect('/profile');
     }
+
+    public function daftarperpus(Request $request){
+        $id = Auth::user()->id;
+        $userId = User::find($id);
+
+        if ($userId->file_path ='Null') {
+            
+        }else{
+            $imagePath = public_path('/images/profile/'.$userId->file_path);
+            if(File::exists($imagePath)){
+                unlink($imagePath);
+            }
+        }
+
+
+
+        $userId->phonenumber=$request->input('phonenumber');
+        $userId->name=$request->input('name');
+        $userId->last_name=$request->input('last_name');
+        $userId->email=$request->input('email');
+        $userId->birthday=$request->input('birthday');
+        $userId->save();
+
+
+
+        
+
+
+        return redirect('/mendaftar-pustakawan');
+    }
+
 }

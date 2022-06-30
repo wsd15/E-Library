@@ -150,7 +150,22 @@ body {
     #hamburger-menu {
         display: inline;
     }
+
+    .desktop{
+        display: none !important;
+    }
+    .mobile{
+        display: block !important;
+    }
+
 }
+    .mobile{
+        display: none;
+    }
+
+    .desktop{
+        display: block;
+    }
 
 /* The sticky class is added to the navbar with JS when it reaches its scroll position */
 

@@ -42,7 +42,7 @@
                 <div class="row mt-5 row-cols-3">
                     @foreach ($data as $buku)
                     <div class="col mt-5 d-flex align-items-stretch justify-content-center">
-                        <div class="card" style="width: 17rem;">
+                        <div class="card mb-5" style="width: 17rem;">
                             <img class="mt-4" src="{{asset('/images/buku/'.$buku->file_path)}}"
                                 style="width:12vw;height: 16vw;align-self: center" class="card-img-top" alt="...">
                             <div class="card-body d-flex flex-column">
