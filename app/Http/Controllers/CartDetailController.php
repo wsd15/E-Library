@@ -149,7 +149,7 @@ class CartDetailController extends Controller
         // update total cart dulu
         $itemdetail->cart->updatetotal($itemdetail->cart, '-'.$itemdetail->subtotal);
         if ($itemdetail->delete()) {
-            return back()->with('success', 'Item berhasil dihapus');
+            return back()->with('alert', 'Item berhasil dihapus');
         } else {
             return back()->with('error', 'Item gagal dihapus');
         }

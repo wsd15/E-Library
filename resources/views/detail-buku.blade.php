@@ -59,7 +59,7 @@
                     <p>Stok         : {{ $bookdet[0]->stok }}</p>
                     <p>ISBN         : {{ $bookdet[0]->isbn }}</p>
                     <div style="padding-top:2vw">
-                        <p class="fw-bold" style="font-size: 30px">{{ $bookdet[0]->bukuperpus->nama_perpustakaan }}</p>
+                        <p class="fw-bold" style="font-size: 30px"><u>{{ $bookdet[0]->bukuperpus->nama_perpustakaan }}</u> </p>
                         <p>Jakarta Pusat</p>
                         <a href="https://goo.gl/maps/kv4NAnpTaNK7CRRn8"><p style="color: blue">Jalan Jendral Sudirman</p></a>
                         {{-- @foreach(explode('+', $bookdet[0]->bukuperpus->nama_perpustakaan) as $fields) 

@@ -22,12 +22,12 @@ class CreatePerpustakaansTable extends Migration
                   ->onDelete('set null');
             $table->string('nama_perpustakaan');
             $table->string('alamat_perpustakaan');
-            $table->string('Kota');
-            $table->string('phonenumber_perpustakaan');
+            $table->string('Kota')->nullable();
+            $table->string('phonenumber_perpustakaan')->nullable();
             $table->string('email_perpustakaan')->unique();
-            $table->string('link_google_maps');
-            $table->string('status_donasi');
-            $table->string('deskripsi_perpustakaan');
+            $table->string('link_google_maps')->nullable();
+            $table->string('status_donasi')->nullable();
+            $table->string('deskripsi_perpustakaan')->nullable();
             $table->string('foto_perpustakaan')->nullable();
             $table->string('dokumen_perpustakaan')->nullable();
             // $table->string('phonenumber_perpustakaan'); 

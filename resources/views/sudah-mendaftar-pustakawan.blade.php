@@ -219,12 +219,12 @@
                         <h1 class="text-right mb-3" style="font-size:3vw;text-align: center">Profile Perpustakaan</h1>
                     </div>
                     
-                    @if ($userId->foto_perpustakaan)
+                    @if ($perpustakaan->foto_perpustakaan)
                     {{-- <div class="profile-pic-wrapper"> --}}
                         <div class="profile-pic-wrapper">
                             <div class="pic-holder border border-dark" style="border-radius: 0px;">
                                 <!-- uploaded pic shown here -->
-                                <img id="profilePic" class="pic" src="{{asset('/images/fotoperpus/'.$userId->foto_perpustakaan)}}"
+                                <img id="profilePic" class="pic" src="{{asset('/images/fotoperpus/'.$perpustakaan->foto_perpustakaan)}}"
                                     alt="">
                                 <Input class="uploadProfileInput" type="file" name="newProfilePhoto3" id="newProfilePhoto3"
                                     accept="image/*" style="opacity: 0" multiple />
@@ -290,16 +290,11 @@
 
                 <div class="col-md-6"><label class="labels ">Nama Perpustakaan</label>
                     
-                        <x-input type="text" class="form-control @error('nama_perpustakaan')  @enderror"  name="nama_perpustakaan" placeholder="Nama Perpustakaan" value="" />
-                        @error('nama_perpustakaan')
-                                <div class="alert alert-danger">{{ $message }}</div>
-                        @enderror
+                        <x-input type="text" class="form-control"  name="nama_perpustakaan" placeholder="Nama Perpustakaan" value="{{ $perpustakaan->nama_perpustakaan }}" />
+                       
                 </div>
                 <div class="col-md-6"><label class="labels">Nomor Telepon Perpustakaan</label>
-                    <x-input type="text" class="form-control @error('phonenumber_perpustakaan')  @enderror" name="phonenumber_perpustakaan"  value="" placeholder="Nomor Telepon Perpustakaan" />
-                    @error('phonenumber_perpustakaan')
-                    <div class="alert alert-danger">{{ $message }}</div>
-                    @enderror
+                    <x-input type="text" class="form-control" name="phonenumber_perpustakaan"  value="{{ $perpustakaan->phonenumber_perpustakaan }}" placeholder="Nomor Telepon Perpustakaan" />
                 </div>
             </div>
 
@@ -307,53 +302,41 @@
 
 
                 <div class="col-md-6"><label class="labels mt-2">Email Perpustakaan</label>
-                    <x-input type="text" class="form-control @error('email_perpustakaan')  @enderror" name="email_perpustakaan" placeholder="Email Perpustakaan" value="" />
-                    @error('email_perpustakaan')
-                    <div class="alert alert-danger">{{ $message }}</div>
-                    @enderror
+                    <x-input type="text" class="form-control" name="email_perpustakaan" placeholder="Email Perpustakaan" value="{{ $perpustakaan->email_perpustakaan }}" />
                 </div>
                 <div class="col-md-6"><label class="labels mt-2">Alamat Perpustakaan</label>
-                    <x-input type="text" class="form-control @error('alamat_perpustakaan')  @enderror" name="alamat_perpustakaan" placeholder="Alamat Perpustakaan" value="" />
-                    @error('alamat_perpustakaan')
-                    <div class="alert alert-danger">{{ $message }}</div>
-                    @enderror
+                    <x-input type="text" class="form-control" name="alamat_perpustakaan" placeholder="Alamat Perpustakaan" value="{{ $perpustakaan->alamat_perpustakaan }}" />
                 </div>
 
             </div>
 
             <div class="row mt-2">
                 <div class="col-md-6"><label class="labels mt-2">Kota</label>
-                    <x-input type="text" class="form-control @error('Kota')  @enderror" placeholder="Kota" value="" name="Kota" />
-                    @error('Kota')
-                    <div class="alert alert-danger">{{ $message }}</div>
-                    @enderror
+                    <x-input type="text" class="form-control" placeholder="Kota" value="{{ $perpustakaan->Kota }}" name="Kota" />
                 </div>
                 <div class="col-md-6"><label class="labels mt-2">Link Google Maps</label>
-                    <x-input type="text" class="form-control @error('link_google_maps')  @enderror" placeholder="ex : https://goo.gl/maps/*****" value="" name="link_google_maps" />
-                    @error('link_google_maps')
-                    <div class="alert alert-danger">{{ $message }}</div>
-                    @enderror
+                    <x-input type="text" class="form-control" placeholder="ex : https://goo.gl/maps/*****" value="{{ $perpustakaan->link_google_maps }}" nama="link_google_maps" />
                 </div>
             </div>
 
             <div class="row mt-2">
 
                 <div class="col-md-6"><label class="labels mt-2">Menerima Donasi Buku : </label>
+                    @if ( $perpustakaan->status_donasi==="Ya")
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input form-control @error('status_donasi')  @enderror" type="radio" name="status_donasi" id="inlineRadio1"
-                            value="Ya">
-                            
+                        <input class="form-check-input" type="radio" checked  name="status_donasi" id="inlineRadio1"
+                        value="Ya">
                         <label class="form-check-label" for="inlineRadio1">Ya</label>
                     </div>
+                    @else 
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input form-control @error('status_donasi')  @enderror" type="radio" name="status_donasi" id="inlineRadio2"
-                            value="Tidak">
-                        <label class="form-check-label" for="inlineRadio2">Tidak</label>
+                        <input class="form-check-input" type="radio" checked  name="status_donasi" id="inlineRadio1"
+                        value="Tidak">
+                        <label class="form-check-label" for="inlineRadio1">Tidak</label>
                     </div>
-
-                    @error('status_donasi')
-                            <div class="alert alert-danger">{{ $message }}</div>
-                    @enderror
+                    @endif
+                    
+                    
                 </div>
 
             </div>
@@ -361,10 +344,9 @@
             <div class="row mt-2">
 
                 <div class="col-md-12 mt-4"><label class="labels">Deskripsi Perpustakaan</label>
-                    <textarea class="form-control rounded-md border-dark " name="deskripsi_perpustakaan"
-                        placeholder="Masukkan Deskripsi Perpustakaan" id="exampleFormControlTextarea1"
-                        rows="5"></textarea>
-                       
+                    <textarea class="form-control rounded-md border-dark" name="deskripsi_perpustakaan"
+                        placeholder="Masukkan Deskripsi Perpustakaan" id="exampleFormControlTextarea1" 
+                        rows="5">{{ $perpustakaan->deskripsi_perpustakaan }}</textarea>
                 </div>
 
             </div>
@@ -397,7 +379,25 @@
 
 
     <div class="mt-5 text-center">
-        <x-button class="">
+
+        <div class="row">
+            <div class="col-4">
+
+            </div>
+            <div class="col-4">
+                <div class="alert alert-warning text-center">
+                    <h1 class="mb-3"> Harap Menunggu Verifikasi</h1>
+                </div> 
+            </div>
+            <div class="col-4">
+
+            </div>
+
+        </div>
+          
+        
+
+        <x-button class="" disabled>
             Daftar
         </x-button>
     </div>

@@ -14,7 +14,13 @@ class Perpustakaan extends Model
         'user_id',
         'nama_perpustakaan',
         'email_perpustakaan',
-        'alamat_perpustakaan'
+        'alamat_perpustakaan',
+        'Kota',
+        'phonenumber_perpustakaan',
+        'link_google_maps',
+        'status_donasi',
+        'foto_perpustakaan',
+        'deskripsi_perpustakaan'
 
     ];
 
