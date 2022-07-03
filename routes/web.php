@@ -4,6 +4,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\BooksController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CartDetailController;
+use App\Http\Controllers\PerpustakaanController;
 use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\WishlistController;
 use Illuminate\Support\Facades\Route;
@@ -27,23 +28,23 @@ Route::get('/', function () {
     return view('home');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+// Route::get('/dashboard', function () {
+//     return view('dashboard');
+// })->middleware(['auth'])->name('dashboard');
 
 require __DIR__.'/auth.php';
 
-Route::get('/home2', function () {
-    return view('home2');
-})->middleware(['auth']);
+// Route::get('/home2', function () {
+//     return view('home2');
+// })->middleware(['auth']);
 
 Route::get('/profile', function () {
     return view('profile');
 })->middleware(['auth']);
 
-Route::get('/welcome', function () {
-    return view('welcome');
-});
+// Route::get('/welcome', function () {
+//     return view('welcome');
+// });
 
 Route::get('/detail-buku', function () {
     return view('detail-buku');
@@ -141,4 +142,7 @@ Route::get('/buku-pinjaman', [TransactionController::class,'detail']);
 
 Route::get('/perpanjangan-durasi-peminjaman/{id}',[TransactionController::class,'perpanjangan']);
 
+Route::get('/list-validasi',[PerpustakaanController::class,'index']);
+Route::get('/validasi-perpustakaan/{id}', [PerpustakaanController::class,'detail']);
 
+Route::post('/validasi-perpustakaan/{id}', [PerpustakaanController::class,'validasi']);

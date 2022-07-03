@@ -52,9 +52,15 @@
                             </button>
                         </form>
                         <div class="" style="margin-top:0.3vw">
-                            <x-button class="mt-5" style="width: 170px; font-size: 15px">
-                                {{ __('Add To Cart') }}
-                            </x-button>
+                            <form action="{{ route('cartdet.store') }}" method="POST" >
+                                @csrf
+                                <input type="hidden" name="produk_id" value={{$wishlist->produk->id}}>
+                                <x-button class="d-flex justify-content-center" style=" margin-left: 2%; width: 170px; font-size: 15px; ">
+                                     {{ __('Add To Cart') }} <i class="ml-1 fa fa-shopping-cart"> </i>  
+                                </x-button>
+                                </button>
+                            </form>
+                            
                         </div>
                       
                     </div>

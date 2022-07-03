@@ -12,7 +12,7 @@
             <div class=" border-right">
                 <div class="p-3 py-5">
                     <div class="d-flex justify-content-between align-items-center mb-3">
-                        <h1 class="text-right mb-3" style="font-size:3vw">Mendaftar Pustakawan</h1>
+                        <h1 class="text-center mb-3" style="font-size:3vw">Mendaftar Pustakawan</h1>
                     </div>
 
                     @if ($userId->file_path)
@@ -96,9 +96,10 @@
                                 placeholder="{{ $userId->last_name }}" />
                         </div>
 
-                        <div class="col-md-6"><label class="labels mt-2">Email</label>
-                            <x-input type="text" class="form-control" name="email" placeholder="{{ $userId->email }}"
-                                value="{{ $userId->email }}" />
+                        <div class="col-md-6"><label class="labels mt-2" >Email</label>
+                            <x-input type="text" class="form-control" name="" placeholder="{{ $userId->email }}"
+                                 disabled/>
+                            <input hidden  type="text" value="{{ $userId->email }}" name="email" id="email" multiple>
                         </div>
                         <div class="col-md-6"><label class="labels mt-2">Nomor Ponsel</label>
                             <x-input type="text" class="form-control" name="phonenumber"
@@ -229,7 +230,7 @@
             <div class=" border-right">
                 <div class="p-3 py-5">
                     <div class="d-flex justify-content-between align-items-center mb-3">
-                        <h1 class="text-right mb-3" style="font-size:3vw;text-align: center">Profile Perpustakaan</h1>
+                        <h1 class="text-center mb-3" style="font-size:3vw;text-align: center">Profile Perpustakaan</h1>
                     </div>
                     
                     @if ($userId->foto_perpustakaan)
@@ -492,7 +493,7 @@
 
 
 
-    <div class="mt-5 text-center">
+    <div class="mt-5 mb-5 text-center">
         <x-button class="">
             Daftar
         </x-button>

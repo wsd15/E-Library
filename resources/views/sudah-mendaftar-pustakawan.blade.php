@@ -11,8 +11,8 @@
             @csrf
             <div class=" border-right">
                 <div class="p-3 py-5">
-                    <div class="d-flex justify-content-between align-items-center mb-3">
-                        <h1 class="text-right mb-3" style="font-size:3vw">Mendaftar Pustakawan</h1>
+                    <div class="d-flex justify-content-center align-items-center mb-3">
+                        <h1 class="text-center mb-3" style="font-size:3vw">Mendaftar Pustakawan</h1>
                     </div>
 
                     @if ($userId->file_path)
@@ -215,8 +215,8 @@
 
             <div class=" border-right">
                 <div class="p-3 py-5">
-                    <div class="d-flex justify-content-between align-items-center mb-3">
-                        <h1 class="text-right mb-3" style="font-size:3vw;text-align: center">Profile Perpustakaan</h1>
+                    <div class="d-flex justify-content-center align-items-center mb-3 ">
+                        <h1 class="text-center mb-3" style="font-size:3vw;">Profile Perpustakaan</h1>
                     </div>
                     
                     @if ($perpustakaan->foto_perpustakaan)
@@ -440,7 +440,7 @@
 
 
 
-    <div class="mt-5 text-center">
+    <div class="container mt-5 text-center">
 
         <div class="row">
             <div class="col-4">
@@ -459,7 +459,7 @@
           
         
 
-        <x-button class="" disabled>
+        <x-button class="mb-5" disabled>
             Daftar
         </x-button>
     </div>

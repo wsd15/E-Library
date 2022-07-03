@@ -91,7 +91,8 @@
                         <div class="row mt-4">
                             <div class="col-md-12">
                                 <label class="labels">Email</label>
-                                <x-input type="text" class="form-control" name="email" placeholder="{{ $userId->email }}" value="{{ $userId->email }}" />
+                                <x-input type="text" class="form-control" name="" placeholder="{{ $userId->email }}" value="{{ $userId->email }}" disabled/>
+                                    <input hidden  type="text" value="{{ $userId->email }}" name="email" id="email" multiple>
                             </div>
                             <div class="col-md-12 mt-4"><label class="labels">Phone Number</label>
                                 <x-input type="text" class="form-control" name="phonenumber" placeholder="enter phone number" value="{{ $userId->phonenumber }}" />
