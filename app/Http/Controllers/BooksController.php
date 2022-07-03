@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Stevebauman\Location\Facades\Location;
 use App\Models\Books;
 use App\Models\Perpustakaan;
 use App\Models\Wishlist;
@@ -10,24 +10,136 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Foundation\Auth\User;
+
+
 
 
 class BooksController extends Controller
 {
     public function index(Request $request){
+
+        // $user = User::find(Auth::user()->id);
+
+  
+        $clientIP = \Request::getClientIp(true);
+     
+        if($clientIP == '127.0.0.1'){
+            $locationData = \Location::get('https://'.$clientIP);//kalo local host , ngambil ip user
+        }else{
+            $locationData = \Location::get($clientIP);// kalo ga local host, ambil ip user
+        }
+
+        // dd($locationData2);
+        $userlat =$locationData->latitude;
+        $userlong=$locationData->longitude;
+
+        // dd($userlong);
+
+
+        // $record = $location->get(request()->getClientIp());
+        // 'https://'.$request->ip()
+
+        $buku = Books::all();
+        
+        // dd($buku[0]);
+        $itemslong = array();
+        foreach($buku as $key => $value)
+        {
+            $itemslong[]= $buku[$key]->bukuperpus->perpuslong ;
+        }
+        $itemslat = array();
+        foreach($buku as $key => $value)
+        {
+            $itemslat[]= $buku[$key]->bukuperpus->perpuslat ;
+        }
+
+        // foreach($buku  as $key => $value2){
+        //     echo $itemslong[$key];
+        // }
+        
+        // $perpus = Perpustakaan::all()->first();
+        // dd($perpus->perpuslat);
+
+
+        // dd($itemslat);
+
+        // $geo = DB::table("users")
+        //     ->select("users.id"
+        //         ,DB::raw("6371 * acos(cos(radians(" . $userlat . ")) 
+        //         * cos(radians(users.lat)) 
+        //         * cos(radians(users.lon) - radians(" . $userlong . ")) 
+        //         + sin(radians(" .$userlat. ")) 
+        //         * sin(radians(users.lat))) AS distance"))
+        // ->orderBy('distance', 'asc')
+        // ->get();
+   
+
+
+
+        // foreach($buku as $key => $items ){
+        //     echo $itemslong[$key];
+        // }
+
+
+        // foreach($buku as $key => $value)
+        // {
+        $geo = DB::table("perpustakaans")
+             ->select("perpustakaans.id"
+                ,DB::raw("6371 * acos(cos(radians(" . $userlat . ")) 
+                * cos(radians(perpustakaans.perpuslat)) 
+                * cos(radians(perpustakaans.perpuslong) - radians(" . $userlong . ")) 
+                + sin(radians(". $userlat . ")) 
+                * sin(radians(perpustakaans.perpuslat))) AS distance"))
+             ->join('books', 'books.perpustakaan_id', '=', 'perpustakaans.id')
+                ->orderBy('distance', 'asc')
+        ->paginate();
+        // dd($geo);
+    // }
+       
+       
         if ($request->has('search')) {
-            $data =  Books::where('nama_buku','LIKE','%'.$request->search.'%')
-            ->orWhere('penulis','LIKE','%'.$request->search.'%')
-            ->orWhere('penerbit','LIKE','%'.$request->search.'%')
-            ->orWhere('isbn','LIKE','%'.$request->search.'%')
-            ->paginate(6);
+            // $data =  Books::where('nama_buku','LIKE','%'.$request->search.'%')
+            // ->orWhere('penulis','LIKE','%'.$request->search.'%')
+            // ->orWhere('penerbit','LIKE','%'.$request->search.'%')
+            // ->orWhere('isbn','LIKE','%'.$request->search.'%')
+            // ->paginate(6);
+            // 
             // dd($data);
+            //perpuslong perpuslat
+            $data = DB::table("perpustakaans")
+            ->select("*"
+               ,DB::raw("6371 * acos(cos(radians(" . $userlat . ")) 
+               * cos(radians(perpustakaans.perpuslat)) 
+               * cos(radians(perpustakaans.perpuslong) - radians(" . $userlong . ")) 
+               + sin(radians(". $userlat . ")) 
+               * sin(radians(perpustakaans.perpuslat))) AS distance"))
+            ->join('books', 'books.perpustakaan_id', '=', 'perpustakaans.id')
+            ->where('nama_buku','LIKE','%'.$request->search.'%')
+            ->orWhere('penulis','LIKE','%'.$request->search.'%')->orWhere('penerbit','LIKE','%'.$request->search.'%')
+            ->orWhere('isbn','LIKE','%'.$request->search.'%')
+            ->orWhere('Kota','LIKE','%'.$request->search.'%')
+            ->orderBy('distance', 'asc')
+            ->paginate(6);
+           
+
         }else {
-            $data =  Books::paginate(6);
+            // $data =  Books::paginate(6);
+            $data = DB::table("perpustakaans")
+            ->select("*"
+               ,DB::raw("6371 * acos(cos(radians(" . $userlat . ")) 
+               * cos(radians(perpustakaans.perpuslat)) 
+               * cos(radians(perpustakaans.perpuslong) - radians(" . $userlong . ")) 
+               + sin(radians(". $userlat . ")) 
+               * sin(radians(perpustakaans.perpuslat))) AS distance"))
+            ->join('books', 'books.perpustakaan_id', '=', 'perpustakaans.id')
+            ->orderBy('distance', 'asc')
+            ->paginate(6);
+    //    dd($data);
         }
         
         // dd($data);
-        return view('hasil-cari',compact('data'));
+        return view('hasil-cari',compact('data','itemslong','itemslat'));
     }
 
 

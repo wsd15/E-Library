@@ -20,7 +20,11 @@ class Perpustakaan extends Model
         'link_google_maps',
         'status_donasi',
         'foto_perpustakaan',
-        'deskripsi_perpustakaan'
+        'dokumen_perpustakaan',
+        'deskripsi_perpustakaan',
+        'perpuslat',
+        'perpuslong',
+        'status_validasi'
 
     ];
 

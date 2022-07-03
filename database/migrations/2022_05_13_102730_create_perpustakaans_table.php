@@ -30,6 +30,9 @@ class CreatePerpustakaansTable extends Migration
             $table->string('deskripsi_perpustakaan')->nullable();
             $table->string('foto_perpustakaan')->nullable();
             $table->string('dokumen_perpustakaan')->nullable();
+            $table->string('perpuslat')->nullable();
+            $table->string('perpuslong')->nullable();
+            $table->string('status_validasi')->nullable();
             // $table->string('phonenumber_perpustakaan'); 
             // $table->string('donation_status');
             // $table->longText('deskripsi');

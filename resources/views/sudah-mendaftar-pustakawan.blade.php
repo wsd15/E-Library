@@ -112,7 +112,7 @@
 
                         <div class="col-md-6 mb-3 mt-4">
 
-                            <label class="ms-5" for="formFile" class="form-label">Upload KTP</label> {{-- 
+                            <label class="" for="formFile" class="form-label">Upload KTP</label> {{-- 
                             <div class="pic-holder border border-dark" style="border-radius:0%">
                                 <!-- uploaded pic shown here -->
 
@@ -131,7 +131,7 @@
                             </div> --}}
                             @if ($userId->foto_ktp)
                             {{-- <div class="profile-pic-wrapper"> --}}
-                                <div class="profile-pic-wrapper">
+                                <div class="profile-pic-wrapper" style="display: block">
                                     <div class="pic-holder border border-dark" style="border-radius: 0px;">
                                         <!-- uploaded pic shown here -->
                                         <img id="profilePic" class="pic" src="{{asset('/images/ktp/'.$userId->foto_ktp)}}"
@@ -353,25 +353,87 @@
 
             <div class="row mt-2">
 
-                <div class="col-md-6 mb-3 mt-4">
-                    <label for="formFile" class="form-label">Upload dokumen perpustakaan</label>
-                    <div class="pic-holder border border-dark" style="border-radius:0%">
-                        <!-- uploaded pic shown here -->
+                <div class="col-md-6 mb-3 mt-2">
+                    @if ($perpustakaan->dokumen_perpustakaan)
+                    {{-- <div class="profile-pic-wrapper"> --}}
+                        <label class="labels mt-1 mb-2">Upload Dokumen Perpustakaan</label>
+                            <div class="pic-holder border border-dark" style="border-radius: 0px;">
+                                <!-- uploaded pic shown here -->
+                                <img id="profilePic" class="pic" src="{{asset('/images/dokumenperpus/'.$perpustakaan->dokumen_perpustakaan)}}"
+                                    alt="">
+                                <Input class="uploadProfileInput" type="file" name="newProfilePhoto3" id="newProfilePhoto3"
+                                    accept="image/*" style="opacity: 0" multiple />
+    
+                                <label for="newProfilePhoto3" class="upload-file-block">
+                                    <div class="text-center">
+                                        <div class="mb-2">
+                                            <i class="fa fa-camera fa-2x" style="color: black"></i>
+                                        </div>
+                                        <div class="text-uppercase" style="color: black">
+                                            Update <br /> Photo Perpustakaan
+                                        </div>
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+                        @else
+                    <label class="labels mt-1 mb-2">Upload Dokumen Perpustakaan</label>
+                        <div class="pic-holder border border-dark" style="border-radius: 0px;">
+                            <!-- uploaded pic shown here -->
+                            <img id="profilePic" class="pic">
+                            <Input class="uploadProfileInput @error('dokumen_perpustakaan')  @enderror" type="file" name="newProfilePhoto4" id="newProfilePhoto4"
+                                accept="image/*" style="opacity: 0" multiple />
 
-                        <Input class="uploadProfileInput" type="file" name="profile_pic" id="newProfilePhoto"
-                            accept="image/*" style="opacity: 0;" />
-                        <label for="newProfilePhoto" class="upload-file-block">
-                            <div class="text-center">
-                                <div class="mb-2">
-                                    <i class="fa fa-camera fa-2x"></i>
+                            <label for="newProfilePhoto4" class="upload-file-block">
+                                <div class="text-center">
+                                    <div class="mb-2">
+                                        <i class="fa fa-camera fa-2x" style="color: black"></i>
+                                    </div>
+                                    <div class="text-uppercase " style="color: black">
+                                        Upload <br /> Photo Perpustakaan
+                                    </div>
                                 </div>
-                                <div class="text-uppercase text-primary">
-                                    Upload <br /> dokumen perpustakaan
-                                </div>
-                        </label>
-                    </div>
+                            </label>
+                             @endif  
+                        </div>
+                   
+                  
+                        @error('dokumen_perpustakaan')
+                        <div class="row">
+                            <div class="col">
+                                <div class="alert alert-danger">{{ $message }}</div>
+                            </div>
+                            <div class="col-4">
+                                
+                            </div>
+                            <div class="col">
+
+                            </div>
+                        </div>
+                            
+                        @enderror
+
+                <input hidden id="back4" type="file" name="dokumen_perpustakaan" id="dokumen_perpustakaan" multiple>
+                <script>
+                    let file4 = document.getElementById("newProfilePhoto4");
+                    let back4 = document.getElementById("back4");
+
+                    file3.addEventListener('change', function () {
+                        let files4 = this.files;
+                        let dt4 = new DataTransfer();
+                        for (let i = 0; i < files4.length; i++) {
+                            let f = files4[i];
+                            dt4.items.add(
+                                new File(
+                                    [f.slice(0, f.size, f.type)],
+                                    f.name
+                                ));
+                        }
+                        back4.files = dt4.files;
+                    });
+
+                </script>
                 </div>
-            </div>
     </div>
 
 
@@ -632,6 +694,84 @@
     });
 
 </script>
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+<script type="text/javascript">
+    $(function () {
+        var $src = $('#newProfilePhoto4'),
+            $dst = $('#dokumen_perpustakaan');
+        $src.on('input', function () {
+            $dst.val($src.val());
+        });
+    });
+    $(document).on("change", ".uploadProfileInput", function () {
+        var triggerInput = this;
+        var currentImg = $(this).closest(".pic-holder").find(".pic").attr("src");
+        var holder = $(this).closest(".pic-holder");
+        var wrapper = $(this).closest(".profile-pic-wrapper");
+        $(wrapper).find('[role="alert"]').remove();
+        triggerInput.blur();
+        var files = !!this.files ? this.files : [];
+        if (!files.length || !window.FileReader) {
+            return;
+        }
+        if (/^image/.test(files[0].type)) {
+            // only image file
+            var reader = new FileReader(); // instance of the FileReader
+            reader.readAsDataURL(files[0]); // read the local file
+
+            reader.onloadend = function () {
+                $(holder).addClass("uploadInProgress");
+                $(holder).find(".pic").attr("src", this.result);
+                $(holder).append(
+                    '<div class="upload-loader"><div class="spinner-border text-primary" role="status"><span class="sr-only">Loading...</span></div></div>'
+                );
+
+                // Dummy timeout; call API or AJAX below
+                setTimeout(() => {
+                    $(holder).removeClass("uploadInProgress");
+                    $(holder).find(".upload-loader").remove();
+                    // If upload successful
+                    if (Math.random() < 0.9) {
+                        $(wrapper).append(
+                            // '<div class="snackbar show" role="alert"><i class="fa fa-check-circle text-success"></i> Profile image updated successfully</div>'
+                        );
+
+                        // Clear input after upload
+                        $(triggerInput).val("");
+
+                        setTimeout(() => {
+                            $(wrapper).find('[role="alert"]').remove();
+                        }, 3000);
+                    } else {
+                        $(holder).find(".pic").attr("src", currentImg);
+                        $(wrapper).append(
+                            // '<div class="snackbar show" role="alert"><i class="fa fa-times-circle text-danger"></i> There is an error while uploading! Please try again later.</div>'
+                        );
+
+                        // Clear input after upload
+                        $(triggerInput).val("");
+                        setTimeout(() => {
+                            $(wrapper).find('[role="alert"]').remove();
+                        }, 3000);
+                    }
+                }, 1500);
+            };
+        } else {
+            $(wrapper).append(
+                '<div class="alert alert-danger d-inline-block p-2 small" role="alert">Please choose the valid image.</div>'
+            );
+            setTimeout(() => {
+                $(wrapper).find('role="alert"').remove();
+            }, 3000);
+        }
+    });
+
+</script>
+
 
     </form>
 

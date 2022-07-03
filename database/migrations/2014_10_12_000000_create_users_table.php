@@ -24,6 +24,8 @@ class CreateUsersTable extends Migration
             $table->string('foto_ktp')->nullable();
             $table->string('password');
             $table->date('birthday')->nullable();
+            $table->date('latitude')->nullable();
+            $table->date('longitude')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

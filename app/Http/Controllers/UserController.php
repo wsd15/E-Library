@@ -76,6 +76,22 @@ class UserController extends Controller
         $userId = User::find($id);
         //$userId->update($request->all());
         $perpustakaan =  Perpustakaan::where('user_id',$id)->get();
+
+
+        $validated=  $request->validate([
+      
+            'nama_perpustakaan' => 'required|max:255',
+            'alamat_perpustakaan' => 'required',
+            'Kota'=> 'required',
+            'phonenumber_perpustakaan' => 'required',
+            'email_perpustakaan' => 'required',
+            'link_google_maps' => 'required',
+            'status_donasi' => 'required',
+            'foto_perpustakaan' => 'required',
+            'dokumen_perpustakaan' => 'required',
+            'foto_ktp' => 'required'
+        ]);
+
        
         if($request->hasFile('file_path'))
         {
@@ -115,7 +131,7 @@ class UserController extends Controller
         $userId->foto_ktp=$filename2;
         }
       
-      
+        
        
         
 
@@ -130,19 +146,8 @@ class UserController extends Controller
 
         //perpustakaan
 
-        $validated=  $request->validate([
-            'user_id' => 'required',
-            'nama_perpustakaan' => 'required|max:255',
-            'alamat_perpustakaan' => 'required',
-            'Kota'=> 'required',
-            'phonenumber_perpustakaan' => 'required',
-            'email_perpustakaan' => 'required',
-            'link_google_maps' => 'required',
-            'status_donasi' => 'required',
-            'foto_perpustakaan' => 'required',
-            // 'dokumen_perpustakaan' => 'required',
-        ]);
-
+        
+    
 
         $img_ext3 = $request->file('foto_perpustakaan')->getClientOriginalExtension();
         $filename3 = 'foto-perpus-' . time() . '.' . $img_ext3;
@@ -160,12 +165,12 @@ class UserController extends Controller
         // $perpustakaan->status_donasi=$request->input('status_donasi');
         // $perpustakaan->foto_perpustakaan=$filename3;
 
-        // $img_ext4 = $request->file('dokumen_perpustakaan')->getClientOriginalExtension();
-        // $filename4 = 'dokumen-perpus-' . time() . '.' . $img_ext4;
-        // $path4 = $request->file('dokumen_perpustakaan')->move(public_path('/images/dokumenperpus/'), $filename4);//image save public folder
+        $img_ext4 = $request->file('dokumen_perpustakaan')->getClientOriginalExtension();
+        $filename4 = 'dokumen-perpus-' . time() . '.' . $img_ext4;
+        $path4 = $request->file('dokumen_perpustakaan')->move(public_path('/images/dokumenperpus/'), $filename4);//image save public folder
 
         if($perpustakaan){
-            
+           
 
             Perpustakaan::create([
                 'user_id' => $id,
@@ -178,7 +183,8 @@ class UserController extends Controller
                 'status_donasi' => $request->input('status_donasi'),
                 'deskripsi_perpustakaan' => $request->input('deskripsi_perpustakaan'),
                 'foto_perpustakaan'=>$filename3,
-                
+                'dokumen_perpustakaan'=>$filename4,
+                'status_validasi'=>'belum'
                 
             ]);
 
@@ -191,7 +197,10 @@ class UserController extends Controller
             $perpustakaan->email_perpustakaan=$request->input('email_perpustakaan');
             $perpustakaan->link_google_maps=$request->input('link_google_maps');
             $perpustakaan->status_donasi=$request->input('status_donasi');
+            $perpustakaan->deskripsi_perpustakaan = $request->input('deskripsi_perpustakaan');
             $perpustakaan->foto_perpustakaan=$filename3;
+            $perpustakaan->dokumen_perpustakaan =$filename4;
+            $perpustakaan->status_validasi='belum';
             $perpustakaan->save();
           
         }
