@@ -180,8 +180,11 @@
                             <p class="text-start mt-2 fs-5 fw-bold">
                                 <a>Status : @if ($item->status_pembayaran === 'belum dibayar')
                                     Menunggu Pembayaran
+                                    
                                     @elseif ($item->status_pembayaran === 'sudah terbayar')
                                     Sudah Terbayar
+                                    @else
+                                    Lunas
                                 @endif </a>
                             </p>
 
@@ -205,7 +208,11 @@
                     </a> --}}
                     <div class="row mt-3">
                         <div class="col">
-                            Total Deposito : Rp. {{ $item->total_deposito }}
+                            Total Deposito : Rp. @if ($item->status_pembayaran === 'lunas')
+                            {{ $item->total_deposito+$item->totaldenda }}
+                            @else
+                            {{ $item->total_deposito }}
+                            @endif 
                         </div>
                         <div class="col text-end">
                             @if ($item->status_pembayaran === 'sudah terbayar')
@@ -238,6 +245,7 @@
                             </a>
                         </form>
                     </div>
+                    @elseif($item->status_pembayaran === 'lunas')
                     @else
                     <div class="text-center">
                         <form action="{{url('/pembayaran-peminjaman/'.$item2->cart_id)}}" method="POST" >
@@ -248,6 +256,7 @@
                             </a>
                         </form>
                     </div>
+                    
                     @endif
                 
             </div>

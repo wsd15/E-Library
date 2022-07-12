@@ -151,3 +151,9 @@ Route::post('/validasi-perpustakaan/{id}', [PerpustakaanController::class,'valid
 Route::get('/buku-terpinjam', [TransactionController::class,'detailterpinjam']);
 Route::get('/pengembalian-buku/{id}', [TransactionController::class,'rincianpengembalian']);
 Route::post('/pengembalian-buku/{id}', [TransactionController::class,'pengembalian'])->name('pengembalian');
+
+Route::get('/view-user/{id}', [UserController::class,'viewuser']);
+
+
+Route::get('/profile-perpustakaan', [PerpustakaanController::class, 'profileperpus']);
+Route::post('/profile-perpustakaan', [PerpustakaanController::class, 'updateprofileperpus']);

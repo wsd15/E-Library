@@ -1,7 +1,7 @@
 @extends('layout.app')
 
 @section('content')
-    <html>
+<html>
     <p class="fs-1 text-center mt-5 mb-5">Buku Terpinjam</p>
 
     {{-- <div class="container mt-50 mb-50 border">
@@ -162,13 +162,13 @@
                
     
                 @endphp
-            <div class="container border border-dark border-3 rounded-3 mt-3 mb-3">
+            <div class="container border border-dark border-3 rounded-3 mt-1 mb-5">
              
                 
 
-                <p class="fs-3 text-sm-start">{{ $item2->buku->bukuperpus->nama_perpustakaan }}</p>
+               <a href="/view-user/{{ $itemcart[$key]->cart->user->id  }}"><p class="fs-3 text-sm-start">{{ $itemcart[$key]->cart->user->name  }} </p> </a> 
                         @foreach ($itemcart[$key]->cart->detail as $item3)
-                        <div class="row border border-dark border-3 rounded-3 mt-5 ms-1 me-1 " style="background-color: #E2E2E2">  
+                        <div class="row border border-dark border-3 rounded-3 mt-1 mb-3 ms-1 me-1 " style="background-color: #E2E2E2">  
                             <div class="col-1 mt-2">
                                 <img style="width:10vw;height: 20vh;" src="{{asset('/images/buku/'.$item3->buku->file_path)}}">
                             </div>
@@ -217,17 +217,25 @@
                                
                     
                                 @endphp
-                                    
                                 
-                               <div class="col-md-12 mt-4"><label class="labels">Catatan</label>
-                                    <textarea class="form-control rounded-md border-dark " name="catatan[]"
+                                @if ($item->status_pembayaran === 'sudah terbayar')
+                                
+                                @else
+
+                                
+                                <div class="col-md-2 mt-3">
+                                Status Buku : {{ $item4->status_buku }}
+                                </div> 
+                                
+                               <div class="col-md-12 mt-1 mb-3"><label class="labels">Catatan</label>
+                                    <textarea readonly class="form-control rounded-md border-dark " name="catatan[]"
                                         placeholder="Masukkan Catatan" id="exampleFormControlTextarea1"
-                                        rows="5"></textarea>
+                                        rows="5">{{ $item4->catatan }}</textarea>
                                        
                                 </div>
-                                {{ $item4 }}
+                                
                                 @php break; @endphp
-
+                                @endif
                                 @endforeach
                             </div>
                             
@@ -245,7 +253,7 @@
                     
                    
 
-                    @if ($item->status_pembayaran === 'sudah terbayar1')
+                    @if ($item->status_pembayaran === 'sudah terbayar')
                     <div class="text-center mt-5 mb-3">
                         <form action="{{url('/pengembalian-buku/'.$item2->cart_id)}}" method="POST" >
                             @csrf
@@ -256,8 +264,8 @@
                         </form>
                     </div>
                     @else
-                    <div class="row mt-3">
-                            <div class="col">
+                    <div class="row mt-3 mb-3">
+                            <div class="col ">
                                 Total Deposito : Rp. {{ $item->total_deposito+$item->totaldenda }}
                             </div>  
                             <div class="col">

@@ -218,4 +218,15 @@ class UserController extends Controller
         return redirect('/mendaftar-pustakawan');
     }
 
+
+    public function viewuser($id){
+
+        $userId= User::where('id',$id)->get();
+
+        // dd($userId);
+        return view('view-user',compact('userId'));
+    }
+
+
+   
 }

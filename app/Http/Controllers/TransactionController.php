@@ -160,6 +160,7 @@ class TransactionController extends Controller
          TransactionDetail::create([
                 'transaction_id' => $id,
                 'catatan'=>$request->catatan[$index],
+                'status_buku'=>$request->status_buku[$index],
                 'denda'=>$request->denda[$index],
                 
         ]);
@@ -178,7 +179,7 @@ class TransactionController extends Controller
       
 
       $transaction = Transaction::where('id',$id)->first();
-      // $transaction->status_pembayaran ='lunas';
+      $transaction->status_pembayaran ='lunas';
       $total = $transaction->total_deposito;
       $transaction->total_deposito =$total - $data;
       $transaction->totaldenda = $data;

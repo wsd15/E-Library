@@ -17,6 +17,12 @@
                                 </div>
                             </div>
 
+                            <div class=" d-flex justify-content-center mt-3" style="align-self: center">
+                                <a href="/buku-pinjaman">
+                                    <button type="button" class="btn btn-black mb-1 border border-dark rounded-pill font-semibold text-s  text-black uppercase ring-gray-300" style="background-color: #D3D3D3; align-items: flex-end">Halaman Buku Pinjaman</button>
+                                </a>
+                            </div>
+
                             @else
                             <div class="container mt-5">
                                 <div class="d-flex justify-content-center">
@@ -26,7 +32,11 @@
                                         <h5 class="fs-1">Pembayaran Anda Gagal!</h5>
                                 </div>
                             </div>
-
+                            <div class=" d-flex justify-content-center mt-3" style="align-self: center">
+                                <a href="/buku-pinjaman">
+                                    <button type="button" class="btn btn-black mb-1 border border-dark rounded-pill font-semibold text-s  text-black uppercase ring-gray-300" style="background-color: #D3D3D3; align-items: flex-end">Halaman Buku Pinjaman</button>
+                                </a>
+                            </div>
                             
                         @endif 
      

@@ -17,6 +17,7 @@ class CreateTransactionDetailsTable extends Migration
             $table->id();
             $table->unsignedBigInteger('transaction_id')->nullable();
             $table->foreign('transaction_id')->references('id')->on('transactions');
+            $table->string('status_buku')->nullable();
             $table->string('catatan')->nullable();
             $table->double('denda', 12, 2)->default(0);
             $table->timestamps();
