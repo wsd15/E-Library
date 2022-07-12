@@ -263,7 +263,7 @@
                                         src=" {{ asset('images/school.svg') }}" alt=""
                                         style="height: 40px; width: 40px; margin-right: 5%; margin-bottom: 5%; margin-top: 5%">Profile
                                     Perpustakaan</a></li>
-                            <li class="border-bottom border-dark"><a href="{{ url('profile-perpustakaan') }}"><img class="display_image"
+                            <li class="border-bottom border-dark"><a href="{{ url('buku-terpinjam') }}"><img class="display_image"
                                         src=" {{ asset('images/list-check.svg') }}" alt=""
                                         style="height: 40px; width: 40px; margin-right: 5%; margin-bottom: 5%; margin-top: 5%">Buku
                                     Terpinjam</a></li>

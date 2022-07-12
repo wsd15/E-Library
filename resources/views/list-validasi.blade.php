@@ -30,9 +30,11 @@
                                     <div class="col align-self-center">
                                         <div class="d-flex float-end  me-5">
                                             <a href="{{url('/validasi-perpustakaan/'.$item->id)}}">
-                                            <button class="me-5" href="" style="align-items: flex-end"> ya</button>
+                                            {{-- <button class="me-5" href="" style="align-items: flex-end"></button> --}}
+                                            <button type="button" class="btn btn-black mb-1 border border-dark rounded-pill font-semibold text-s  text-black uppercase ring-gray-300" style="background-color: #D3D3D3; align-items: flex-end"> ya</button>
+                        
                                             </a>
-                                            <button class="ms-5" style="align-items: flex-end"> tidak</button>
+                                            <button type="button" class="btn btn-black mb-1 border border-dark rounded-pill font-semibold text-s  text-black uppercase ring-gray-300 ms-5" style="background-color: #D3D3D3; align-items: flex-end"> tidak</button>
                                         </div>
                                     </div>
     

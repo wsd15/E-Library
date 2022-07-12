@@ -11,7 +11,7 @@
             @csrf
             <div class=" border-right">
                 <div class="p-3 py-5">
-                    <div class="d-flex justify-content-between align-items-center mb-3">
+                    <div class=" mb-3">
                         <h1 class="text-center mb-3" style="font-size:3vw">Mendaftar Pustakawan</h1>
                     </div>
 
@@ -229,7 +229,7 @@
 
             <div class=" border-right">
                 <div class="p-3 py-5">
-                    <div class="d-flex justify-content-between align-items-center mb-3">
+                    <div class=" mb-3">
                         <h1 class="text-center mb-3" style="font-size:3vw;text-align: center">Profile Perpustakaan</h1>
                     </div>
                     

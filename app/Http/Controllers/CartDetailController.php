@@ -7,6 +7,7 @@ use App\Models\CartDetail;
 use App\Models\Books;
 use App\Models\Perpustakaan;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class CartDetailController extends Controller
 {
@@ -58,7 +59,8 @@ class CartDetailController extends Controller
         if ($cart) {
             $itemcart = $cart;
         } else {
-            $no_invoice = Cart::where('user_id', $itemuser->id)->count();
+            // $no_invoice = Cart::where('user_id', $itemuser->id)->count();
+            $no_invoice = DB::table('carts')->count();
             //nyari jumlah cart berdasarkan user yang sedang login untuk dibuat no invoice
             $inputancart['user_id'] = $itemuser->id;
             $inputancart['perpustakaan_id'] = $perpus->id;

@@ -17,7 +17,8 @@ class Transaction extends Model
         'no_invoice',
         'cart_id',
         'tanggal_pengembalian',
-        'counter'
+        'counter',
+        'totaldenda'
 
 
     ];
@@ -28,9 +29,8 @@ class Transaction extends Model
         return $this->hasOne(User::class,'user_id');
     }
 
-    public function cartdetail()
-    {
-        return $this->belongsTo(CartDetail::class,'cart_detail_id');
+    public function detail() {
+        return $this->hasMany(TransactionDetail::class, 'transaction_id');
     }
 
     

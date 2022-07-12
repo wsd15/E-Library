@@ -12,6 +12,12 @@ use Illuminate\Support\Facades\Validator;
 
 class UserController extends Controller
 {
+
+    public function home(){
+
+        return view('home');
+    }
+    
     public function index_user(){
         $id = Auth::user()->id;
         $userId = User::find($id); 

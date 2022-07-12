@@ -37,7 +37,7 @@ class CartController extends Controller
         return view('cart', $data);
      
     }
-
+    //checkout
     public function detail(Request $request,$id){
         $transactionuser = $request->user();
         $ids=$id;

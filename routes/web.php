@@ -24,10 +24,11 @@ use Illuminate\Support\Facades\Route;
 //     return view('home');
 // });
 
-Route::get('/', function () {
-    return view('home');
-});
+// Route::get('/', function () {
+//     return view('home');
+// });
 
+Route::get('/',[UserController::class,'home']);
 // Route::get('/dashboard', function () {
 //     return view('dashboard');
 // })->middleware(['auth'])->name('dashboard');
@@ -38,33 +39,33 @@ require __DIR__.'/auth.php';
 //     return view('home2');
 // })->middleware(['auth']);
 
-Route::get('/profile', function () {
-    return view('profile');
-})->middleware(['auth']);
+// Route::get('/profile', function () {
+//     return view('profile');
+// });
 
 // Route::get('/welcome', function () {
 //     return view('welcome');
 // });
 
-Route::get('/detail-buku', function () {
-    return view('detail-buku');
-});
+// Route::get('/detail-buku', function () {
+//     return view('detail-buku');
+// });
 
-Route::get('/wishlist', function () {
-    return view('wishlist');
-});
+// Route::get('/wishlist', function () {
+//     return view('wishlist');
+// });
 
-Route::get('/cart', function () {
-    return view('cart');
-});
+// Route::get('/cart', function () {
+//     return view('cart');
+// });
 
-Route::get('/buku-pinjaman', function () {
-    return view('buku-pinjaman');
-});
+// Route::get('/buku-pinjaman', function () {
+//     return view('buku-pinjaman');
+// });
 
-Route::get('/pembayaran', function () {
-    return view('pembayaran');
-});
+// Route::get('/pembayaran', function () {
+//     return view('pembayaran');
+// });
 
 Route::get('/halaman-donasi', function () {
     return view('halaman-donasi');
@@ -146,3 +147,7 @@ Route::get('/list-validasi',[PerpustakaanController::class,'index']);
 Route::get('/validasi-perpustakaan/{id}', [PerpustakaanController::class,'detail']);
 
 Route::post('/validasi-perpustakaan/{id}', [PerpustakaanController::class,'validasi']);
+
+Route::get('/buku-terpinjam', [TransactionController::class,'detailterpinjam']);
+Route::get('/pengembalian-buku/{id}', [TransactionController::class,'rincianpengembalian']);
+Route::post('/pengembalian-buku/{id}', [TransactionController::class,'pengembalian'])->name('pengembalian');

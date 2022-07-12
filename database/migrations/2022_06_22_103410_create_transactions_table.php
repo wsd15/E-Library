@@ -14,7 +14,7 @@ class CreateTransactionsTable extends Migration
     public function up()
     {
         Schema::create('transactions', function (Blueprint $table) {
-            $table->id();
+            $table->id()->autoIncrement();
             $table->unsignedBigInteger('user_id')->nullable();
             $table->unsignedBigInteger('cart_id')->nullable();
             $table->unsignedBigInteger('cart_detail_id')->nullable();
@@ -24,6 +24,7 @@ class CreateTransactionsTable extends Migration
             $table->foreign('cart_id')->references('id')->on('carts');
             $table->foreign('user_id')->references('id')->on('users');
             $table->double('total_deposito', 12, 2)->default(0);
+            $table->double('totaldenda', 12, 2)->default(0);
             $table->string('status_pembayaran');
             $table->string('no_invoice');
             $table->date('tanggal_pengembalian');

@@ -48,7 +48,7 @@
                             <div class="card-body d-flex flex-column">
                                 <h5 class="card-title text-center">{{ $buku->nama_buku }}</h5>
                                 <p class="card-text text-center">{{ $buku->penulis }}</p>
-                                <p class="card-text text-center mb-4">Jakarta Utara</p>
+                                <p class="card-text text-center mb-4">{{ $buku->bukuperpus->kota }}</p>
                                 <div class="d-flex justify-content-center" style="margin-top: auto">
                                     <a href="{{url('/edit-buku/'.$buku->id)}}">
                                         <x-button class=" align-self-end" style="align-self: center;">
