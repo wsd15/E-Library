@@ -34,7 +34,7 @@
 
 
                         <h5 class="text-start" style="font-size:2vw">
-                        <a href="">href ke perpus</a>    <b>{{ $b[$loop->index]->bukuperpus->nama_perpustakaan }}</b>
+                        <a href="/detail-perpustakaan/{{ $b[$loop->index]->bukuperpus->id }}">   <b>{{ $b[$loop->index]->bukuperpus->nama_perpustakaan }}</b></a> 
                               
                             
                         </h5>

@@ -59,22 +59,22 @@
                     <p>Stok         : {{ $bookdet[0]->stok }}</p>
                     <p>ISBN         : {{ $bookdet[0]->isbn }}</p>
                     <div style="padding-top:2vw">
-                        <p class="fw-bold" style="font-size: 30px"><u>{{ $bookdet[0]->bukuperpus->nama_perpustakaan }}</u> </p>
-                        <p>Jakarta Pusat</p>
-                        <a href="https://goo.gl/maps/kv4NAnpTaNK7CRRn8"><p style="color: blue">Jalan Jendral Sudirman</p></a>
+                      <a href="/detail-perpustakaan/{{$bookdet[0]->bukuperpus->id  }}"><p class="fw-bold" style="font-size: 30px"><u>{{ $bookdet[0]->bukuperpus->nama_perpustakaan }}</u> </p></a>  
+                        <p>{{ $bookdet[0]->bukuperpus->Kota }}</p>
+                        <a href="{{ $bookdet[0]->bukuperpus->link_google_maps }}"><p style="color: blue">{{ $bookdet[0]->bukuperpus->alamat_perpustakaan }}</p></a>
                         {{-- @foreach(explode('+', $bookdet[0]->bukuperpus->nama_perpustakaan) as $fields) 
                         <div class="mapouter">
                             
                 
                             <div class="gmap_canvas">
-                                    <iframe width="600" height="500" id="gmap_canvas" 
-                                    src="https://maps.google.com/maps?q={{$fields}}&t=&z=19&ie=UTF8&iwloc=&output=embed" 
+                                    <iframe width="600" height="300" id="gmap_canvas" 
+                                    src="https://maps.google.com/maps?q={{$fields}}&t=&z=12&ie=UTF8&iwloc=&output=embed" 
                                     frameborder="0" scrolling="no" marginheight="0" marginwidth="0">
                                     </iframe>
                             <br>
-                                    <style>.mapouter{position:relative;text-align:right;height:500px;width:600px;}</style>
+                                    <style>.mapouter{position:relative;text-align:right;height:300px;width:600px;}</style>
                             <a href="https://www.embedgooglemap.net">google maps plugin html</a><style>.gmap_canvas 
-                            {overflow:hidden;background:none!important;height:500px;width:600px;}</style>
+                            {overflow:hidden;background:none!important;height:300px;width:600px;}</style>
                             </div>
                         </div>
                         @endforeach --}}

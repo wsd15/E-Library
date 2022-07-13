@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Perpustakaan;
 use App\Models\User;
+use App\Models\Books;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
@@ -98,6 +99,16 @@ class PerpustakaanController extends Controller
 
 
         return redirect('profile-perpustakaan');
+    }
+
+    public function detailperpustakaan($id){
+        
+        $perpustakaan = Perpustakaan::where('id',$id)->first();
+        // dd($perpustakaan);
+        $buku = Books::where('perpustakaan_id',$perpustakaan->id)->paginate(6);
+        
+
+        return view('detail-perpustakaan',compact('perpustakaan','buku'));
     }
 
 }

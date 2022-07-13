@@ -7,12 +7,12 @@
 <body style="">
 
     <div class="container rounded bg-white mt-5 mb-5">
-        <form action="/profile-perpustakaan" method="POST" enctype="multipart/form-data">
+        {{-- <form action="/profile-perpustakaan" method="POST" enctype="multipart/form-data"> --}}
             @csrf
             <div class=" border-right">
                 <div class="p-3 py-5">
                     <div class="d-flex justify-content-center align-items-center mb-3">
-                        <h1 class="text-center mb-3" style="font-size:3vw">Profile Perpustakaan</h1>
+                        <h1 class="text-center mb-3" style="font-size:3vw">Detail Perpustakaan</h1>
                     </div>
 
                     
@@ -23,18 +23,9 @@
                             <!-- uploaded pic shown here -->
                             <img id="profilePic" class="pic">
                             <Input class="uploadProfileInput" type="file" name="newProfilePhoto3" id="newProfilePhoto3"
-                                accept="image/*" style="opacity: 0" multiple />
+                                accept="image/*" style="opacity: 0" multiple disabled/>
 
-                            <label for="newProfilePhoto3" class="upload-file-block">
-                                <div class="text-center">
-                                    <div class="mb-2">
-                                        <i class="fa fa-camera fa-2x" style="color: black"></i>
-                                    </div>
-                                    <div class="text-uppercase" style="color: black">
-                                        Upload <br /> Photo Perpustakaan
-                                    </div>
-                                </div>
-                            </label>
+                           
                         </div>
                     </div>
                         
@@ -46,18 +37,9 @@
                                 <img id="profilePic" class="pic" src="{{asset('/images/fotoperpus/'.$perpustakaan->foto_perpustakaan)}}"
                                     alt="">
                                 <Input class="uploadProfileInput" type="file" name="newProfilePhoto3" id="newProfilePhoto3"
-                                    accept="image/*" style="opacity: 0" multiple />
+                                    accept="image/*" style="opacity: 0" multiple disabled/>
     
-                                <label for="newProfilePhoto3" class="upload-file-block">
-                                    <div class="text-center">
-                                        <div class="mb-2">
-                                            <i class="fa fa-camera fa-2x" style="color: black"></i>
-                                        </div>
-                                        <div class="text-uppercase" style="color: black">
-                                            Update <br /> Photo Perpustakaan
-                                        </div>
-                                    </div>
-                                </label>
+                                
                             </div>
                         </div>
                     
@@ -105,64 +87,93 @@
 
                 <div class="col-md-6"><label class="labels mt-2">Email Perpustakaan</label>
                     <x-input type="text" class="form-control" name="email_perpustakaan" placeholder="Email Perpustakaan" value="{{ $perpustakaan->email_perpustakaan }}" disabled/>
+                
+                        @if ( $perpustakaan->status_donasi==="Ya")
+                        <div>
+                        <label class="labels mt-2">Ingin Berdonasi? </label>
+                            
+                            
+                            <br>
+                        
+                                <x-button class="ms-5 " style="text-center">
+                                    Ya
+                                </x-button>
+                                 
+                            
+                            
+                        
+                            </div>
+                        @else
+        
+                        <label class="labels mt-2">Alamat Perpustakaan</label>
+                            {{-- <x-input type="text" class="form-control" name="alamat_perpustakaan" placeholder="Alamat Perpustakaan" value="{{ $perpustakaan->alamat_perpustakaan }}" disabled/> --}}
+                                <textarea class="form-control rounded-md border-dark" name="deskripsi_perpustakaan"
+                                placeholder="Masukkan Deskripsi Perpustakaan" id="exampleFormControlTextarea1" 
+                                rows="4" disabled>{{ $perpustakaan->alamat_perpustakaan }}</textarea>
+                        
+        
+                        @endif
+
+
+                        @if ( $perpustakaan->status_donasi==="Ya")
+
+                       
+
+
+                            <label class="labels mt-2">Alamat Perpustakaan</label>
+                                {{-- <x-input type="text" class="form-control" name="alamat_perpustakaan" placeholder="Alamat Perpustakaan" value="{{ $perpustakaan->alamat_perpustakaan }}" disabled/> --}}
+                                    <textarea class="form-control rounded-md border-dark" name="deskripsi_perpustakaan"
+                                    placeholder="Masukkan Deskripsi Perpustakaan" id="exampleFormControlTextarea1" 
+                                    rows="4" disabled>{{ $perpustakaan->alamat_perpustakaan }}</textarea>
+                           
+            
+                            
+            
+                      
+                        @endif
+                
+                
                 </div>
-                <div class="col-md-6"><label class="labels mt-2">Alamat Perpustakaan</label>
-                    <x-input type="text" class="form-control" name="alamat_perpustakaan" placeholder="Alamat Perpustakaan" value="{{ $perpustakaan->alamat_perpustakaan }}" disabled/>
-                </div>
 
-            </div>
-
-            <div class="row mt-2">
-                <div class="col-md-6"><label class="labels mt-2">Kota</label>
-                    <x-input type="text" class="form-control" placeholder="Kota" value="{{ $perpustakaan->Kota }}" name="Kota" disabled/>
-                </div>
-                <div class="col-md-6"><label class="labels mt-2">Link Google Maps</label>
-                    <x-input type="text" class="form-control" placeholder="ex : https://goo.gl/maps/*****" value="{{ $perpustakaan->link_google_maps }}" nama="link_google_maps" disabled/>
-                </div>
-            </div>
-
-            <div class="row mt-2">
-
-                <div class="col-md-6"><label class="labels mt-2">Menerima Donasi Buku : </label>
-                    @if ( $perpustakaan->status_donasi==="Ya")
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" checked  name="status_donasi" id="inlineRadio1"
-                        value="Ya">
-                        <label class="form-check-label" for="inlineRadio1">Ya</label>
-                    </div>
-
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio"  name="status_donasi" id="inlineRadio1"
-                        value="Tidak">
-                        <label class="form-check-label" for="inlineRadio1">Tidak</label>
-                    </div>
-
-                    @else 
-
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio"  name="status_donasi" id="inlineRadio1"
-                        value="Ya">
-                        <label class="form-check-label" for="inlineRadio1">Ya</label>
-                    </div>
-
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" checked  name="status_donasi" id="inlineRadio1"
-                        value="Tidak">
-                        <label class="form-check-label" for="inlineRadio1">Tidak</label>
-                    </div>
-                    @endif
+                <div class="col-md-6"><label class="labels mt-2">GANTI FOTO</label>
                     
-                    
+                        @foreach(explode('+', $perpustakaan->nama_perpustakaan) as $fields) 
+                        <div class="mapouter">
+                            
+                
+                            <div class="gmap_canvas">
+                                    <iframe width="600" height="300" id="gmap_canvas" 
+                                    src="https://maps.google.com/maps?q={{$fields}}&t=&z=19&ie=UTF8&iwloc=&output=embed" 
+                                    frameborder="0" scrolling="no" marginheight="0" marginwidth="0">
+                                    </iframe>
+                            <br>
+                                    <style>.mapouter{position:relative;text-align:right;height:300px;width:600px;}</style>
+                            <a href="https://www.embedgooglemap.net">google maps plugin html</a><style>.gmap_canvas 
+                            {overflow:hidden;background:none!important;height:300px;width:600px;}</style>
+                            </div>
+                        </div>
+                        @endforeach
+
+
                 </div>
+               
 
             </div>
 
+          
+                
+
+                
+
+                
+         
+            
             <div class="row mt-2">
 
                 <div class="col-md-12 mt-4"><label class="labels">Deskripsi Perpustakaan</label>
                     <textarea class="form-control rounded-md border-dark" name="deskripsi_perpustakaan"
                         placeholder="Masukkan Deskripsi Perpustakaan" id="exampleFormControlTextarea1" 
-                        rows="5">{{ $perpustakaan->deskripsi_perpustakaan }}</textarea>
+                        rows="5" disabled>{{ $perpustakaan->deskripsi_perpustakaan }}</textarea>
                 </div>
 
             </div>
@@ -176,12 +187,45 @@
     <div class="container mt-5 text-center">
 
        
-          
-        
+        <div class="row mt-2 row-cols-3 mb-5">
+            @foreach ($buku as $key => $bukus)
+            <div class="col mt-5 d-flex align-items-stretch justify-content-center">
+                <div class="card" style="width: 17rem;">
+                    <img class="mt-4" src="{{asset('/images/buku/'.$bukus->file_path)}}"
+                        style="width:12vw;height: 16vw;align-self: center" class="card-img-top" alt="...">
+                    <div class="card-body d-flex flex-column">
+                        <b class="card-title text-center">{{ $bukus->nama_buku }}</b>
+                        <p class="card-text text-center">{{ $bukus->penulis }}</p>
+                        <p class="card-text text-center ">{{ $bukus->Kota }}</p>
+                        {{-- <p>{{ $buku->perpuslong }}</p> --}}
+                        <div class="d-flex justify-content-center" style="margin-top: auto">
+                            <a href="{{url('/detail-buku/'.$bukus->id)}}">
+                                <x-button class=" align-self-end" id="button1" style="align-self: center;">
+                                    {{ __('Detail Buku') }}
+                                </x-button>
+                                <style>
+                                    #button1 {   
+                                        font-size: 3vw;
+                                        
+                                    }
+                                @media (min-width: 720px) { /* or 301 if you want really the same as previously.  */
+                                    #button1 {   
+                                        font-size: 1.4vw;
+                                        
+                                    }
+                                }
+                                </style>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            @endforeach
 
-        <x-button class="mb-5" >
-            Simpan
-        </x-button>
+        </div>
+        {{-- buat row 2-3-4-5-6 --}}
+        <div class="mb-4">{{ $buku->links() }}</div>
+
     </div>
 
 
@@ -493,7 +537,7 @@
 </script>
 
 
-    </form>
+    {{-- </form> --}}
 
 
 </body>

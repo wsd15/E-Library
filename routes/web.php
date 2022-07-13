@@ -157,3 +157,5 @@ Route::get('/view-user/{id}', [UserController::class,'viewuser']);
 
 Route::get('/profile-perpustakaan', [PerpustakaanController::class, 'profileperpus']);
 Route::post('/profile-perpustakaan', [PerpustakaanController::class, 'updateprofileperpus']);
+
+Route::get('/detail-perpustakaan/{id}', [PerpustakaanController::class, 'detailperpustakaan']);
