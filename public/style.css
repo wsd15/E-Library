@@ -4,7 +4,6 @@ body {
     padding: 0px;
     margin: 0px;
     font-size: 20px;
-    min-height: 200vh;
     /* font-family: 'Cabin', Sans-serif; */
     font-family: "Ovo", serif !important;
 }
@@ -94,7 +93,7 @@ body {
     position: fixed;
     top: 0;
     left: -285px;
-    width: 285px;
+    width: 380px;
     height: 100%;
     background-color: #c8f4f9;
     transition: 0.3s;
@@ -151,7 +150,22 @@ body {
     #hamburger-menu {
         display: inline;
     }
+
+    .desktop{
+        display: none !important;
+    }
+    .mobile{
+        display: block !important;
+    }
+
 }
+    .mobile{
+        display: none;
+    }
+
+    .desktop{
+        display: block;
+    }
 
 /* The sticky class is added to the navbar with JS when it reaches its scroll position */
 

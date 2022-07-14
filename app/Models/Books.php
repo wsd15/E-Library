@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Books extends Model
 {
+    protected $table ='books';
     protected $fillable = [
         'nama_buku',
         'penerbit',
@@ -16,7 +17,13 @@ class Books extends Model
         'tahun_terbit',
         'stok',
         'deskripsi',
+        'deposit',
         'file_path'
 
     ];
+
+    public function bukuperpus()
+    {
+        return $this->belongsTo(Perpustakaan::class,'perpustakaan_id');
+    }
 }

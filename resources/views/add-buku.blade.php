@@ -103,12 +103,21 @@
                         <div class="col-md-6"><label class="labels">Stok</label>
                             <x-input type="text" class="form-control" value="" name="stok" placeholder="Qty" />
                         </div>
+                        
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-md-6"><label class="labels">Deposito (Rp)</label>
+                            <x-input type="text" class="form-control" value="" name="deposit" placeholder="contoh : 15000" />
+                        </div>
+
                     </div>
 
                     <div class="col-md-12 mt-4"><label class="labels">Deskripsi Buku</label>
                         <textarea class="form-control rounded-md border-dark" name="deskripsi" placeholder="Masukkan Deskripsi Buku"
                             id="exampleFormControlTextarea1" rows="5"></textarea>
                     </div>
+
+                  
 
                     
                    

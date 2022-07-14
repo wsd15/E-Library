@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Config;
-
+use App\Models\User;
 class LaratrustSeeder extends Seeder
 {
     /**
@@ -72,6 +72,7 @@ class LaratrustSeeder extends Seeder
             }
 
         }
+        user::factory()->count(5)->create();
     }
 
     /**

@@ -91,7 +91,8 @@
                         <div class="row mt-4">
                             <div class="col-md-12">
                                 <label class="labels">Email</label>
-                                <x-input type="text" class="form-control" name="email" placeholder="{{ $userId->email }}" value="{{ $userId->email }}" />
+                                <x-input type="text" class="form-control" name="" placeholder="{{ $userId->email }}" value="{{ $userId->email }}" disabled/>
+                                    <input hidden  type="text" value="{{ $userId->email }}" name="email" id="email" multiple>
                             </div>
                             <div class="col-md-12 mt-4"><label class="labels">Phone Number</label>
                                 <x-input type="text" class="form-control" name="phonenumber" placeholder="enter phone number" value="{{ $userId->phonenumber }}" />
@@ -157,7 +158,7 @@
                                     // If upload successful
                                     if (Math.random() < 0.9) {
                                     $(wrapper).append(
-                                        '<div class="snackbar show" role="alert"><i class="fa fa-check-circle text-success"></i> Profile image updated successfully</div>'
+                                        // '<div class="snackbar show" role="alert"><i class="fa fa-check-circle text-success"></i> Profile image updated successfully</div>'
                                     );
 
                                     // Clear input after upload
@@ -169,7 +170,7 @@
                                     } else {
                                     $(holder).find(".pic").attr("src", currentImg);
                                     $(wrapper).append(
-                                        '<div class="snackbar show" role="alert"><i class="fa fa-times-circle text-danger"></i> There is an error while uploading! Please try again later.</div>'
+                                        // '<div class="snackbar show" role="alert"><i class="fa fa-times-circle text-danger"></i> There is an error while uploading! Please try again later.</div>'
                                     );
 
                                     // Clear input after upload

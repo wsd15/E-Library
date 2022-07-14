@@ -9,20 +9,35 @@
         
         <div class="container">
             <form class="form-inline mt-5">
-                <input class="form-control mr-sm-2" name="search" type="search" placeholder="Search Judul Buku/Penerbit/Penulis/ISBN/Lokasi Perpustakaan (Format ISBN 1-1234-1234-2)" aria-label="Search">
-                <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">Search</button>
+                <div class="row align-items-center">
+                    <div class="col-11 ">
+                        <input class="form-control mr-sm-2" name="search" type="search" placeholder="Search Judul Buku/Penerbit/Penulis/ISBN/Lokasi Perpustakaan (Format ISBN 1-1234-1234-2)" aria-label="Search">
+                    </div>
+                    <div class="col-1">
+                        <button class="btn btn-outline-secondary mr-sm-2" type="submit" style="color : black">Search</button>
+                    </div>
+                </div>    
               </form>
+
+
+            </form>
             
-            <div class="row mt-5 row-cols-3">
-                @foreach ($data as $buku)
+            <div class="row mt-2 row-cols-3 mb-5">
+                @foreach ($data as $key => $buku)
                 <div class="col mt-5 d-flex align-items-stretch justify-content-center">
                     <div class="card" style="width: 17rem;">
                         <img class="mt-4" src="{{asset('/images/buku/'.$buku->file_path)}}"
                             style="width:12vw;height: 16vw;align-self: center" class="card-img-top" alt="...">
                         <div class="card-body d-flex flex-column">
-                            <h5 class="card-title text-center">{{ $buku->nama_buku }}</h5>
+                            <b class="card-title text-center">{{ $buku->nama_buku }}</b>
                             <p class="card-text text-center">{{ $buku->penulis }}</p>
-                            <p class="card-text text-center mb-4">Jakarta Utara</p>
+                            <p class="card-text text-center ">{{ $buku->Kota }}</p>
+                            <p class="card-text text-center  mb-4"> Jarak :
+                           @php
+                               echo round($buku->distance, 1);
+                           @endphp Km
+                           </p>
+                            {{-- <p>{{ $buku->perpuslong }}</p> --}}
                             <div class="d-flex justify-content-center" style="margin-top: auto">
                                 <a href="{{url('/detail-buku/'.$buku->id)}}">
                                     <x-button class=" align-self-end" id="button1" style="align-self: center;">
@@ -49,7 +64,7 @@
 
             </div>
             {{-- buat row 2-3-4-5-6 --}}
-            {{ $data->links() }}
+            <div class="mb-4">{{ $data->links() }}</div>
         </div>
 
 

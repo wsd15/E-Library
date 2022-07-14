@@ -5,6 +5,7 @@
 
     <body style="">
 
+       
         <div class="container rounded bg-white mt-5 mb-5">
             <form action="/edit-buku/{{ $buku->id }}" method="POST" enctype="multipart/form-data">
             @csrf
@@ -80,34 +81,55 @@
 
                     <div class="row mt-2">
                         <div class="col-md-6"><label class="labels">Judul Buku</label>
-                            <x-input type="text" class="form-control" name="nama_buku" placeholder="Masukkan Judul Buku" value="{{ $buku->nama_buku }}" />
-                        </div>
+                            <x-input type="text" class="form-control @error('nama_buku')  @enderror" name="nama_buku" placeholder="Masukkan Judul Buku" value="{{ $buku->nama_buku }}" />
+                                @error('nama_buku')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                                @enderror
+                            </div>
                         <div class="col-md-6"><label class="labels">Penerbit</label>
-                            <x-input type="text" class="form-control" value="{{ $buku->penerbit }}" name="penerbit" placeholder="Masukkan Penerbit" />
+                            <x-input type="text" class="form-control @error('penerbit')  @enderror" value="{{ $buku->penerbit }}" name="penerbit" placeholder="Masukkan Penerbit" />
+                                @error('penerbit')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                                @enderror
                         </div>
                     </div>
 
                     <div class="row mt-2">
                         <div class="col-md-6"><label class="labels">ISBN</label>
-                            <x-input type="text" class="form-control" name="isbn" placeholder="Masukkan ISBN" value="{{ $buku->isbn }}" />
+                            <x-input type="text" class="form-control @error('isbn')  @enderror" name="isbn" placeholder="Masukkan ISBN" value="{{ $buku->isbn }}" />
+                                @error('isbn')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                                @enderror
                         </div>
                         <div class="col-md-6"><label class="labels">Tahun Terbit</label>
-                            <x-input type="text" class="form-control" value="{{ $buku->tahun_terbit }}" name="tahun_terbit" placeholder="Masukkan Tahun Terbit" />
+                            <x-input type="text" class="form-control @error('tahun_terbit')  @enderror" value="{{ $buku->tahun_terbit }}" name="tahun_terbit" placeholder="Masukkan Tahun Terbit" />
+                                @error('tahun_terbit')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                                @enderror
                         </div>
                     </div>
 
                     <div class="row mt-2">
                         <div class="col-md-6"><label class="labels">Penulis</label>
-                            <x-input type="text" class="form-control" name="penulis" placeholder="Masukkan Penulis" value="{{ $buku->penulis }}" />
+                            <x-input type="text" class="form-control @error('penulis')  @enderror" name="penulis" placeholder="Masukkan Penulis" value="{{ $buku->penulis }}" />
+                                @error('penulis')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                                @enderror
                         </div>
                         <div class="col-md-6"><label class="labels">Stok</label>
-                            <x-input type="text" class="form-control" value="{{ $buku->stok }}" name="stok" placeholder="Qty" />
+                            <x-input type="text" class="form-control @error('stok')  @enderror" value="{{ $buku->stok }}" name="stok" placeholder="Qty" />
+                                @error('stok')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                                @enderror
                         </div>
                     </div>
 
                     <div class="col-md-12 mt-4"><label class="labels">Deskripsi Buku</label>
-                        <textarea class="form-control rounded-md border-dark" name="deskripsi" placeholder="Masukkan Deskripsi Buku"
+                        <textarea class="form-control rounded-md border-dark @error('deskripsi')  @enderror" name="deskripsi" placeholder="Masukkan Deskripsi Buku"
                             id="exampleFormControlTextarea1" rows="5">{{ $buku->deskripsi }}</textarea>
+                                @error('deskripsi')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                                @enderror
                     </div>
 
                     
@@ -203,7 +225,7 @@
 
     
 
-
+       
     </body>
 
     </html>
