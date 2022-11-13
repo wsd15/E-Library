@@ -20,11 +20,17 @@ Aplikasi sudah jalan.
 Password untuk semua account = password
 Account User yang bisa dipakai :
 waran@gmail.com
+
 rifa@gmail.com	
+
 agung@gmail.com
+
 Account Perpustakaan yang bisa dipakai :
+
 perpuspedia@gmail.com
+
 Account Admin yang bisa dipakai :
+
 admin@gmail.com
 
 
